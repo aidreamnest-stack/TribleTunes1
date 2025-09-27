@@ -1,0 +1,232 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Fonts */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #0d0d0d;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Splash */
+#splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.splash-text {
+  font-family: "Great Vibes", cursive;
+  font-size: 3rem;
+  color: #ff4081;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .logo {
+  font-family: "Great Vibes", cursive;
+  font-size: 2.5rem;
+  color: #ff4081;
+}
+
+header nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: #ff4081;
+}
+
+/* Sections */
+section {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+section h2 {
+  font-family: "Great Vibes", cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #ff4081;
+}
+
+section p {
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* Carousel */
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ff4081;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.release-card,
+.yt-card {
+  background: #1a1a1a;
+  margin: 0 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 1rem;
+  text-align: center;
+}
+
+.release-card img {
+  width: 200px;
+  border-radius: 8px;
+}
+
+.release-card h3 {
+  margin: 0.5rem 0;
+}
+
+.release-card a {
+  color: #ff4081;
+  text-decoration: none;
+}
+
+.yt-card iframe {
+  width: 300px;
+  height: 170px;
+  border-radius: 10px;
+}
+
+/* Spotify Button */
+.release-card .spotify-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1db954; /* Spotify green */
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 25px;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 10px; /* spacing from title */
+}
+
+.release-card .spotify-button:hover {
+  background-color: #1ed760;
+  transform: scale(1.05);
+}
+
+/* FAQ */
+.faq-item {
+  background: #1a1a1a;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 10px;
+  max-width: 600px;
+  cursor: pointer;
+}
+
+.faq-item h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ff4081;
+}
+
+.faq-item p {
+  display: none;
+  margin-top: 0.5rem;
+}
+
+.faq-item.open p {
+  display: block;
+}
+
+/* Newsletter */
+#newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#newsletter-form input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  width: 250px;
+}
+
+#newsletter-form button {
+  padding: 0.5rem 1rem;
+  background: #ff4081;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #111;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

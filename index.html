@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TribleTunes</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- SPLASH SCREEN -->
+
+  <div id="splash">
+
+    <h1 class="splash-text">TribleTunes</h1>
+
+  </div>
+
+  <!-- BACKGROUND PARTICLES -->
+
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <h1 class="logo">TribleTunes</h1>
+
+    <nav>
+
+      <a href="#about">About</a>
+
+      <a href="#releases">Releases</a>
+
+      <a href="#youtube">YouTube</a>
+
+      <a href="#faq">FAQ</a>
+
+      <a href="#newsletter">Newsletter</a>
+
+    </nav>
+
+  </header>
+
+  <!-- ABOUT -->
+
+  <section id="about" class="fade-section">
+
+    <h2>About TribleTunes</h2>
+
+    <p>TribleTunes has multiple presences across the internet — Artist, Lyrics Videos, and soon a Record Label for emerging artists.</p>
+
+    <p>
+
+      Follow us everywhere:<br>
+
+      Instagram: <b>@tribletune</b> | TikTok: <b>@tribletune</b> | YouTube: <b>@tribletunes</b> | X: <b>@tribletunes</b>
+
+    </p>
+
+  </section>
+
+  <!-- RELEASES -->
+
+  <section id="releases" class="fade-section">
+
+    <h2>Latest Releases</h2>
+
+    <div class="carousel">
+
+      <button onclick="moveCarousel(-1)">‹</button>
+
+      <div class="carousel-track">
+
+        <!-- Release Card -->
+        <div class="release-card">
+          <img src="https://ik.imagekit.io/h2tos5anh/UniversalUpscaler_72c34279-7ddf-49c9-b18c-55a49137c2f5.jpg?updatedAt=1758951244743" alt="Back To You">
+          <h3>Back To You</h3>
+          <a class="spotify-button" href="https://open.spotify.com/album/4XFxPNCPMYQrDLs7fh39zP" target="_blank">Listen on Spotify</a>
+        </div>
+
+      </div>
+
+      <button onclick="moveCarousel(1)">›</button>
+
+    </div>
+
+  </section>
+
+  <!-- YOUTUBE -->
+
+  <section id="youtube" class="fade-section">
+
+    <h2>Latest YouTube Uploads</h2>
+
+    <div class="carousel">
+
+      <button onclick="moveYTCarousel(-1)">‹</button>
+
+      <div class="carousel-track yt-track">
+
+        <!-- YT Video Card -->
+
+        <div class="yt-card">
+
+          <iframe src="https://www.youtube.com/embed/VBIaxBbYKEc" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+
+        </div>
+
+        <!-- Add more yt-cards here -->
+
+      </div>
+
+      <button onclick="moveYTCarousel(1)">›</button>
+
+    </div>
+
+  </section>
+
+  <!-- FAQ -->
+
+  <section id="faq" class="fade-section">
+
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+
+      <h3>What is TribleTunes?</h3>
+
+      <p>A growing music hub for lyrics, artists, and upcoming records.</p>
+
+    </div>
+
+    <div class="faq-item">
+
+      <h3>How can I collaborate?</h3>
+
+      <p>Reach us on Instagram or YouTube for artist collaborations.</p>
+
+    </div>
+
+  </section>
+
+  <!-- NEWSLETTER -->
+
+  <section id="newsletter" class="fade-section">
+
+    <h2>Subscribe to Our Newsletter</h2>
+
+    <form id="newsletter-form">
+
+      <input type="email" placeholder="Enter your email" required>
+
+      <button type="submit">Subscribe</button>
+
+    </form>
+
+    <p id="newsletter-message"></p>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>© 2025 TribleTunes | All rights reserved</p>
+
+  </footer>
+
+  <script src="script.js" defer></script>
+
+</body>
+
+</html>
