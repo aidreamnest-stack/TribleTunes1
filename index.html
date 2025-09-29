@@ -220,17 +220,17 @@ section{padding:60px 20px;max-width:1000px;margin:auto;}
 
 <section id="newsletter">
   <h2 class="section-title">Stay updated</h2>
-  <h3 class="section-subtitle">with our newsletter.</h3>
-  <p class="section-text">Don’t miss out on new releases, special features, and behind-the-scenes updates. Subscribe below!</p>
+  <h3 class="section-subtitle">with our newsletter & suggestions.</h3>
+  <p class="section-text">Don’t miss out on new releases, special features, and behind-the-scenes updates. You can also send us your message below!</p>
 
   <form action="https://formspree.io/f/xzzjejde" method="POST" style="
       display:flex;
-      flex-direction:row;
-      justify-content:center;
-      flex-wrap:wrap;
+      flex-direction:column;
       gap:10px;
-      margin-top:15px;
+      max-width:500px;
+      margin:auto;
   ">
+    <!-- Email input -->
     <input type="email" name="email" placeholder="Enter your email" required style="
         padding:10px 15px;
         border-radius:5px;
@@ -239,8 +239,22 @@ section{padding:60px 20px;max-width:1000px;margin:auto;}
         color:#fff;
         font-size:1rem;
         outline:none;
-        min-width:250px;
     ">
+
+    <!-- Message textarea -->
+    <textarea name="message" placeholder="Write your message here..." required style="
+        padding:10px 15px;
+        border-radius:5px;
+        border:2px solid #fff;
+        background:transparent;
+        color:#fff;
+        font-size:1rem;
+        outline:none;
+        min-height:100px;
+        resize:vertical;
+    "></textarea>
+
+    <!-- Submit button -->
     <button type="submit" class="cta-btn" style="
         padding:10px 20px;
         border-radius:5px;
@@ -250,7 +264,8 @@ section{padding:60px 20px;max-width:1000px;margin:auto;}
         font-weight:600;
         cursor:pointer;
         transition:0.3s;
-    ">Subscribe</button>
+        align-self:center;
+    ">Submit</button>
   </form>
 </section>
 <script>
