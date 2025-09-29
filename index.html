@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TribleTunes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js' type="module"></script>
+  <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js' nomodule></script>
+  <style>
+    /* RESET */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    html { scroll-behavior: smooth; }
+    body {
+      background:#0d0d0d;
+      color:#fff;
+      font-family:'Poppins', sans-serif;
+      text-align:center;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* HEADER */
+    header {
+      padding:20px 30px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#000;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+    .logo {
+      font-family:'Dancing Script', cursive;
+      font-size:2rem;
+      color:#fff;
+    }
+    .header-nav .nav-btn {
+      background:none;
+      border:none;
+      color:#fff;
+      font-family:'Poppins', sans-serif;
+      font-size:1rem;
+      margin:0 5px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    .header-nav .nav-btn:hover {
+      text-decoration:underline;
+    }
+
+    /* SECTIONS */
+    section {
+      padding:60px 20px;
+      max-width:1000px;
+      margin:auto;
+    }
+    .section-title {
+      font-family:'Dancing Script', cursive;
+      font-size:2rem;
+      margin-bottom:10px;
+    }
+    .section-subtitle {
+      font-size:1.5rem;
+      font-weight:600;
+      margin-bottom:20px;
+    }
+    .section-text {
+      font-size:1rem;
+      font-weight:400;
+      margin-bottom:25px;
+    }
+
+    /* BUTTONS */
+    .cta-btn, .btn {
+      display:inline-block;
+      padding:12px 24px;
+      border:2px solid #fff;
+      background:none;
+      color:#fff;
+      font-weight:600;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition:0.3s;
+      text-decoration:none;
+      border-radius:5px;
+    }
+    .cta-btn:hover, .btn:hover {
+      background:#fff;
+      color:#000;
+    }
+
+    /* CAROUSEL */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      max-width:100%;
+      margin:auto;
+    }
+    .carousel-track {
+      display:flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+    .carousel-item {
+      min-width:100%;
+      box-sizing:border-box;
+      padding:10px;
+    }
+    .carousel-item img {
+      width:100%;
+      border-radius:10px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.5);
+    }
+    .carousel-item h3 {
+      margin:10px 0 5px;
+      font-size:1rem;
+    }
+
+    .arrow {
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      border:none;
+      color:white;
+      font-size:24px;
+      cursor:pointer;
+      padding:10px;
+      border-radius:50%;
+      z-index:10;
+    }
+    .arrow.left { left:10px; }
+    .arrow.right { right:10px; }
+
+    /* FAQ */
+    .faq-item {
+      margin-bottom:15px;
+      text-align:left;
+    }
+    .faq-question {
+      width:100%;
+      padding:12px 15px;
+      background:#111;
+      border:none;
+      color:#fff;
+      font-size:1rem;
+      font-weight:600;
+      text-align:left;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-radius:5px;
+      transition:0.3s;
+    }
+    .faq-question:hover {
+      background:#222;
+    }
+    .faq-answer {
+      max-height:0;
+      overflow:hidden;
+      padding:0 15px;
+      background:#111;
+      border-radius:0 0 5px 5px;
+      transition:max-height 0.3s ease;
+      color:#ccc;
+    }
+    .arrow-icon {
+      transition: transform 0.3s;
+    }
+    .faq-question.active .arrow-icon {
+      transform: rotate(180deg);
+    }
+
+    /* SHARE MENU */
+    .share-menu {
+      position:fixed;
+      bottom:30px;
+      right:30px;
+      width:70px;
+      height:70px;
+      z-index:1000;
+    }
+    .share-menu .toggle{
+      width:60px;
+      height:60px;
+      background:#fff;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#333;
+      font-size:2rem;
+      cursor:pointer;
+      transition:1s;
+    }
+    .share-menu.active .toggle{
+      transform:rotate(360deg);
+    }
+    .share-menu li{
+      position:absolute;
+      left:0;
+      list-style:none;
+      transform:scale(0);
+      transition:0.5s;
+    }
+    .share-menu.active li{
+      scale:1;
+    }
+    .share-menu li a{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:50px;
+      height:50px;
+      background:#fff;
+      color:var(--clr);
+      border-radius:50%;
+      font-size:1.5rem;
+      box-shadow:0 3px 4px rgba(0,0,0,0.2);
+      text-decoration:none;
+      transform:rotate(0deg);
+      transition:0.5s;
+      margin:5px;
+    }
+    .share-menu li a:hover{
+      transform:scale(1.2);
+      box-shadow:0 0 0 2px var(--clr),0 0 0 6px #fff;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:600px){
+      .section-title{font-size:1.5rem;}
+      .section-subtitle{font-size:1.2rem;}
+      .share-menu{bottom:20px; right:20px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">
+    <h1 class="logo">TribleTunes</h1>
+  </div>
+  <nav class="header-nav">
+    <button class="nav-btn" onclick="scrollToSection('about')">About</button>
+    <button class="nav-btn" onclick="scrollToSection('releases')">Releases</button>
+    <button class="nav-btn" onclick="scrollToSection('youtube')">YouTube</button>
+    <button class="nav-btn" onclick="scrollToSection('faq')">FAQ</button>
+    <button class="nav-btn" onclick="scrollToSection('newsletter')">Newsletter</button>
+  </nav>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">Lose yourself in</h2>
+  <h3 class="section-subtitle">the clouds of amazing music.</h3>
+  <p class="section-text">
+    There's a world above, where music and clouds converge, and it's called TribleTunes. 
+    Our community, growing every day on YouTube, revels in the vibrant spectrum of pop and electronic tunes. 
+    Set your sights on our lyrical sky tapestries and prepare to lose yourself in the clouds of amazing music.
+  </p>
+  <p class="section-text">☁️ TribleTunes: Where every beat touches the sky! ☁️</p>
+  <button class="cta-btn">Listen on YouTube</button>
+</section>
+
+<!-- RELEASES -->
+<section id="releases">
+  <h2 class="section-title">Featured Releases</h2>
+  <div class="carousel">
+    <button class="arrow left" onclick="moveSlide('release', -1)">&#10094;</button>
+    <div class="carousel-track" id="release-track">
+      <div class="carousel-item">
+        <img src="https://i.scdn.co/image/ab67616d0000b2739f6e2a3d69f79fbbadbaeb0d" alt="Stay">
+        <h3>The Kid LAROI & Justin Bieber – Stay</h3>
+        <a href="https://open.spotify.com/track/5HCyWlXZPP0y6Gqq8TgA20" class="btn" target="_blank">Listen Now</a>
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.scdn.co/image/ab67616d0000b273e0a548eeab73d79d14b3e7d3" alt="Blinding Lights">
+        <h3>The Weeknd – Blinding Lights</h3>
+        <a href="https://open.spotify.com/track/0VjIjW4GlUZAMYd2vXMi3b" class="btn" target="_blank">Listen Now</a>
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.scdn.co/image/ab67616d0000b273d0f17cb0bc8c5ebfd78a1f10" alt="Levitating">
+        <h3>Dua Lipa – Levitating</h3>
+        <a href="https://open.spotify.com/track/463CkQjx2Zk1yXoBuierM9" class="btn" target="_blank">Listen Now</a>
+      </div>
+    </div>
+    <button class="arrow right" onclick="moveSlide('release', 1)">&#10095;</button>
+  </div>
+</section>
+
+<!-- YOUTUBE -->
+<section id="youtube">
+  <h2 class="section-title">YouTube Uploads</h2>
+  <div class="carousel">
+    <button class="arrow left" onclick="moveSlide('youtube', -1)">&#10094;</button>
+    <div class="carousel-track" id="youtube-track">
+      <div class="carousel-item">
+        <img src="https://img.youtube.com/vi/kTJczUoc26U/maxresdefault.jpg" alt="Stay">
+        <h3>The Kid LAROI & Justin Bieber – Stay (Lyric Video)</h3>
+        <a href="https://www.youtube.com/watch?v=kTJczUoc26U" class="btn" target="_blank">Watch Now</a>
+      </div>
+      <div class="carousel-item">
+        <img src="https://img.youtube.com/vi/4NRXx6U8ABQ/maxresdefault.jpg" alt="Blinding Lights">
+        <h3>The Weeknd – Blinding Lights (Lyric Video)</h3>
+        <a href="https://www.youtube.com/watch?v=4NRXx6U8ABQ" class="btn" target="_blank">Watch Now</a>
+      </div>
+      <div class="carousel-item">
+        <img src="https://img.youtube.com/vi/TUVcZfQe-Kw/maxresdefault.jpg" alt="Levitating">
+        <h3>Dua Lipa – Levitating (Lyric Video)</h3>
+        <a href="https://www.youtube.com/watch?v=TUVcZfQe-Kw" class="btn" target="_blank">Watch Now</a>
+      </div>
+    </div>
+    <button class="arrow right" onclick="moveSlide('youtube', 1)">&#10095;</button>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2 class="section-title">Have questions?</h2>
+  <h3 class="section-subtitle">We've got answers.</h3>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFAQ(this)">
+      What is TribleTunes? <span class="arrow-icon">▼</span>
+    </button>
+    <div class="faq-answer">
+      TribleTunes is a YouTube channel dedicated to lyric videos, offering a vibrant spectrum of pop and electronic music.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFAQ(this)">
+      How often are new videos released? <span class="arrow-icon">▼</span>
+    </button>
+    <div class="faq-answer">
+      We release new lyric videos daily, so you can always discover fresh music.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFAQ(this)">
+      Can I request a song? <span class="arrow-icon">▼</span>
+    </button>
+    <div class="faq-answer">
+      Yes! Fans can suggest songs, and we often feature requests in our upcoming releases.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFAQ(this)">
+      Are all videos official? <span class="arrow-icon">▼</span>
+    </button>
+    <div class="faq-answer">
+      All lyric videos are created officially with proper licensing or permissions from the artists.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFAQ(this)">
+      How can I support TribleTunes? <span class="arrow-icon">▼</span>
+    </button>
+    <div class="faq-answer">
+      You can support us by subscribing, sharing videos, and engaging with our content on YouTube and social media.
+    </div>
+  </div>
+
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <h2 class="section-title">Stay updated</h2>
+  <h3 class="section-subtitle">with our newsletter.</h3>
+  <p class="section-text">
+    Don’t miss out on new releases, special features, and behind-the-scenes updates. 
+    Subscribe to our newsletter and be part of the TribleTunes family.
+  </p>
+  <button class="cta-btn">Subscribe</button>
+</section>
+
+<!-- SHARE MENU -->
+<ul class="share-menu">
+  <div class="toggle"><ion-icon name="share-social"></ion-icon></div>
+  <li style="--i:0; --clr:#1877f2"><a href="https://facebook.com" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a></li>
+  <li style="--i:1; --clr:#25d366"><a href="https://wa.me/"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
+  <li style="--i:2; --clr:#1da1f2"><a href="https://twitter.com" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a></li>
+  <li style="--i:3; --clr:#FF5733"><a href="https://reddit.com" target="_blank"><ion-icon name="logo-reddit"></ion-icon></a></li>
+  <li style="--i:4; --clr:#0a66c2"><a href="https://linkedin.com" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+  <li style="--i:5; --clr:#c32aa3"><a href="https://instagram.com" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
+  <li style="--i:6; --clr:#1b1e21"><a href="https://github.com" target="_blank"><ion-icon name="logo-github"></ion-icon></a></li>
+  <li style="--i:7; --clr:#ff0000"><a href="https://youtube.com" target="_blank"><ion-icon name="logo-youtube"></ion-icon></a></li>
+</ul>
+
+<script>
+  // Smooth scroll
+  function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  }
+
+  // Carousel
+  let releaseIndex = 0;
+  let youtubeIndex = 0;
+  function moveSlide(type, direction){
+    let track = document.getElementById(type+'-track');
+    let items = track.children.length;
+    if(type==='release'){
+      releaseIndex += direction;
+      if(releaseIndex < 0) releaseIndex = items-1;
+      if(releaseIndex >= items) releaseIndex = 0;
+      track.style.transform = `translateX(-${releaseIndex*100}%)`;
+    }
+    if(type==='youtube'){
+      youtubeIndex += direction;
+      if(youtubeIndex < 0) youtubeIndex = items-1;
+      if(youtubeIndex >= items) youtubeIndex = 0;
+      track.style.transform = `translateX(-${youtubeIndex*100}%)`;
+    }
+  }
+
+  // FAQ toggle
+  function toggleFAQ(btn){
+    btn.classList.toggle('active');
+    let answer = btn.nextElementSibling;
+    if(answer.style.maxHeight){
+      answer.style.maxHeight = null;
+    } else {
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+  }
+
+  // Share menu toggle
+  const shareMenu = document.querySelector('.share-menu');
+  const toggle = shareMenu.querySelector('.toggle');
+  toggle.addEventListener('click', ()=>{
+    shareMenu.classList.toggle('active');
+  });
+</script>
+
+</body>
+</html>
