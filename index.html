@@ -251,17 +251,20 @@ function setupCarousel(trackId){
 setupCarousel('release-track');
 setupCarousel('youtube-track');
 
+<script>
 // FAQ toggle
 function toggleFAQ(btn){
   btn.classList.toggle('active');
-  const answer=btn.nextElementSibling;
+  const answer = btn.nextElementSibling;
   if(answer.style.maxHeight){
-    answer.style.maxHeight=null;
-  }else{
-    answer.style.maxHeight=answer.scrollHeight+"px";
+    answer.style.maxHeight = null;
+  } else {
+    answer.style.maxHeight = answer.scrollHeight + "px";
   }
 }
-  <!-- Footer -->
+</script>
+
+<!-- Footer -->
 <footer style="
   padding: 20px 10px;
   text-align: center;
@@ -272,8 +275,6 @@ function toggleFAQ(btn){
 ">
   &copy; TribleTunes 2025. All rights reserved.
 </footer>
-</script>
 
-  
 </body>
 </html>
