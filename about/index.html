@@ -4,80 +4,97 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - TribleTunes</title>
-  <link rel="stylesheet" href="../style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://ik.imagekit.io/lbmgfujrk/favicon.png" type="image/png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Ionicons -->
+  <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js' type="module"></script>
+  <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js' nomodule></script>
+
   <style>
-    main {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-      line-height: 1.7;
-    }
+    /* RESET & BASE */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Poppins',sans-serif;color:#fff;background:#0d0d0d;overflow-x:hidden;line-height:1.6;text-align:center;}
 
-    main h2 {
-      margin-bottom: 20px;
-      font-size: 2rem;
-    }
+    /* HEADER */
+    header{padding:15px 20px;display:flex;flex-direction:column;align-items:center;background:#000;}
+    .header-logo{margin-bottom:10px;}
+    .logo{font-family:'Dancing Script',cursive;font-size:2.2rem;color:#fff;text-align:center;}
+    .header-nav{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;justify-content:center;}
+    .nav-btn{padding:6px 10px;border:2px solid #fff;border-radius:5px;background:none;color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;flex:0 0 auto;transition:0.3s;}
+    .nav-btn:hover{background:#fff;color:#000;}
+    .header-nav::-webkit-scrollbar{display:none;}
+    .header-nav{-ms-overflow-style:none;scrollbar-width:none;}
 
-    main h3 {
-      margin-top: 30px;
-      font-size: 1.5rem;
-    }
+    /* SECTIONS */
+    section{padding:60px 20px;max-width:1000px;margin:auto;}
+    .section-title{font-family:'Dancing Script',cursive;font-size:2rem;margin-bottom:10px;}
+    .section-subtitle{font-size:1.5rem;font-weight:600;margin-bottom:20px;}
+    .section-text{font-size:1rem;margin-bottom:20px; text-align:left;}
 
-    main ul {
-      margin-left: 20px;
-    }
+    /* BUTTONS */
+    .cta-btn,.btn{display:inline-block;padding:10px 18px;border:2px solid #fff;border-radius:5px;background:none;color:#fff;font-weight:600;text-transform:uppercase;cursor:pointer;transition:0.3s;text-decoration:none;}
+    .cta-btn:hover,.btn:hover{background:#fff;color:#000;}
 
-    main p {
-      margin-bottom: 20px;
+    /* FOOTER */
+    footer{background:#000;padding:20px;text-align:center;font-size:0.9rem;color:#ccc;}
+    footer a{color:#fff;text-decoration:none;margin:0 8px;}
+    footer a:hover{text-decoration:underline;}
+
+    @media(max-width:600px){
+      .section-title{font-size:1.5rem;}
+      .section-subtitle{font-size:1.2rem;}
+      .nav-btn{font-size:0.8rem;padding:5px 8px;}
+      .logo{font-size:2rem;}
     }
   </style>
 </head>
 <body>
 
-  <!-- Header (same as main page) -->
-  <header>
-    <div class="header-logo">
-      <h1 class="logo">TribleTunes</h1>
-    </div>
+<!-- HEADER -->
+<header>
+  <div class="header-logo">
+    <h1 class="logo">TribleTunes</h1>
+  </div>
+  
+  <nav class="header-nav">
+    <a class="nav-btn" href="../index.html">Home</a>
+    <a class="nav-btn" href="../about/">About Us</a>
+    <a class="nav-btn" href="../contact/">Contact</a>
+    <a class="nav-btn" href="../submission/">Submission</a>
+  </nav>
+</header>
 
-    <nav class="header-nav">
-      <a class="nav-btn" href="../index.html">Home</a>
-      <a class="nav-btn" href="../about/">About Us</a>
-      <a class="nav-btn" href="../releases/">Releases</a>
-      <a class="nav-btn" href="../youtube/">YouTube</a>
-      <a class="nav-btn" href="../faq/">FAQ</a>
-      <a class="nav-btn" href="../newsletter/">Newsletter</a>
-      <a class="nav-btn" href="../contact/">Contact</a>
-      <a class="nav-btn" href="../privacy/">Privacy Policy</a>
-      <a class="nav-btn" href="../store/">Store</a>
-    </nav>
-  </header>
+<!-- ABOUT US CONTENT -->
+<section id="about">
+  <h2 class="section-title">About TribleTunes</h2>
+  <h3 class="section-subtitle">Empowering Emerging Artists & Music Lovers</h3>
+  <p class="section-text">
+    TribleTunes is dedicated to helping emerging artists get the recognition they deserve. We are building a label to support talented artists worldwide and provide a platform for their music to reach a wider audience.  
+  </p>
+  <p class="section-text">
+    On YouTube, we create high-quality lyric videos, bringing music to life with visual storytelling. Our goal is to expand your reach, connect artists with fans, and make every song an experience to remember.
+  </p>
+  <p class="section-text">
+    Whether you are an artist seeking exposure or a music lover exploring new talent, TribleTunes is your gateway to discovering amazing music and being part of a growing community.
+  </p>
+  <button class="cta-btn" onclick="window.open('https://www.youtube.com/@Tribletunes', '_blank')">Join Our YouTube Community</button>
+</section>
 
-  <!-- Main content -->
-  <main>
-    <h2>About TribleTunes</h2>
-
-    <p>Welcome to <strong>TribleTunes</strong>! Our mission is to support emerging artists by giving them a platform to showcase their talent. We are building TribleTunes as a label for upcoming artists, helping them reach wider audiences and grow their music careers.</p>
-
-    <p>We are also active on <strong>YouTube</strong>, creating high-quality <em>lyric videos</em> to help listeners connect with music on a deeper level. Our goal is to make music accessible, enjoyable, and shareable for everyone.</p>
-
-    <h3>Our Vision</h3>
-    <ul>
-      <li>Support and promote emerging artists through our label.</li>
-      <li>Deliver professional lyric videos on YouTube to reach music lovers globally.</li>
-      <li>Create a community where artists and fans can connect easily.</li>
-      <li>Maintain high-quality content and a professional platform for music promotion.</li>
-    </ul>
-
-    <h3>Join Us</h3>
-    <p>If you are an artist looking to grow your reach or a fan who loves discovering new music, TribleTunes welcomes you! Follow us on YouTube and stay connected to be part of our growing music community.</p>
-  </main>
-
-  <!-- Footer (same simple footer) -->
-  <footer style="text-align:center; padding:20px; margin-top:40px;">
-    <a href="../index.html">Home</a> | 
-    <a href="../about/">About Us</a>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 TribleTunes. All rights reserved.</p>
+  <p>
+    <a href="https://www.youtube.com/@Tribletunes" target="_blank">YouTube</a> |
+    <a href="https://open.spotify.com/artist/2cR2Yz2b6cdPNHbjTnNsVy" target="_blank">Spotify</a> |
+    <a href="../contact/">Contact</a>
+  </p>
+</footer>
 
 </body>
 </html>
