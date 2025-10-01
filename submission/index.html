@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TribleTunes | Submission</title>
+
+<!-- Favicon -->
+<link rel="icon" href="https://ik.imagekit.io/lbmgfujrk/favicon.png" type="image/png">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Ionicons -->
+<script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js' type="module"></script>
+<script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js' nomodule></script>
+
+<style>
+/* RESET & BASE */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;color:#fff;background:#0d0d0d;overflow-x:hidden;line-height:1.6;text-align:center;}
+
+/* HEADER */
+header{padding:15px 20px;display:flex;flex-direction:column;align-items:center;background:#000;box-shadow:0 2px 10px rgba(0,0,0,0.5);}
+.header-logo{margin-bottom:10px;}
+.logo{font-family:'Dancing Script',cursive;font-size:2.2rem;color:#fff;text-align:center;}
+.header-nav{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;justify-content:center;}
+.nav-btn{padding:6px 10px;border:2px solid #fff;border-radius:5px;background:none;color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;flex:0 0 auto;transition:0.3s, transform 0.3s;}
+.nav-btn:hover{background:#fff;color:#000;transform:scale(1.1);}
+.header-nav::-webkit-scrollbar{display:none;}
+.header-nav{-ms-overflow-style:none;scrollbar-width:none;}
+
+/* SECTIONS */
+section{padding:60px 20px;max-width:1000px;margin:auto;opacity:0;transform:translateY(20px);transition:0.8s ease;}
+section.visible{opacity:1;transform:translateY(0);}
+.section-title{font-family:'Dancing Script',cursive;font-size:2rem;margin-bottom:10px;}
+.section-subtitle{font-size:1.5rem;font-weight:600;margin-bottom:20px;}
+.section-text{font-size:1rem;margin-bottom:20px;}
+
+/* FORM CARD */
+.form-card{background:#111;padding:25px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.5);transition:0.3s;}
+.form-card:hover{box-shadow:0 10px 25px rgba(0,0,0,0.7);}
+form input, form textarea{padding:12px 15px;border-radius:5px;border:2px solid #fff;background:transparent;color:#fff;font-size:1rem;outline:none;width:100%;margin-bottom:15px;transition:0.3s;}
+form input:focus, form textarea:focus{border-color:#00ffd4;box-shadow:0 0 10px #00ffd4;}
+form button{width:100%;padding:12px;font-weight:600;border-radius:5px;border:2px solid #fff;background:none;color:#fff;cursor:pointer;transition:0.3s;}
+form button:hover{background:#fff;color:#000;transform:scale(1.05);}
+
+/* PAID SUBMISSION */
+.paid-card{background:linear-gradient(135deg,#ff6a00,#ffcc00);padding:25px;border-radius:10px;margin:30px 0;transition:0.3s;cursor:pointer;}
+.paid-card:hover{transform:scale(1.05);box-shadow:0 8px 25px rgba(255,204,0,0.7);}
+.paid-card a{color:#000;font-weight:700;text-decoration:none;font-size:1.1rem;}
+
+/* UNDER CONSTRUCTION */
+.under-card{background:#444;padding:25px;border-radius:10px;margin:30px 0;position:relative;opacity:0.8;}
+.under-card span{display:block;font-size:1.1rem;font-weight:600;color:#fff;}
+.under-card::after{content:'⚠️ Under Construction ⚠️';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:1.2rem;color:#fff;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:0.6;}50%{opacity:1;}}
+
+/* FOOTER */
+footer{background:#000;padding:20px;text-align:center;font-size:0.9rem;color:#ccc;}
+footer a{color:#fff;text-decoration:none;margin:0 8px;}
+footer a:hover{text-decoration:underline;}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .section-title{font-size:1.5rem;}
+  .section-subtitle{font-size:1.2rem;}
+  .nav-btn{font-size:0.8rem;padding:5px 8px;}
+  .logo{font-size:2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-logo"><h1 class="logo">TribleTunes</h1></div>
+  <nav class="header-nav">
+    <a class="nav-btn" href="index.html">Home</a>
+    <a class="nav-btn" href="about/">About Us</a>
+    <a class="nav-btn" href="contact/">Contact</a>
+    <a class="nav-btn" href="submission/">Submission</a>
+  </nav>
+</header>
+
+<!-- INTRO -->
+<section id="intro" class="visible">
+  <h2 class="section-title">Submit Your Track</h2>
+  <h3 class="section-subtitle">For Lyric Video Creation</h3>
+  <p class="section-text">Submit your track below for a chance to get a professionally made lyric video. Only tracks for lyric video submission are accepted here.</p>
+</section>
+
+<!-- TRACK SUBMISSION FORM -->
+<section id="track-submission" class="visible">
+  <div class="form-card">
+    <form action="https://formspree.io/f/xzzjejde" method="POST" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="track" placeholder="Track Title" required>
+      <input type="file" name="audio" accept=".mp3,.wav" required>
+      <button type="submit">Submit Track</button>
+    </form>
+  </div>
+</section>
+
+<!-- PAID SUBMISSION -->
+<section id="paid-submission" class="visible">
+  <div class="paid-card">
+    <a href="https://app.one-submit.com/direct-submit/27237/2377/5549/TribleTunes-youtube-Music-Promotion" target="_blank">
+      Submit for Paid Promotion & Wider Reach
+    </a>
+  </div>
+</section>
+
+<!-- RELEASE SUBMISSION UNDER CONSTRUCTION -->
+<section id="release-submission" class="visible">
+  <div class="under-card">
+    <span>Tracks for Official Release / Distribution are Under Construction</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 TribleTunes. All rights reserved.</p>
+  <p>
+    <a href="https://www.youtube.com/@Tribletunes" target="_blank">YouTube</a> |
+    <a href="https://open.spotify.com/artist/2cR2Yz2b6cdPNHbjTnNsVy?si=-n6YThoqTQKGvBadgYck5w" target="_blank">Spotify</a> |
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@tribletunes.com" target="_blank">Email</a>
+  </p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+// Fade in sections on scroll
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){ sec.classList.add('visible'); }
+  });
+});
+</script>
+
+</body>
+</html>
