@@ -136,12 +136,50 @@ footer a:hover{text-decoration:underline;}
 </section>
 
 <!-- RELEASE SUBMISSION UNDER CONSTRUCTION -->
-<section id="release-submission" class="visible">
-  <h2 class="section-title">Official Track Release</h2>
-  <p class="section-text">Submitting your track for official release is not available yet. Stay tuned!</p>
-  <div class="under-card"></div>
+<section id="release-submission" class="visible" style="position:relative; padding:80px 20px; text-align:center; max-width:1000px; margin:auto;">
+  <h2 class="section-title" style="font-family:'Dancing Script',cursive; font-size:2.2rem; margin-bottom:15px;">Official Track Release</h2>
+  <p class="section-text" style="font-size:1.1rem; color:#ddd; margin-bottom:30px;">
+    Submitting your track for official release is not available yet. We are working hard to bring this feature soon!
+  </p>
+
+  <!-- Under Construction Card -->
+  <div style="
+    background: linear-gradient(135deg, #ff6a00, #ffcc00);
+    color:#000;
+    padding:40px 20px;
+    border-radius:15px;
+    font-size:1.2rem;
+    font-weight:600;
+    display:inline-block;
+    position:relative;
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    overflow:hidden;
+    cursor:default;
+    animation: glow 2s ease-in-out infinite alternate;
+  ">
+    ⚠️ UNDER CONSTRUCTION ⚠️
+    <div style="
+      position:absolute;
+      top:0; left:0; width:100%; height:100%;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.1) 10px,
+        rgba(0,0,0,0) 10px,
+        rgba(0,0,0,0) 20px
+      );
+      pointer-events:none;
+    "></div>
+  </div>
 </section>
 
+<style>
+@keyframes glow {
+  0% { box-shadow: 0 0 15px rgba(255,204,0,0.6), 0 0 30px rgba(255,102,0,0.4); }
+  50% { box-shadow: 0 0 25px rgba(255,204,0,0.8), 0 0 50px rgba(255,102,0,0.6); }
+  100% { box-shadow: 0 0 15px rgba(255,204,0,0.6), 0 0 30px rgba(255,102,0,0.4); }
+}
+</style>
 <!-- FOOTER -->
 <footer>
   <p>&copy; 2025 TribleTunes. All rights reserved.</p>
