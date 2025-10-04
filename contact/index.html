@@ -1,86 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - TribleTunes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - TribleTunes</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="https://ik.imagekit.io/lbmgfujrk/favicon.png" type="image/png">
+<!-- Favicon -->
+<link rel="icon" href="https://ik.imagekit.io/lbmgfujrk/favicon.png" type="image/png">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <style>
-    /* RESET & BASE */
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{font-family:'Poppins',sans-serif;color:#fff;background:#0d0d0d;overflow-x:hidden;line-height:1.6;text-align:center;}
+<style>
+  /* RESET & BASE */
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Poppins',sans-serif;color:#fff;background:#0d0d0d;overflow-x:hidden;line-height:1.5;text-align:left;position:relative;}
 
-    /* HEADER */
-    header{padding:15px 20px;display:flex;flex-direction:column;align-items:center;background:#000;}
-    .header-logo{margin-bottom:10px;}
-    .logo{font-family:'Dancing Script',cursive;font-size:2.2rem;color:#fff;text-align:center;}
-    .header-nav{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;justify-content:center;}
-    .nav-btn{padding:6px 10px;border:2px solid #fff;border-radius:5px;background:none;color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;flex:0 0 auto;transition:0.3s;}
-    .nav-btn:hover{background:#fff;color:#000;}
-    .header-nav::-webkit-scrollbar{display:none;}
-    .header-nav{-ms-overflow-style:none;scrollbar-width:none;}
+  /* HEADER */
+  header{
+    padding:12px 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+    position:relative;
+    z-index:1000;
+  }
+  .logo{
+    font-family:'Dancing Script',cursive;
+    font-size:2.8rem;
+    color:#fff;
+    text-align:center;
+    flex:none;
+  }
 
-    /* SECTIONS */
-    section{padding:60px 20px;max-width:1000px;margin:auto;text-align:left;}
-    .section-title{font-family:'Dancing Script',cursive;font-size:2rem;margin-bottom:10px;text-align:center;}
-    .section-subtitle{font-size:1.5rem;font-weight:600;margin-bottom:20px;text-align:center;}
-    .section-text{font-size:1rem;margin-bottom:20px;}
+  /* HAMBURGER MENU */
+  #hamburger{
+    position:absolute;
+    right:20px;
+    top:50%;
+    transform:translateY(-50%);
+    width:25px;
+    height:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    cursor:pointer;
+    z-index:1100;
+  }
+  #hamburger span{
+    display:block;
+    height:3px;
+    background:#fff;
+    border-radius:2px;
+    transition: all 0.4s ease-in-out;
+    transform-origin: center;
+  }
+  #hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+  #hamburger.active span:nth-child(2){opacity:0; transform:scaleX(0);}
+  #hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
 
-    /* FORM */
-    form{max-width:500px;margin:20px auto;text-align:left;}
-    form input, form textarea{padding:10px 15px;border-radius:5px;border:2px solid #fff;background:transparent;color:#fff;font-size:1rem;outline:none;width:100%;margin-bottom:12px;}
-    form textarea{min-height:100px;resize:vertical;}
-    form button{width:100%;padding:10px;border:2px solid #fff;border-radius:5px;background:none;color:#fff;font-weight:600;text-transform:uppercase;cursor:pointer;transition:0.3s;}
-    form button:hover{background:#fff;color:#000;}
+  /* SIDEBAR */
+  #overlay{
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.5);
+    opacity:0;
+    visibility:hidden;
+    transition: opacity 0.4s ease;
+    z-index:1040;
+  }
+  #sidebar{
+    position:fixed;
+    top:0; left:-300px;
+    width:300px;
+    height:100%;
+    background:#111;
+    display:flex;
+    flex-direction:column;
+    padding-top:80px;
+    transition: transform 0.5s cubic-bezier(0.77,0,0.175,1);
+    z-index:1050;
+    transform: translateX(0);
+  }
+  #sidebar a{
+    color:#fff;
+    text-decoration:none;
+    padding:15px 25px;
+    font-weight:600;
+    border-bottom:1px solid #333;
+    transition:0.3s;
+  }
+  #sidebar a:hover{background:#fff;color:#000;}
+  #sidebar.show{transform: translateX(300px);}
+  #overlay.show{opacity:1; visibility:visible;}
 
-    /* SOCIAL ICONS */
-    .social-icons{display:flex;justify-content:center;gap:25px;margin-top:20px;}
-    .social-icons a{display:inline-block;transition:0.3s;}
-    .social-icons img{width:50px;height:50px;transition:0.3s;}
-    /* Hover glow by brand */
-    .social-icons a.youtube:hover img{box-shadow:0 0 15px #FF0000; transform: scale(1.1);}
-    .social-icons a.instagram:hover img{box-shadow:0 0 15px #C13584, 0 0 25px #F56040, 0 0 35px #FCAF45; transform: scale(1.1);}
-    .social-icons a.facebook:hover img{box-shadow:0 0 15px #1877F2; transform: scale(1.1);}
-    .social-icons a.x:hover img{box-shadow:0 0 15px #1DA1F2; transform: scale(1.1);}
-    .social-icons a.whatsapp:hover img{box-shadow:0 0 15px #25D366; transform: scale(1.1);}
-    .social-icons a.email:hover img{box-shadow:0 0 15px #fff; transform: scale(1.1);}
+  /* SECTIONS */
+  section{padding:30px 20px;max-width:1000px;margin:auto;}
+  .section-title{font-family:'Dancing Script',cursive;font-size:2.5rem;margin-bottom:10px;text-align:center;}
+  .section-subtitle{font-size:1.3rem;font-weight:600;margin-bottom:10px;text-align:center;}
+  .section-text{font-size:0.95rem;margin-bottom:10px;}
 
-    /* FOOTER */
-    footer{background:#000;padding:20px;text-align:center;font-size:0.9rem;color:#ccc;}
-    footer a{color:#fff;text-decoration:none;margin:0 8px;}
-    footer a:hover{text-decoration:underline;}
+  /* FORM */
+  form{max-width:500px;margin:20px auto;text-align:left;}
+  form input, form textarea{padding:10px 15px;border-radius:5px;border:2px solid #fff;background:transparent;color:#fff;font-size:1rem;outline:none;width:100%;margin-bottom:12px;}
+  form textarea{min-height:100px;resize:vertical;}
+  form button{width:100%;padding:10px;border:2px solid #fff;border-radius:5px;background:none;color:#fff;font-weight:600;text-transform:uppercase;cursor:pointer;transition:0.3s;}
+  form button:hover{background:#fff;color:#000;}
 
-    @media(max-width:600px){
-      .section-title{font-size:1.5rem;}
-      .section-subtitle{font-size:1.2rem;}
-      .nav-btn{font-size:0.8rem;padding:5px 8px;}
-      .logo{font-size:2rem;}
-      .social-icons img{width:35px;height:35px;}
-    }
-  </style>
+  /* SOCIAL ICONS */
+  .social-icons{display:flex;justify-content:center;gap:25px;margin-top:20px;}
+  .social-icons a{display:inline-block;transition:0.3s;}
+  .social-icons img{width:50px;height:50px;transition:0.3s;}
+  .social-icons a.youtube:hover img{box-shadow:0 0 15px #FF0000; transform: scale(1.1);}
+  .social-icons a.instagram:hover img{box-shadow:0 0 15px #C13584,0 0 25px #F56040,0 0 35px #FCAF45; transform: scale(1.1);}
+  .social-icons a.facebook:hover img{box-shadow:0 0 15px #1877F2; transform: scale(1.1);}
+  .social-icons a.x:hover img{box-shadow:0 0 15px #1DA1F2; transform: scale(1.1);}
+  .social-icons a.whatsapp:hover img{box-shadow:0 0 15px #25D366; transform: scale(1.1);}
+  .social-icons a.email:hover img{box-shadow:0 0 15px #fff; transform: scale(1.1);}
+
+  /* FOOTER */
+  footer{background:#000;padding:15px;text-align:center;font-size:0.9rem;color:#ccc;}
+  footer a{color:#fff;text-decoration:none;margin:0 5px;}
+  footer a:hover{text-decoration:underline;}
+
+  /* RESPONSIVE */
+  @media(max-width:768px){.header-nav{display:none;}}
+  @media(max-width:600px){.section-title{font-size:2rem;}.section-subtitle{font-size:1.1rem;}.logo{font-size:2.2rem;}.social-icons img{width:35px;height:35px;}}
+</style>
 </head>
 <body>
 
 <!-- HEADER -->
 <header>
-  <div class="header-logo">
-    <h1 class="logo">TribleTunes</h1>
+  <h1 class="logo">TribleTunes</h1>
+  <div id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-  
-  <nav class="header-nav">
-    <a class="nav-btn" href="/index.html">Home</a>
-    <a class="nav-btn" href="/about/">About Us</a>
-    <a class="nav-btn" href="/contact/">Contact</a>
-    <a class="nav-btn" href="/submission/">Submission</a>
-  </nav>
 </header>
+
+<!-- OVERLAY -->
+<div id="overlay"></div>
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <a href="/index.html">Home</a>
+  <a href="/about/">About Us</a>
+  <a href="/contact/">Contact</a>
+  <a href="/submission/">Submission</a>
+</div>
+
 <!-- CONTACT SECTION -->
 <section id="contact">
   <h2 class="section-title">Get in Touch</h2>
@@ -120,16 +193,4 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>&copy; 2025 TribleTunes. All rights reserved.</p>
-  <p>
-    <a href="https://tribletunes.com/">Home</a> |
-    <a href="https://tribletunes.com/about/">About Us</a> |
-    <a href="https://tribletunes.com/contact/">Contact</a> |
-    <a href="https://tribletunes.com/submission/">Submission</a> |
-    <a href="https://www.youtube.com/@TribleTunes" target="_blank">YouTube</a> |
-    <a href="https://open.spotify.com/artist/2cR2Yz2b6cdPNHbjTnNsVy" target="_blank">Spotify</a> |
-    <a href="mailto:contact@tribletunes.com">Email</a>
-  </p>
-</footer>
-</body>
-</html>
+  <p>&
