@@ -15,15 +15,117 @@
   /* RESET & BASE */
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{font-family:'Poppins',sans-serif;color:#fff;background:#0d0d0d;overflow-x:hidden;line-height:1.5;text-align:left;}
+  body{font-family:'Poppins',sans-serif;color:#fff;background:#0d0d0d;overflow-x:hidden;line-height:1.5;text-align:left;position:relative;}
 
   /* HEADER */
-  header{padding:12px 20px;display:flex;flex-direction:column;align-items:center;background:#000;}
-  .logo{font-family:'Dancing Script',cursive;font-size:2.8rem;color:#fff;text-align:center;}
-  .header-nav{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;justify-content:center;margin-top:6px;}
-  .nav-btn{padding:5px 10px;border:2px solid #fff;border-radius:5px;background:none;color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;transition:0.3s;}
+  header{
+    padding:12px 20px;
+    display:flex;
+    justify-content:center; /* centers logo */
+    align-items:center;
+    background:#000;
+    position:relative;
+    z-index:1000;
+  }
+
+  .logo{
+    font-family:'Dancing Script',cursive;
+    font-size:2.8rem;
+    color:#fff;
+    text-align:center;
+    flex:none;
+  }
+
+  .header-nav{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    flex-wrap:nowrap;
+    justify-content:center;
+    margin-top:6px;
+  }
+
+  .nav-btn{
+    padding:5px 10px;
+    border:2px solid #fff;
+    border-radius:5px;
+    background:none;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:0.3s;
+  }
   .nav-btn:hover{background:#fff;color:#000;}
   .header-nav::-webkit-scrollbar{display:none;}
+
+  /* HAMBURGER MENU */
+  #hamburger{
+    position:absolute;
+    right:20px;
+    top:50%;
+    transform:translateY(-50%);
+    width:25px;
+    height:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    cursor:pointer;
+    z-index:1100;
+  }
+  #hamburger span{
+    display:block;
+    height:3px;
+    background:#fff;
+    border-radius:2px;
+    transition: all 0.4s ease-in-out;
+    transform-origin: center;
+  }
+
+  #hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+  #hamburger.active span:nth-child(2){opacity:0; transform:scaleX(0);}
+  #hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+  /* SIDEBAR */
+  #overlay{
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.5);
+    opacity:0;
+    visibility:hidden;
+    transition: opacity 0.4s ease;
+    z-index:1040;
+  }
+
+  #sidebar{
+    position:fixed;
+    top:0; left:-300px; /* start off screen */
+    width:300px;
+    height:100%;
+    background:#111;
+    display:flex;
+    flex-direction:column;
+    padding-top:80px;
+    transition: transform 0.5s cubic-bezier(0.77,0,0.175,1);
+    z-index:1050;
+    transform: translateX(0);
+  }
+  #sidebar a{
+    color:#fff;
+    text-decoration:none;
+    padding:15px 25px;
+    font-weight:600;
+    border-bottom:1px solid #333;
+    transition:0.3s;
+  }
+  #sidebar a:hover{background:#fff;color:#000;}
+
+  #sidebar.show{
+    transform: translateX(300px); /* slide in smoothly */
+  }
+  #overlay.show{opacity:1; visibility:visible;}
 
   /* SECTIONS - compact */
   section{padding:30px 20px;max-width:1000px;margin:auto;}
@@ -39,7 +141,7 @@
   hr.fancy-line{
     border:0;
     height:2px;
-    background:linear-gradient(to right, #ff6ec4, #7873f5);
+    background:#fff; /* white color */
     margin:20px 0;
     border-radius:5px;
   }
@@ -50,10 +152,12 @@
   footer a:hover{text-decoration:underline;}
 
   /* RESPONSIVE */
+  @media(max-width:768px){
+    .header-nav{display:none;} /* hide header buttons on mobile */
+  }
   @media(max-width:600px){
     .section-title{font-size:2rem;}
     .section-subtitle{font-size:1.1rem;}
-    .nav-btn{font-size:0.75rem;padding:4px 6px;}
     .logo{font-size:2.2rem;}
   }
 </style>
@@ -63,13 +167,23 @@
 <!-- HEADER -->
 <header>
   <h1 class="logo">TribleTunes</h1>
-  <nav class="header-nav">
-    <a class="nav-btn" href="/index.html">Home</a>
-    <a class="nav-btn" href="/about/">About Us</a>
-    <a class="nav-btn" href="/contact/">Contact</a>
-    <a class="nav-btn" href="/submission/">Submission</a>
-  </nav>
+  <div id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </header>
+
+<!-- OVERLAY -->
+<div id="overlay"></div>
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <a href="/index.html">Home</a>
+  <a href="/about/">About Us</a>
+  <a href="/contact/">Contact</a>
+  <a href="/submission/">Submission</a>
+</div>
 
 <!-- ABOUT US SECTION -->
 <section id="about">
@@ -128,5 +242,29 @@
   </p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.10/bundled/lenis.min.js"></script>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  function toggleSidebar(){
+    hamburger.classList.toggle('active');
+    sidebar.classList.toggle('show');
+    overlay.classList.toggle('show');
+  }
+
+  hamburger.addEventListener('click', toggleSidebar);
+  overlay.addEventListener('click', toggleSidebar);
+
+  sidebar.querySelectorAll('a').forEach(link=>{
+    link.addEventListener('click', toggleSidebar);
+  });
+
+  // Lenis smooth scroll
+  const lenis = new Lenis({duration:1.2,easing:t=>t,direction:'vertical',smooth:true});
+  function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
+  requestAnimationFrame(raf);
+</script>
 </body>
 </html>
