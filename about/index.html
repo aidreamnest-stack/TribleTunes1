@@ -11,35 +11,38 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Ionicons -->
-  <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js' type="module"></script>
-  <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js' nomodule></script>
-
   <style>
     /* RESET & BASE */
     *{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;}
-    body{font-family:'Poppins',sans-serif;color:#fff;background:#0d0d0d;overflow-x:hidden;line-height:1.6;text-align:center;}
+    body{font-family:'Poppins',sans-serif;color:#fff;background:#0d0d0d;overflow-x:hidden;line-height:1.6;text-align:left;}
 
     /* HEADER */
     header{padding:15px 20px;display:flex;flex-direction:column;align-items:center;background:#000;}
-    .header-logo{margin-bottom:10px;}
-    .logo{font-family:'Dancing Script',cursive;font-size:2.2rem;color:#fff;text-align:center;}
-    .header-nav{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;justify-content:center;}
-    .nav-btn{padding:6px 10px;border:2px solid #fff;border-radius:5px;background:none;color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;flex:0 0 auto;transition:0.3s;}
+    .logo{font-family:'Dancing Script',cursive;font-size:3.5rem;color:#fff;text-align:center;}
+    .header-nav{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;justify-content:center;margin-top:8px;}
+    .nav-btn{padding:6px 10px;border:2px solid #fff;border-radius:5px;background:none;color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;transition:0.3s;}
     .nav-btn:hover{background:#fff;color:#000;}
     .header-nav::-webkit-scrollbar{display:none;}
-    .header-nav{-ms-overflow-style:none;scrollbar-width:none;}
 
     /* SECTIONS */
     section{padding:60px 20px;max-width:1000px;margin:auto;}
-    .section-title{font-family:'Dancing Script',cursive;font-size:2rem;margin-bottom:10px;}
+    .section-title{font-family:'Dancing Script',cursive;font-size:3.5rem;margin-bottom:15px;}
     .section-subtitle{font-size:1.5rem;font-weight:600;margin-bottom:20px;}
-    .section-text{font-size:1rem;margin-bottom:20px; text-align:left;}
+    .section-text{font-size:1rem;margin-bottom:20px;}
 
-    /* BUTTONS */
-    .cta-btn,.btn{display:inline-block;padding:10px 18px;border:2px solid #fff;border-radius:5px;background:none;color:#fff;font-weight:600;text-transform:uppercase;cursor:pointer;transition:0.3s;text-decoration:none;}
-    .cta-btn:hover,.btn:hover{background:#fff;color:#000;}
+    /* CTA BUTTON */
+    .cta-btn{display:inline-block;padding:10px 18px;border:2px solid #fff;border-radius:5px;background:none;color:#fff;font-weight:600;text-transform:uppercase;cursor:pointer;transition:0.3s;text-decoration:none;}
+    .cta-btn:hover{background:#fff;color:#000;}
+
+    /* FANCY HR LINES */
+    hr.fancy-line{
+      border: 0;
+      height: 2px;
+      background: linear-gradient(to right, #ff6ec4, #7873f5);
+      margin: 40px 0;
+      border-radius: 5px;
+    }
 
     /* FOOTER */
     footer{background:#000;padding:20px;text-align:center;font-size:0.9rem;color:#ccc;}
@@ -47,56 +50,91 @@
     footer a:hover{text-decoration:underline;}
 
     @media(max-width:600px){
-      .section-title{font-size:1.5rem;}
+      .section-title{font-size:2.2rem;}
       .section-subtitle{font-size:1.2rem;}
       .nav-btn{font-size:0.8rem;padding:5px 8px;}
-      .logo{font-size:2rem;}
+      .logo{font-size:3rem;}
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="header-logo">
+  <!-- HEADER -->
+  <header>
     <h1 class="logo">TribleTunes</h1>
-  </div>
-  
-  <nav class="header-nav">
-    <a class="nav-btn" href="/index.html">Home</a>
-    <a class="nav-btn" href="/about/">About Us</a>
-    <a class="nav-btn" href="/contact/">Contact</a>
-    <a class="nav-btn" href="/submission/">Submission</a>
-  </nav>
-</header>
-<!-- ABOUT US CONTENT -->
-<section id="about">
-  <h2 class="section-title">About TribleTunes</h2>
-  <h3 class="section-subtitle">Empowering Emerging Artists & Music Lovers</h3>
-  <p class="section-text">
-    TribleTunes is dedicated to helping emerging artists get the recognition they deserve. We are building a label to support talented artists worldwide and provide a platform for their music to reach a wider audience.  
-  </p>
-  <p class="section-text">
-    On YouTube, we create high-quality lyric videos, bringing music to life with visual storytelling. Our goal is to expand your reach, connect artists with fans, and make every song an experience to remember.
-  </p>
-  <p class="section-text">
-    Whether you are an artist seeking exposure or a music lover exploring new talent, TribleTunes is your gateway to discovering amazing music and being part of a growing community.
-  </p>
-  <button class="cta-btn" onclick="window.open('https://www.youtube.com/@Tribletunes', '_blank')">Join Our YouTube Community</button>
-</section>
+    <nav class="header-nav">
+      <a class="nav-btn" href="/index.html">Home</a>
+      <a class="nav-btn" href="/about/">About Us</a>
+      <a class="nav-btn" href="/contact/">Contact</a>
+      <a class="nav-btn" href="/submission/">Submission</a>
+    </nav>
+  </header>
 
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2025 TribleTunes. All rights reserved.</p>
-  <p>
-    <a href="https://tribletunes.com/">Home</a> |
-    <a href="https://tribletunes.com/about/">About Us</a> |
-    <a href="https://tribletunes.com/contact/">Contact</a> |
-    <a href="https://tribletunes.com/submission/">Submission</a> |
-    <a href="https://www.youtube.com/@TribleTunes" target="_blank">YouTube</a> |
-    <a href="https://open.spotify.com/artist/2cR2Yz2b6cdPNHbjTnNsVy" target="_blank">Spotify</a> |
-    <a href="mailto:contact@tribletunes.com">Email</a>
-  </p>
-</footer>
+  <!-- ABOUT US SECTION -->
+  <section id="about">
+    <h2 class="section-title">About TribleTunes</h2>
+    <h3 class="section-subtitle">Empowering Emerging Artists & Music Lovers</h3>
+    <p class="section-text">
+      TribleTunes is dedicated to helping emerging artists get the recognition they deserve. We are building a label to support talented artists worldwide and provide a platform for their music to reach a wider audience.  
+    </p>
+    <p class="section-text">
+      On YouTube, we create high-quality lyric videos, bringing music to life with visual storytelling. Our goal is to expand your reach, connect artists with fans, and make every song an experience to remember.
+    </p>
+    <p class="section-text">
+      Whether you are an artist seeking exposure or a music lover exploring new talent, TribleTunes is your gateway to discovering amazing music and being part of a growing community.
+    </p>
+  </section>
+  <!-- ---------------------------------------
+       ABOUT SECTION END HERE
+  ---------------------------------------- -->
+
+  <hr class="fancy-line">
+
+  <!-- OUR JOURNEY SECTION -->
+  <section id="founded-stats">
+    <h2 class="section-title">Our Journey</h2>
+    <h3 class="section-subtitle">From Humble Beginnings to Global Reach</h3>
+    <p class="section-text">
+      TribleTunes was founded in February 2024 with the mission to empower emerging artists. In just over a year, we've reached over 3 million views and produced 400+ lyric videos, building a vibrant community of music lovers worldwide.
+    </p>
+    <p class="section-text">
+      Our platform continues to grow as we connect talented creators with fans, offering a space where music is celebrated and shared across the globe.
+    </p>
+  </section>
+  <!-- ---------------------------------------
+       OUR JOURNEY SECTION END HERE
+  ---------------------------------------- -->
+
+  <hr class="fancy-line">
+
+  <!-- MISSION & VISION SECTION -->
+  <section id="mission-vision">
+    <h2 class="section-title">Our Mission & Vision</h2>
+    <h3 class="section-subtitle">Creating a Community That Celebrates Music</h3>
+    <p class="section-text">
+      Our mission is simple: help talented artists shine and make music discovery enjoyable for everyone. We believe that every artist deserves recognition, and every listener deserves a memorable experience.
+    </p>
+    <p class="section-text">
+      Looking forward, TribleTunes aims to expand its platform, supporting artists globally, introducing new features for creators, and fostering a community where music is not just heard but felt.
+    </p>
+  </section>
+  <!-- ---------------------------------------
+       MISSION & VISION SECTION END HERE
+  ---------------------------------------- -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 TribleTunes. All rights reserved.</p>
+    <p>
+      <a href="https://tribletunes.com/">Home</a> |
+      <a href="https://tribletunes.com/about/">About Us</a> |
+      <a href="https://tribletunes.com/contact/">Contact</a> |
+      <a href="https://tribletunes.com/submission/">Submission</a> |
+      <a href="https://www.youtube.com/@TribleTunes" target="_blank">YouTube</a> |
+      <a href="https://open.spotify.com/artist/2cR2Yz2b6cdPNHbjTnNsVy" target="_blank">Spotify</a> |
+      <a href="mailto:contact@tribletunes.com">Email</a>
+    </p>
+  </footer>
+
 </body>
 </html>
