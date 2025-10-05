@@ -684,6 +684,7 @@ Array.from(releaseItems).forEach(item => {
 updateReleaseCarousel();
 </script>
   
+<!-- YOUTUBE UPLOADS SECTION -->
 <section id="youtube">
   <h2 class="section-title">Latest Uploads</h2>
 
@@ -745,7 +746,6 @@ updateReleaseCarousel();
 </section>
 
 <style>
-/* --- YOUTUBE UPLOADS SECTION --- */
 #youtube {
   background-color: #fff;
   padding: 60px 20px;
@@ -764,7 +764,7 @@ updateReleaseCarousel();
   font-size: 2rem;
 }
 
-/* Carousel Namespaced */
+/* Carousel Container */
 .youtube-carousel {
   overflow: hidden;
   max-width: 1000px;
@@ -851,50 +851,51 @@ updateReleaseCarousel();
 </style>
 
 <script>
-let ytIndex = 0;
-const track = document.querySelector(".youtube-track");
-const items = track.querySelectorAll(".youtube-item");
-const total = items.length;
-let startX = 0;
+(function(){
+  const track = document.querySelector(".youtube-track");
+  const items = track.querySelectorAll(".youtube-item");
+  const total = items.length;
+  let index = 0;
+  let startX = 0;
+  let dragging = false;
 
-// --- Touch Swipe ---
-track.addEventListener("touchstart", e => startX = e.touches[0].clientX);
-track.addEventListener("touchend", e => {
-  const diff = startX - e.changedTouches[0].clientX;
-  if(Math.abs(diff) > 50){
-    if(diff>0) ytIndex++; else ytIndex--;
-    ytIndex = (ytIndex + total) % total;
-    track.style.transform = `translateX(-${ytIndex*100}%)`;
+  function update() {
+    track.style.transform = `translateX(-${index*100}%)`;
   }
-});
 
-// --- Mouse Drag ---
-let dragging=false;
-track.addEventListener("mousedown", e => { dragging=true; startX=e.clientX; });
-track.addEventListener("mouseup", e => {
-  if(!dragging) return;
-  dragging=false;
-  const diff = startX - e.clientX;
-  if(Math.abs(diff)>50){
-    if(diff>0) ytIndex++; else ytIndex--;
-    ytIndex = (ytIndex + total) % total;
-    track.style.transform = `translateX(-${ytIndex*100}%)`;
-  }
-});
-
-// --- Auto-slide ---
-setInterval(() => {
-  ytIndex = (ytIndex+1)%total;
-  track.style.transform = `translateX(-${ytIndex*100}%)`;
-}, 4000);
-
-// --- Tap flip for mobile ---
-items.forEach(item=>{
-  const card = item.querySelector('.card');
-  card.addEventListener('click', ()=>{
-    card.classList.toggle('tap-flip');
+  // Touch Swipe
+  track.addEventListener("touchstart", e=>startX=e.touches[0].clientX);
+  track.addEventListener("touchend", e=>{
+    const diff = startX - e.changedTouches[0].clientX;
+    if(Math.abs(diff)>50){
+      index += diff>0 ? 1 : -1;
+      index = (index + total)%total;
+      update();
+    }
   });
-});
+
+  // Mouse Drag
+  track.addEventListener("mousedown", e=>{dragging=true; startX=e.clientX;});
+  track.addEventListener("mouseup", e=>{
+    if(!dragging) return;
+    dragging=false;
+    const diff = startX - e.clientX;
+    if(Math.abs(diff)>50){
+      index += diff>0 ? 1 : -1;
+      index = (index + total)%total;
+      update();
+    }
+  });
+
+  // Auto-slide
+  setInterval(()=>{index=(index+1)%total; update();}, 4000);
+
+  // Tap flip on mobile
+  items.forEach(item=>{
+    const card = item.querySelector(".card");
+    card.addEventListener("click", ()=>card.classList.toggle("tap-flip"));
+  });
+})();
 </script>
   
 <!-- FAQ -->
