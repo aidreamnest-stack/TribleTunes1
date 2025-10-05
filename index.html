@@ -683,15 +683,15 @@ Array.from(releaseItems).forEach(item => {
 
 updateReleaseCarousel();
 </script>
-<!-- YOUTUBE UPLOADS SECTION -->
+  
 <section id="youtube">
   <h2 class="section-title">Latest Uploads</h2>
 
-  <div class="carousel" id="youtube-carousel">
-    <div class="carousel-track" id="youtube-track">
+  <div class="youtube-carousel">
+    <div class="youtube-track">
 
       <!-- 1 -->
-      <div class="carousel-item">
+      <div class="youtube-item">
         <div class="card">
           <div class="card-front">
             <img src="https://img.youtube.com/vi/AeKNlAyTpU8/hqdefault.jpg" alt="Video 1">
@@ -703,7 +703,7 @@ updateReleaseCarousel();
       </div>
 
       <!-- 2 -->
-      <div class="carousel-item">
+      <div class="youtube-item">
         <div class="card">
           <div class="card-front">
             <img src="https://img.youtube.com/vi/_MZbv272_xI/hqdefault.jpg" alt="Video 2">
@@ -715,7 +715,7 @@ updateReleaseCarousel();
       </div>
 
       <!-- 3 -->
-      <div class="carousel-item">
+      <div class="youtube-item">
         <div class="card">
           <div class="card-front">
             <img src="https://img.youtube.com/vi/Ngh_kpiUlxw/hqdefault.jpg" alt="Video 3">
@@ -727,7 +727,7 @@ updateReleaseCarousel();
       </div>
 
       <!-- 4 -->
-      <div class="carousel-item">
+      <div class="youtube-item">
         <div class="card">
           <div class="card-front">
             <img src="https://img.youtube.com/vi/QBnpFPvyxFc/hqdefault.jpg" alt="Video 4">
@@ -745,6 +745,7 @@ updateReleaseCarousel();
 </section>
 
 <style>
+/* --- YOUTUBE UPLOADS SECTION --- */
 #youtube {
   background-color: #fff;
   padding: 60px 20px;
@@ -763,19 +764,19 @@ updateReleaseCarousel();
   font-size: 2rem;
 }
 
-/* Carousel */
-.carousel {
+/* Carousel Namespaced */
+.youtube-carousel {
   overflow: hidden;
   max-width: 1000px;
   margin: auto;
 }
 
-.carousel-track {
+.youtube-track {
   display: flex;
   transition: transform 0.6s ease-in-out;
 }
 
-.carousel-item {
+.youtube-item {
   flex: 0 0 100%;
   display: flex;
   justify-content: center;
@@ -819,11 +820,13 @@ updateReleaseCarousel();
   transform: rotateY(180deg);
 }
 
-.card:hover .card-front {
+.card:hover .card-front,
+.card.tap-flip .card-front {
   transform: rotateY(180deg);
 }
 
-.card:hover .card-back {
+.card:hover .card-back,
+.card.tap-flip .card-back {
   transform: rotateY(0deg);
 }
 
@@ -848,45 +851,50 @@ updateReleaseCarousel();
 </style>
 
 <script>
-let youtubeIndex = 0;
-const track = document.getElementById("youtube-track");
-const items = track.querySelectorAll(".carousel-item");
+let ytIndex = 0;
+const track = document.querySelector(".youtube-track");
+const items = track.querySelectorAll(".youtube-item");
 const total = items.length;
 let startX = 0;
 
-// Swipe
+// --- Touch Swipe ---
 track.addEventListener("touchstart", e => startX = e.touches[0].clientX);
 track.addEventListener("touchend", e => {
-  const endX = e.changedTouches[0].clientX;
-  const diff = startX - endX;
+  const diff = startX - e.changedTouches[0].clientX;
   if(Math.abs(diff) > 50){
-    if(diff>0) youtubeIndex++;
-    else youtubeIndex--;
-    youtubeIndex = (youtubeIndex + total) % total;
-    track.style.transform = `translateX(-${youtubeIndex*100}%)`;
+    if(diff>0) ytIndex++; else ytIndex--;
+    ytIndex = (ytIndex + total) % total;
+    track.style.transform = `translateX(-${ytIndex*100}%)`;
   }
 });
 
-// Drag for desktop
-let isDragging = false;
-track.addEventListener("mousedown", e => { isDragging=true; startX=e.clientX; });
+// --- Mouse Drag ---
+let dragging=false;
+track.addEventListener("mousedown", e => { dragging=true; startX=e.clientX; });
 track.addEventListener("mouseup", e => {
-  if(!isDragging) return;
-  isDragging=false;
+  if(!dragging) return;
+  dragging=false;
   const diff = startX - e.clientX;
   if(Math.abs(diff)>50){
-    if(diff>0) youtubeIndex++;
-    else youtubeIndex--;
-    youtubeIndex = (youtubeIndex + total) % total;
-    track.style.transform = `translateX(-${youtubeIndex*100}%)`;
+    if(diff>0) ytIndex++; else ytIndex--;
+    ytIndex = (ytIndex + total) % total;
+    track.style.transform = `translateX(-${ytIndex*100}%)`;
   }
 });
 
-// Auto-slide
+// --- Auto-slide ---
 setInterval(() => {
-  youtubeIndex = (youtubeIndex+1)%total;
-  track.style.transform = `translateX(-${youtubeIndex*100}%)`;
+  ytIndex = (ytIndex+1)%total;
+  track.style.transform = `translateX(-${ytIndex*100}%)`;
 }, 4000);
+
+// --- Tap flip for mobile ---
+items.forEach(item=>{
+  const card = item.querySelector('.card');
+  card.addEventListener('click', ()=>{
+    card.classList.toggle('tap-flip');
+  });
+});
 </script>
   
 <!-- FAQ -->
