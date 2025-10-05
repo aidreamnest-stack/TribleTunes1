@@ -446,11 +446,14 @@ footer a:hover {
 
 </section>
 
-<!-- RELEASES -->
+<!-- RELEASES SECTION -->
 <section id="releases">
   <h2 class="section-title">Featured Releases</h2>
+
   <div class="carousel">
     <div class="carousel-track" id="release-track">
+
+      <!-- CARD 1 -->
       <div class="carousel-item">
         <div class="card-inner">
           <div class="card-front">
@@ -461,8 +464,11 @@ footer a:hover {
             <a href="https://open.spotify.com/track/54y4vQHTHW5RILsuxVgLOM?si=xvEmQiX_TLqGbNPU8UrGrQ" class="btn" target="_blank">Listen Now</a>
           </div>
         </div>
+        <!-- Cursive text below card -->
+        <p class="card-caption">Feel the vibe and lose yourself</p>
       </div>
 
+      <!-- CARD 2 -->
       <div class="carousel-item">
         <div class="card-inner">
           <div class="card-front">
@@ -473,8 +479,10 @@ footer a:hover {
             <a href="https://open.spotify.com/track/0AmiHSdu7zDClPlmpUrYWn?si=DWViHgvuTFCq0feFLIOimg" class="btn" target="_blank">Listen Now</a>
           </div>
         </div>
+        <p class="card-caption">Let the lights guide you</p>
       </div>
 
+      <!-- CARD 3 -->
       <div class="carousel-item">
         <div class="card-inner">
           <div class="card-front">
@@ -485,8 +493,10 @@ footer a:hover {
             <a href="https://open.spotify.com/album/4XFxPNCPMYQrDLs7fh39zP?si=5KFOWyMyQa2X-9NJIcIwtA" class="btn" target="_blank">Listen Now</a>
           </div>
         </div>
+        <p class="card-caption">Feel the bass, feel alive</p>
       </div>
 
+      <!-- CARD 4 -->
       <div class="carousel-item">
         <div class="card-inner">
           <div class="card-front">
@@ -497,10 +507,173 @@ footer a:hover {
             <a href="https://open.spotify.com/track/1EqYzOHriGvfHfHeYvZACJ?si=p2LOD7O3SyK5Mqvi0bd1jw" class="btn" target="_blank">Listen Now</a>
           </div>
         </div>
+        <p class="card-caption">Darkness with a melody</p>
       </div>
+
     </div>
   </div>
 </section>
+
+<style>
+/* --- SECTION TITLE --- */
+#releases .section-title {
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+/* --- CAROUSEL --- */
+.carousel {
+  width: 90%;
+  max-width: 400px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+/* --- CAROUSEL ITEM --- */
+.carousel-item {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- CARD FLIP --- */
+.card-inner {
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  cursor: pointer;
+}
+
+.card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-back {
+  background: #000;
+  color: #fff;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.card-back h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.card-back .btn {
+  padding: 8px 16px;
+  background: #fff;
+  color: #000;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.card-back .btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* --- CURSIVE TEXT BELOW CARD --- */
+.card-caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 500px) {
+  .card-inner {
+    height: 250px;
+  }
+  .card-caption {
+    font-size: 0.9rem;
+  }
+}
+</style>
+
+<script>
+const track = document.getElementById('release-track');
+const items = track.children;
+let index = 0;
+
+// Update carousel position
+function updateCarousel() {
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+// Swipe support
+let startX = 0;
+let endX = 0;
+
+track.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+});
+
+track.addEventListener('touchend', e => {
+  endX = e.changedTouches[0].clientX;
+  if(startX - endX > 50 && index < items.length -1){ // swipe left
+    const current = items[index].querySelector('.card-inner');
+    current.classList.remove('is-flipped');
+    index++;
+    updateCarousel();
+  } else if(endX - startX > 50 && index > 0){ // swipe right
+    const current = items[index].querySelector('.card-inner');
+    current.classList.remove('is-flipped');
+    index--;
+    updateCarousel();
+  }
+});
+
+// Flip cards on click
+Array.from(items).forEach(item => {
+  const card = item.querySelector('.card-inner');
+  card.addEventListener('click', e => {
+    if(e.target.tagName !== 'A'){
+      card.classList.toggle('is-flipped');
+    }
+  });
+});
+
+// Initialize
+updateCarousel();
+</script>
 
 <style>
 /* RELEASES CARDS */
