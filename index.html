@@ -427,7 +427,6 @@ footer a:hover {
             <a href="https://open.spotify.com/track/54y4vQHTHW5RILsuxVgLOM?si=xvEmQiX_TLqGbNPU8UrGrQ" class="btn" target="_blank">Listen Now</a>
           </div>
         </div>
-        <!-- Cursive text below card -->
         <p class="card-caption">Swipe Next</p>
       </div>
 
@@ -478,16 +477,18 @@ footer a:hover {
 </section>
 
 <style>
-/* --- SECTION TITLE --- */
-#releases .section-title {
+#releases {
   text-align: center;
+}
+
+#releases .section-title {
   font-family: 'Dancing Script', cursive;
   font-size: 2rem;
   margin-bottom: 30px;
   color: #fff;
 }
 
-/* --- CAROUSEL --- */
+/* Carousel */
 .carousel {
   width: 90%;
   max-width: 400px;
@@ -500,7 +501,6 @@ footer a:hover {
   transition: transform 0.5s ease;
 }
 
-/* --- CAROUSEL ITEM --- */
 .carousel-item {
   flex: 0 0 100%;
   display: flex;
@@ -508,17 +508,15 @@ footer a:hover {
   align-items: center;
 }
 
-/* --- CARD FLIP --- */
 .card-inner {
-  width: 100%;
-  max-width: 300px;
-  height: 300px;
+  width: 300px;      
+  height: 450px;     
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
   cursor: pointer;
 }
-
+  
 .card-inner.is-flipped {
   transform: rotateY(180deg);
 }
@@ -551,10 +549,7 @@ footer a:hover {
   text-align: center;
 }
 
-.card-back h3 {
-  margin: 0;
-  font-size: 1.2rem;
-}
+.card-back h3 { margin:0; font-size:1.2rem; }
 
 .card-back .btn {
   padding: 8px 16px;
@@ -571,7 +566,6 @@ footer a:hover {
   color: #fff;
 }
 
-/* --- CURSIVE TEXT BELOW CARD --- */
 .card-caption {
   font-family: 'Dancing Script', cursive;
   font-size: 1rem;
@@ -580,108 +574,66 @@ footer a:hover {
   text-align: center;
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 500px) {
-  .card-inner {
-    height: 250px;
-  }
-  .card-caption {
-    font-size: 0.9rem;
-  }
+@media (max-width: 500px){
+  .card-inner { height: 250px; }
+  .card-caption { font-size: 0.9rem; }
 }
 </style>
 
 <script>
-const track = document.getElementById('release-track');
-const items = track.children;
-let index = 0;
+(function(){
+  const track = document.getElementById('release-track');
+  const items = Array.from(track.children);
+  const total = items.length;
+  let index = 0;
+  let startX = 0;
+  let dragging = false;
 
-// Update carousel position
-function updateCarousel() {
-  track.style.transform = `translateX(-${index * 100}%)`;
-}
-
-// Swipe support
-let startX = 0;
-let endX = 0;
-
-track.addEventListener('touchstart', e => {
-  startX = e.touches[0].clientX;
-});
-
-track.addEventListener('touchend', e => {
-  endX = e.changedTouches[0].clientX;
-  if(startX - endX > 50 && index < items.length -1){ // swipe left
-    const current = items[index].querySelector('.card-inner');
-    current.classList.remove('is-flipped');
-    index++;
-    updateCarousel();
-  } else if(endX - startX > 50 && index > 0){ // swipe right
-    const current = items[index].querySelector('.card-inner');
-    current.classList.remove('is-flipped');
-    index--;
-    updateCarousel();
+  function update() {
+    track.style.transform = `translateX(-${index * 100}%)`;
   }
-});
 
-// Flip cards on click
-Array.from(items).forEach(item => {
-  const card = item.querySelector('.card-inner');
-  card.addEventListener('click', e => {
-    if(e.target.tagName !== 'A'){
-      card.classList.toggle('is-flipped');
+  // Swipe for mobile
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  track.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if(Math.abs(diff) > 50){
+      index += diff > 0 ? 1 : -1;
+      index = (index + total) % total;
+      update();
+      items.forEach(it => it.querySelector('.card-inner').classList.remove('is-flipped'));
     }
   });
-});
 
-// Initialize
-updateCarousel();
-</script>
-
-<style>
-/* RELEASES CARDS */
-#releases .carousel { overflow: hidden; position: relative; }
-#releases .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
-#releases .carousel-item { flex: 0 0 100%; display: flex; justify-content: center; }
-.card-inner { width: 250px; height: 250px; position: relative; transform-style: preserve-3d; transition: transform 0.6s; cursor: pointer; }
-.card-inner.is-flipped { transform: rotateY(180deg); }
-.card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-.card-front img { width: 100%; height: 100%; object-fit: cover; }
-.card-back { background: #000; color: #fff; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px; text-align: center; }
-.card-back h3 { margin: 0; font-size: 1.2rem; }
-.card-back .btn { padding: 8px 16px; background: #fff; color: #000; border-radius: 25px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-.card-back .btn:hover { background: #333; color: #fff; }
-</style>
-
-<script>
-// Release carousel
-const releaseTrack = document.getElementById('release-track');
-const releaseItems = releaseTrack.children;
-let releaseIndex = 0;
-
-function updateReleaseCarousel() {
-  releaseTrack.style.transform = `translateX(-${releaseIndex * 100}%)`;
-}
-
-// Swipe support
-let startX = 0;
-releaseTrack.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-releaseTrack.addEventListener('touchend', e => {
-  const endX = e.changedTouches[0].clientX;
-  if(startX - endX > 50 && releaseIndex < releaseItems.length -1) releaseIndex++;
-  else if(endX - startX > 50 && releaseIndex > 0) releaseIndex--;
-  updateReleaseCarousel();
-});
-
-// Flip cards
-Array.from(releaseItems).forEach(item => {
-  const card = item.querySelector('.card-inner');
-  card.addEventListener('click', e => {
-    if(e.target.tagName !== 'A') card.classList.toggle('is-flipped');
+  // Drag for desktop
+  track.addEventListener('mousedown', e => { dragging=true; startX=e.clientX; });
+  track.addEventListener('mouseup', e => {
+    if(!dragging) return;
+    dragging=false;
+    const diff = startX - e.clientX;
+    if(Math.abs(diff) > 50){
+      index += diff>0 ? 1 : -1;
+      index = (index + total) % total;
+      update();
+      items.forEach(it => it.querySelector('.card-inner').classList.remove('is-flipped'));
+    }
   });
-});
 
-updateReleaseCarousel();
+  // Flip on click
+  items.forEach(item => {
+    const card = item.querySelector('.card-inner');
+    card.addEventListener('click', e => { if(e.target.tagName!=='A') card.classList.toggle('is-flipped'); });
+  });
+
+  // Auto-slide every 4s
+  setInterval(()=>{
+    index = (index + 1) % total;
+    update();
+    items.forEach(it => it.querySelector('.card-inner').classList.remove('is-flipped'));
+  }, 4000);
+
+  update();
+})();
 </script>
   
 <!-- YOUTUBE UPLOADS SECTION -->
