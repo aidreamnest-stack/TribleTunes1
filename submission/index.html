@@ -191,18 +191,57 @@ section{padding:30px 20px;max-width:1000px;margin:auto;}
 .section-text{font-size:1rem;margin-bottom:10px;}
 
 /* FORM CARD */
+.form-card {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
 
-.form-card{background:#111;padding:20px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.5);}
+form input,
+form textarea,
+form button {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+}
 
-form input, form textarea, form button{width:100%;margin-bottom:10px;border-radius:5px;font-size:1rem;outline:none;}
+form input,
+form textarea {
+  padding: 10px 12px;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+}
 
-form input, form textarea{padding:10px 12px;border:2px solid #fff;background:transparent;color:#fff;}
+form input:focus,
+form textarea:focus {
+  border-color: #00ffd4;
+  box-shadow: 0 0 8px #00ffd4;
+}
 
-form input:focus, form textarea:focus{border-color:#00ffd4;box-shadow:0 0 8px #00ffd4;}
+/* Make the lyrics box larger */
+form textarea {
+  min-height: 180px; /* you can adjust this height */
+  resize: vertical;  /* allows user to resize vertically only */
+}
 
-form button{padding:10px;font-weight:600;border:2px solid #fff;background:none;color:#fff;cursor:pointer;}
+form button {
+  padding: 10px;
+  font-weight: 600;
+  border: 2px solid #fff;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+}
 
-form button:hover{background:#fff;color:#000;}
+form button:hover {
+  background: #fff;
+  color: #000;
+}
+
 
 /* PAID SUBMISSION BUTTON */
 
@@ -295,6 +334,9 @@ footer a:hover{text-decoration:underline;}
       <input type="email" name="email" placeholder="Your Email" required>
       <input type="text" name="track" placeholder="Track Title" required>
 
+      <!-- Lyrics box made larger -->
+      <textarea name="lyrics" placeholder="Song Lyrics" required></textarea>
+
       <div style="position:relative; width:100%;">
         <input type="url" name="tracklink" placeholder="Spotify / SoundCloud Track Link" required style="padding-left:35px;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" 
@@ -306,7 +348,7 @@ footer a:hover{text-decoration:underline;}
     </form>
   </div>
 </section>
-  
+
 <div class="separator"></div>
 
 <!-- PAID SUBMISSION -->
@@ -413,7 +455,7 @@ footer a:hover{text-decoration:underline;}
 
   // Lenis smooth scroll
 
-  const lenis=new Lenis({duration:1.2,easing:t=>t,direction:'vertical',smooth:true});
+  const lenis=new Lenis({duration:1,:t=>t,direction:'vertical',smooth:true});
 
   function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
 
