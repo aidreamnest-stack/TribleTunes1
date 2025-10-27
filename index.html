@@ -451,8 +451,9 @@ footer a:hover {
 }
 
 .card-inner {
-  width: 250px;
-  height: 450px;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 3 / 4; /* maintains proportion automatically */
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
@@ -518,7 +519,12 @@ footer a:hover {
   color: #fff;
   text-align: center;
 }
-
+@media (min-width: 800px) {
+  .card-inner {
+    max-width: 300px;
+    aspect-ratio: 2.5 / 3.5; /* slightly wider look for desktop */
+  }
+}
 @media (max-width: 500px){
   .card-inner { height: 250px; }
   .card-caption { font-size: 0.9rem; }
