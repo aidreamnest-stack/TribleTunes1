@@ -450,10 +450,11 @@ footer a:hover {
   align-items: center;
 }
 
+/* Updated card proportions */
 .card-inner {
   width: 100%;
-  max-width: 280px;
-  aspect-ratio: 3 / 4; /* maintains proportion automatically */
+  max-width: 300px;
+  aspect-ratio: 3 / 4;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
@@ -464,7 +465,8 @@ footer a:hover {
   transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+.card-front,
+.card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -519,15 +521,24 @@ footer a:hover {
   color: #fff;
   text-align: center;
 }
-@media (min-width: 800px) {
+
+/* Slightly shorter card on desktop */
+@media (min-width: 768px) {
   .card-inner {
-    max-width: 300px;
-    aspect-ratio: 2.5 / 3.5; /* slightly wider look for desktop */
+    max-width: 280px;
+    aspect-ratio: 3 / 4.2;
   }
 }
-@media (max-width: 500px){
-  .card-inner { height: 250px; }
-  .card-caption { font-size: 0.9rem; }
+
+/* Mobile tweak */
+@media (max-width: 500px) {
+  .card-inner {
+    max-width: 90%;
+    aspect-ratio: 3 / 3.8;
+  }
+  .card-caption {
+    font-size: 0.9rem;
+  }
 }
 </style>
 
@@ -572,7 +583,7 @@ footer a:hover {
     track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
     track.addEventListener('touchend', e => {
       const diff = startX - e.changedTouches[0].clientX;
-      if(Math.abs(diff) > 50){
+      if (Math.abs(diff) > 50) {
         index += diff > 0 ? 1 : -1;
         index = (index + total) % total;
         update();
@@ -583,10 +594,10 @@ footer a:hover {
     // Drag for desktop
     track.addEventListener('mousedown', e => { dragging = true; startX = e.clientX; });
     track.addEventListener('mouseup', e => {
-      if(!dragging) return;
+      if (!dragging) return;
       dragging = false;
       const diff = startX - e.clientX;
-      if(Math.abs(diff) > 50){
+      if (Math.abs(diff) > 50) {
         index += diff > 0 ? 1 : -1;
         index = (index + total) % total;
         update();
@@ -598,12 +609,12 @@ footer a:hover {
     items.forEach(item => {
       const card = item.querySelector('.card-inner');
       card.addEventListener('click', e => { 
-        if(e.target.tagName !== 'A') card.classList.toggle('is-flipped'); 
+        if (e.target.tagName !== 'A') card.classList.toggle('is-flipped'); 
       });
     });
 
     // Auto-slide every 4s
-    setInterval(()=>{
+    setInterval(() => {
       index = (index + 1) % total;
       update();
       items.forEach(it => it.querySelector('.card-inner').classList.remove('is-flipped'));
@@ -616,6 +627,7 @@ footer a:hover {
   }
 })();
 </script>
+
   
 <!-- YOUTUBE UPLOADS SECTION -->
 <section id="youtube">
