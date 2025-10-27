@@ -412,78 +412,20 @@ footer a:hover {
 <!-- RELEASES SECTION -->
 <section id="releases">
   <h2 class="section-title">Featured Releases</h2>
-
   <div class="carousel">
-    <div class="carousel-track" id="release-track">
-
-      <!-- CARD 1 -->
-      <div class="carousel-item">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="https://ik.imagekit.io/lbmgfujrk/UniversalUpscaler_72c34279-7ddf-49c9-b18c-55a49137c2f5.jpg" alt="Back To You">
-          </div>
-          <div class="card-back">
-            <h3>Back To You</h3>
-            <a href="https://open.spotify.com/track/54y4vQHTHW5RILsuxVgLOM?si=xvEmQiX_TLqGbNPU8UrGrQ" class="btn" target="_blank">Listen Now</a>
-          </div>
-        </div>
-        <p class="card-caption">Swipe Next</p>
-      </div>
-
-      <!-- CARD 2 -->
-      <div class="carousel-item">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="https://ik.imagekit.io/lbmgfujrk/20250919_121021.png" alt="FUMAÇA E LUZ">
-          </div>
-          <div class="card-back">
-            <h3>FUMAÇA E LUZ</h3>
-            <a href="https://open.spotify.com/track/0AmiHSdu7zDClPlmpUrYWn?si=DWViHgvuTFCq0feFLIOimg" class="btn" target="_blank">Listen Now</a>
-          </div>
-        </div>
-        <p class="card-caption">Swipe Next</p>
-      </div>
-
-      <!-- CARD 3 -->
-      <div class="carousel-item">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="https://ik.imagekit.io/lbmgfujrk/20250827_094940.jpg" alt="808x">
-          </div>
-          <div class="card-back">
-            <h3>808x</h3>
-            <a href="https://open.spotify.com/album/4XFxPNCPMYQrDLs7fh39zP?si=5KFOWyMyQa2X-9NJIcIwtA" class="btn" target="_blank">Listen Now</a>
-          </div>
-        </div>
-        <p class="card-caption">Swipe Next</p>
-      </div>
-
-      <!-- CARD 4 -->
-      <div class="carousel-item">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="https://ik.imagekit.io/h2tos5anh/Untitled%20design_20251001_075216_0000.jpg" alt="MONTAGEM SOMBRIA">
-          </div>
-          <div class="card-back">
-            <h3>MONTAGEM SOMBRIA</h3>
-            <a href="https://open.spotify.com/track/1EqYzOHriGvfHfHeYvZACJ?si=p2LOD7O3SyK5Mqvi0bd1jw" class="btn" target="_blank">Listen Now</a>
-          </div>
-        </div>
-        <p class="card-caption">Swipe Next</p>
-      </div>
-
-    </div>
+    <div class="carousel-track" id="release-track"></div>
   </div>
 </section>
 
 <style>
 #releases {
   text-align: center;
+  padding: 60px 20px;
 }
 
 #releases .section-title {
   font-family: 'Dancing Script', cursive;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 30px;
   color: #fff;
 }
@@ -509,14 +451,14 @@ footer a:hover {
 }
 
 .card-inner {
-  width: 250px;      
-  height: 450px;     
+  width: 250px;
+  height: 450px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
   cursor: pointer;
 }
-  
+
 .card-inner.is-flipped {
   transform: rotateY(180deg);
 }
@@ -549,7 +491,10 @@ footer a:hover {
   text-align: center;
 }
 
-.card-back h3 { margin:0; font-size:1.2rem; }
+.card-back h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
 
 .card-back .btn {
   padding: 8px 16px;
@@ -581,58 +526,88 @@ footer a:hover {
 </style>
 
 <script>
-(function(){
+(async function(){
   const track = document.getElementById('release-track');
-  const items = Array.from(track.children);
-  const total = items.length;
-  let index = 0;
-  let startX = 0;
-  let dragging = false;
+  try {
+    const response = await fetch('releases.json');
+    if (!response.ok) throw new Error("Failed to load releases");
+    const releases = await response.json();
 
-  function update() {
-    track.style.transform = `translateX(-${index * 100}%)`;
-  }
+    // Create carousel items dynamically
+    releases.forEach((release, i) => {
+      const item = document.createElement('div');
+      item.className = 'carousel-item';
+      item.innerHTML = `
+        <div class="card-inner">
+          <div class="card-front">
+            <img loading="lazy" src="${release.image}" alt="${release.title}">
+          </div>
+          <div class="card-back">
+            <h3>${release.title}</h3>
+            <a href="${release.link}" class="btn" target="_blank">Listen Now</a>
+          </div>
+        </div>
+        <p class="card-caption">${i < releases.length - 1 ? 'Swipe Next' : 'End of List'}</p>
+      `;
+      track.appendChild(item);
+    });
 
-  // Swipe for mobile
-  track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-  track.addEventListener('touchend', e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if(Math.abs(diff) > 50){
-      index += diff > 0 ? 1 : -1;
-      index = (index + total) % total;
+    const items = Array.from(track.children);
+    const total = items.length;
+    let index = 0;
+    let startX = 0;
+    let dragging = false;
+
+    function update() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    // Swipe for mobile
+    track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if(Math.abs(diff) > 50){
+        index += diff > 0 ? 1 : -1;
+        index = (index + total) % total;
+        update();
+        items.forEach(it => it.querySelector('.card-inner').classList.remove('is-flipped'));
+      }
+    });
+
+    // Drag for desktop
+    track.addEventListener('mousedown', e => { dragging = true; startX = e.clientX; });
+    track.addEventListener('mouseup', e => {
+      if(!dragging) return;
+      dragging = false;
+      const diff = startX - e.clientX;
+      if(Math.abs(diff) > 50){
+        index += diff > 0 ? 1 : -1;
+        index = (index + total) % total;
+        update();
+        items.forEach(it => it.querySelector('.card-inner').classList.remove('is-flipped'));
+      }
+    });
+
+    // Flip on click
+    items.forEach(item => {
+      const card = item.querySelector('.card-inner');
+      card.addEventListener('click', e => { 
+        if(e.target.tagName !== 'A') card.classList.toggle('is-flipped'); 
+      });
+    });
+
+    // Auto-slide every 4s
+    setInterval(()=>{
+      index = (index + 1) % total;
       update();
       items.forEach(it => it.querySelector('.card-inner').classList.remove('is-flipped'));
-    }
-  });
+    }, 4000);
 
-  // Drag for desktop
-  track.addEventListener('mousedown', e => { dragging=true; startX=e.clientX; });
-  track.addEventListener('mouseup', e => {
-    if(!dragging) return;
-    dragging=false;
-    const diff = startX - e.clientX;
-    if(Math.abs(diff) > 50){
-      index += diff>0 ? 1 : -1;
-      index = (index + total) % total;
-      update();
-      items.forEach(it => it.querySelector('.card-inner').classList.remove('is-flipped'));
-    }
-  });
-
-  // Flip on click
-  items.forEach(item => {
-    const card = item.querySelector('.card-inner');
-    card.addEventListener('click', e => { if(e.target.tagName!=='A') card.classList.toggle('is-flipped'); });
-  });
-
-  // Auto-slide every 4s
-  setInterval(()=>{
-    index = (index + 1) % total;
     update();
-    items.forEach(it => it.querySelector('.card-inner').classList.remove('is-flipped'));
-  }, 4000);
-
-  update();
+  } catch (err) {
+    console.error(err);
+    track.innerHTML = "<p style='color:#fff;'>⚠️ Unable to load releases.</p>";
+  }
 })();
 </script>
   
@@ -641,56 +616,8 @@ footer a:hover {
   <h2 class="section-title">Latest Uploads</h2>
 
   <div class="youtube-carousel">
-    <div class="youtube-track">
-
-      <!-- 1 -->
-      <div class="youtube-item">
-        <div class="card">
-          <div class="card-front">
-            <img src="https://img.youtube.com/vi/AeKNlAyTpU8/hqdefault.jpg" alt="Video 1">
-          </div>
-          <div class="card-back">
-            <a href="https://youtu.be/AeKNlAyTpU8" target="_blank" class="listen-btn">Listen Now</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2 -->
-      <div class="youtube-item">
-        <div class="card">
-          <div class="card-front">
-            <img src="https://img.youtube.com/vi/_MZbv272_xI/hqdefault.jpg" alt="Video 2">
-          </div>
-          <div class="card-back">
-            <a href="https://youtu.be/_MZbv272_xI" target="_blank" class="listen-btn">Listen Now</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3 -->
-      <div class="youtube-item">
-        <div class="card">
-          <div class="card-front">
-            <img src="https://img.youtube.com/vi/Ngh_kpiUlxw/hqdefault.jpg" alt="Video 3">
-          </div>
-          <div class="card-back">
-            <a href="https://youtu.be/Ngh_kpiUlxw" target="_blank" class="listen-btn">Listen Now</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4 -->
-      <div class="youtube-item">
-        <div class="card">
-          <div class="card-front">
-            <img src="https://img.youtube.com/vi/QBnpFPvyxFc/hqdefault.jpg" alt="Video 4">
-          </div>
-          <div class="card-back">
-            <a href="https://youtu.be/QBnpFPvyxFc" target="_blank" class="listen-btn">Listen Now</a>
-          </div>
-        </div>
-      </div>
-
+    <div class="youtube-track" id="youtube-track">
+      <!-- Videos will load here from videos.json -->
     </div>
   </div>
 
@@ -803,8 +730,30 @@ footer a:hover {
 </style>
 
 <script>
-(function(){
-  const track = document.querySelector(".youtube-track");
+(async function(){
+  const track = document.getElementById("youtube-track");
+
+  // Load JSON file
+  const response = await fetch("videos.json");
+  const videos = await response.json();
+
+  // Create each video card
+  videos.forEach(video => {
+    const item = document.createElement("div");
+    item.className = "youtube-item";
+    item.innerHTML = `
+      <div class="card">
+        <div class="card-front">
+          <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}">
+        </div>
+        <div class="card-back">
+          <a href="https://youtu.be/${video.id}" target="_blank" class="listen-btn">Listen Now</a>
+        </div>
+      </div>`;
+    track.appendChild(item);
+  });
+
+  // Carousel functionality
   const items = track.querySelectorAll(".youtube-item");
   const total = items.length;
   let index = 0;
@@ -812,40 +761,43 @@ footer a:hover {
   let dragging = false;
 
   function update() {
-    track.style.transform = `translateX(-${index*100}%)`;
+    track.style.transform = `translateX(-${index * 100}%)`;
   }
 
-  // Touch Swipe
-  track.addEventListener("touchstart", e=>startX=e.touches[0].clientX);
-  track.addEventListener("touchend", e=>{
+  // Swipe for mobile
+  track.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+  track.addEventListener("touchend", e => {
     const diff = startX - e.changedTouches[0].clientX;
-    if(Math.abs(diff)>50){
-      index += diff>0 ? 1 : -1;
-      index = (index + total)%total;
+    if (Math.abs(diff) > 50) {
+      index += diff > 0 ? 1 : -1;
+      index = (index + total) % total;
       update();
     }
   });
 
-  // Mouse Drag
-  track.addEventListener("mousedown", e=>{dragging=true; startX=e.clientX;});
-  track.addEventListener("mouseup", e=>{
-    if(!dragging) return;
-    dragging=false;
+  // Drag for desktop
+  track.addEventListener("mousedown", e => { dragging = true; startX = e.clientX; });
+  track.addEventListener("mouseup", e => {
+    if (!dragging) return;
+    dragging = false;
     const diff = startX - e.clientX;
-    if(Math.abs(diff)>50){
-      index += diff>0 ? 1 : -1;
-      index = (index + total)%total;
+    if (Math.abs(diff) > 50) {
+      index += diff > 0 ? 1 : -1;
+      index = (index + total) % total;
       update();
     }
   });
 
   // Auto-slide
-  setInterval(()=>{index=(index+1)%total; update();}, 4000);
+  setInterval(() => {
+    index = (index + 1) % total;
+    update();
+  }, 4000);
 
   // Tap flip on mobile
-  items.forEach(item=>{
+  items.forEach(item => {
     const card = item.querySelector(".card");
-    card.addEventListener("click", ()=>card.classList.toggle("tap-flip"));
+    card.addEventListener("click", () => card.classList.toggle("tap-flip"));
   });
 })();
 </script>
