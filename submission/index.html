@@ -1,340 +1,255 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>TribleTunes | Submission</title>
 
 <!-- Favicon -->
-
 <link rel="icon" href="https://ik.imagekit.io/lbmgfujrk/favicon.png" type="image/png">
 
 <!-- Google Fonts -->
-
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-
 /* RESET & BASE */
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
-html{scroll-behavior:smooth;}
-
-body{font-family:'Poppins',sans-serif;color:#fff;background:#0d0d0d;overflow-x:hidden;line-height:1.5;text-align:center;}
-
-/* HEADER */
-
-header{
-
-  padding:12px 20px;
-
-  display:flex;
-
-  justify-content:center;
-
-  align-items:center;
-
-  background:#000;
-
-  position:relative;
-
-  z-index:1000;
-
+* {margin:0; padding:0; box-sizing:border-box;}
+html {scroll-behavior:smooth;}
+body {
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:#0d0d0d;
+  overflow-x:hidden;
+  line-height:1.5;
+  text-align:center;
 }
 
-.logo{
-
+/* HEADER */
+header {
+  padding:12px 20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#000;
+  position:relative;
+  z-index:1000;
+}
+.logo {
   font-family:'Dancing Script',cursive;
-
   font-size:2.5rem;
-
   color:#fff;
-
   text-align:center;
-
   flex:none;
-
 }
 
 /* HAMBURGER */
-
-#hamburger{
-
+#hamburger {
   position:absolute;
-
   right:20px;
-
   top:50%;
-
   transform:translateY(-50%);
-
   width:25px;
-
   height:20px;
-
   display:flex;
-
   flex-direction:column;
-
   justify-content:space-between;
-
   cursor:pointer;
-
   z-index:1100;
-
 }
-
-#hamburger span{
-
+#hamburger span {
   display:block;
-
   height:3px;
-
   background:#fff;
-
   border-radius:2px;
-
-  transition: all 0.4s ease-in-out;
-
-  transform-origin: center;
-
+  transition:all 0.4s ease-in-out;
+  transform-origin:center;
 }
+#hamburger.active span:nth-child(1) {transform:rotate(45deg) translate(5px,5px);}
+#hamburger.active span:nth-child(2) {opacity:0; transform:scaleX(0);}
+#hamburger.active span:nth-child(3) {transform:rotate(-45deg) translate(5px,-5px);}
 
-#hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-
-#hamburger.active span:nth-child(2){opacity:0; transform:scaleX(0);}
-
-#hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-
-/* SIDEBAR */
-
-#overlay{
-
+/* SIDEBAR + OVERLAY */
+#overlay {
   position:fixed;
-
   top:0; left:0;
-
   width:100%; height:100%;
-
   background:rgba(0,0,0,0.5);
-
   opacity:0;
-
   visibility:hidden;
-
-  transition: opacity 0.4s ease;
-
+  transition:opacity 0.4s ease;
   z-index:1040;
-
+}
+#overlay.show {
+  opacity:1;
+  visibility:visible;
 }
 
-#sidebar{
-
+#sidebar {
   position:fixed;
-
-  top:0; left:-300px;
-
+  top:0; left:0;
   width:300px;
-
   height:100%;
-
   background:#111;
-
   display:flex;
-
   flex-direction:column;
-
   padding-top:80px;
-
-  transition: transform 0.5s cubic-bezier(0.77,0,0.175,1);
-
+  transform:translateX(-100%);
+  transition:transform 0.5s cubic-bezier(0.77,0,0.175,1);
   z-index:1050;
-
 }
-
-#sidebar a{
-
+#sidebar.show {
+  transform:translateX(0);
+}
+#sidebar a {
   color:#fff;
-
   text-decoration:none;
-
   padding:15px 25px;
-
   font-weight:600;
-
   border-bottom:1px solid #333;
-
   transition:0.3s;
-
 }
-
-#sidebar a:hover{background:#fff;color:#000;}
-
-#sidebar.show{transform: translateX(300px);}
-
-#overlay.show{opacity:1; visibility:visible;}
+#sidebar a:hover {
+  background:#fff;
+  color:#000;
+}
 
 /* SECTIONS */
-
-section{padding:30px 20px;max-width:1000px;margin:auto;}
-
-.section-title{font-family:'Dancing Script',cursive;font-size:2.2rem;margin-bottom:5px;}
-
-.section-subtitle{font-size:1.5rem;font-weight:600;margin-bottom:10px;}
-
-.section-text{font-size:1rem;margin-bottom:10px;}
+section {padding:30px 20px; max-width:1000px; margin:auto;}
+.section-title {font-family:'Dancing Script',cursive; font-size:2.2rem; margin-bottom:5px;}
+.section-subtitle {font-size:1.5rem; font-weight:600; margin-bottom:10px;}
+.section-text {font-size:1rem; margin-bottom:10px;}
 
 /* FORM CARD */
 .form-card {
-  background: #111;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  background:#111;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.5);
 }
-
 form input,
 form textarea,
 form button {
-  width: 100%;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  font-size: 1rem;
-  outline: none;
+  width:100%;
+  margin-bottom:10px;
+  border-radius:5px;
+  font-size:1rem;
+  outline:none;
 }
-
 form input,
 form textarea {
-  padding: 10px 12px;
-  border: 2px solid #fff;
-  background: transparent;
-  color: #fff;
+  padding:10px 12px;
+  border:2px solid #fff;
+  background:transparent;
+  color:#fff;
 }
-
 form input:focus,
 form textarea:focus {
-  border-color: #00ffd4;
-  box-shadow: 0 0 8px #00ffd4;
+  border-color:#00ffd4;
+  box-shadow:0 0 8px #00ffd4;
 }
-
-/* Make the lyrics box larger */
 form textarea {
-  min-height: 180px; /* you can adjust this height */
-  resize: vertical;  /* allows user to resize vertically only */
+  min-height:180px;
+  resize:vertical;
 }
-
 form button {
-  padding: 10px;
-  font-weight: 600;
-  border: 2px solid #fff;
-  background: none;
-  color: #fff;
-  cursor: pointer;
+  padding:10px;
+  font-weight:600;
+  border:2px solid #fff;
+  background:none;
+  color:#fff;
+  cursor:pointer;
 }
-
 form button:hover {
-  background: #fff;
-  color: #000;
+  background:#fff;
+  color:#000;
 }
-
 
 /* PAID SUBMISSION BUTTON */
-
-.paid-card{background:#000;padding:12px 25px;border-radius:8px;margin:20px auto;text-align:center;display:inline-block;border:2px solid #fff;font-weight:700;}
-
-.paid-card:hover{background:#fff;}
-
-.paid-card a{color:#fff;text-decoration:none;}
-
-.paid-card:hover a{color:#000;}
+.paid-card {
+  background:#000;
+  padding:12px 25px;
+  border-radius:8px;
+  margin:20px auto;
+  text-align:center;
+  display:inline-block;
+  border:2px solid #fff;
+  font-weight:700;
+}
+.paid-card:hover {background:#fff;}
+.paid-card a {color:#fff; text-decoration:none;}
+.paid-card:hover a {color:#000;}
 
 /* UNDER CONSTRUCTION */
-
-.under-card-bw{background:#000;padding:12px 25px;border-radius:8px;margin:20px auto;display:inline-block;border:2px solid #fff;font-weight:600;}
-
-.under-card-bw span{color:#fff;}
-
-.under-card-bw:hover{background:#fff;}
-
-.under-card-bw:hover span{color:#000;}
+.under-card-bw {
+  background:#000;
+  padding:12px 25px;
+  border-radius:8px;
+  margin:20px auto;
+  display:inline-block;
+  border:2px solid #fff;
+  font-weight:600;
+}
+.under-card-bw span {color:#fff;}
+.under-card-bw:hover {background:#fff;}
+.under-card-bw:hover span {color:#000;}
 
 /* SEPARATOR LINE */
-
-.separator{width:90%;margin:20px auto;border-bottom:1px solid #fff;}
+.separator {width:90%; margin:20px auto; border-bottom:1px solid #fff;}
 
 /* FOOTER */
-
-footer{background:#000;padding:20px;text-align:center;font-size:0.9rem;color:#ccc;}
-
-footer a{color:#fff;text-decoration:none;margin:0 8px;}
-
-footer a:hover{text-decoration:underline;}
-
+footer {
+  background:#000;
+  padding:20px;
+  text-align:center;
+  font-size:0.9rem;
+  color:#ccc;
+}
+footer a {
+  color:#fff;
+  text-decoration:none;
+  margin:0 8px;
+}
+footer a:hover {text-decoration:underline;}
 </style>
-
 </head>
 
 <body>
 
 <!-- HEADER -->
-
 <header>
-
   <h1 class="logo">TribleTunes</h1>
-
   <div id="hamburger">
-
     <span></span><span></span><span></span>
-
   </div>
-
 </header>
 
 <!-- OVERLAY -->
-
 <div id="overlay"></div>
 
 <!-- SIDEBAR -->
-
 <div id="sidebar">
-
   <a href="/">Home</a>
-
-  <a href="https://www.tribletunes.com/about/">About Us</a>
-
+  <a href="/about/">About Us</a>
   <a href="/contact/">Contact</a>
-
   <a href="/submission/">Submission</a>
-
 </div>
 
 <!-- INTRO -->
-
 <section id="intro">
-
   <h2 class="section-title">Submit Your Track</h2>
-
   <h3 class="section-subtitle">For Lyric Video Creation</h3>
-
   <p class="section-text">Submit your track by sharing its Spotify or SoundCloud link. Only tracks intended for lyric video creation are accepted.</p>
-
 </section>
 
 <!-- TRACK SUBMISSION FORM -->
-
 <section id="track-submission">
   <div class="form-card">
     <form action="https://formspree.io/f/xzzjejde" method="POST">
       <input type="text" name="name" placeholder="Artist Name" required>
-      <input type="social URL" name="email" placeholder="Social URL" required>
+      <input type="text" name="email" placeholder="Social URL" required>
       <input type="text" name="track" placeholder="Track Title" required>
 
-      <!-- Lyrics box made larger -->
       <textarea name="lyrics" placeholder="Song Lyrics" required></textarea>
 
       <div style="position:relative; width:100%;">
@@ -352,117 +267,79 @@ footer a:hover{text-decoration:underline;}
 <div class="separator"></div>
 
 <!-- PAID SUBMISSION -->
-
 <section id="paid-submission">
-
   <h2 class="section-title">Paid Submission for Wider Reach</h2>
-
   <p class="section-text">Promote your track with TribleTunes! Your lyric video will be boosted via ads, reaching more listeners and growing your audience.</p>
 
   <ul style="text-align:left; max-width:500px; margin:auto; margin-bottom:10px;">
-
     <li>Priority lyric video creation</li>
-
     <li>Promotion via YouTube & Ads</li>
-
     <li>Feature in TribleTunes playlists</li>
-
     <li>Wider audience reach</li>
-
   </ul>
 
   <div class="paid-card">
-
     <a href="https://app.one-submit.com/direct-submit/27237/2377/5549/TribleTunes-youtube-Music-Promotion" target="_blank">
-
       Submit for Paid Promotion
-
     </a>
-
   </div>
-
 </section>
 
 <div class="separator"></div>
 
 <!-- RELEASE SUBMISSION UNDER CONSTRUCTION -->
-
 <section id="release-submission">
-
   <h2 class="section-title">Official Track Release</h2>
-
   <p class="section-text">Submitting your track for official release is not available yet. We are working hard to bring this feature soon!</p>
-
   <div class="under-card-bw"><span>Under Development</span></div>
-
 </section>
 
 <div class="separator"></div>
 
 <!-- FOOTER -->
-
 <footer>
-
   <p>&copy; 2025 TribleTunes. All rights reserved.</p>
-
   <p>
-
     <a href="/">Home</a> |
-
     <a href="/about/">About Us</a> |
-
     <a href="/contact/">Contact</a> |
-
     <a href="/submission/">Submission</a> |
-
     <a href="https://www.youtube.com/@TribleTunes" target="_blank">YouTube</a> |
-
     <a href="https://open.spotify.com/artist/2cR2Yz2b6cdPNHbjTnNsVy" target="_blank">Spotify</a> |
-
     <a href="mailto:contact@tribletunes.com">Email</a>
-
   </p>
-
 </footer>
 
 <!-- JS: Sidebar + Lenis -->
-
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.10/bundled/lenis.min.js"></script>
-
 <script>
+const hamburger = document.getElementById('hamburger');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
 
-  const hamburger=document.getElementById('hamburger');
+function toggleSidebar() {
+  hamburger.classList.toggle('active');
+  sidebar.classList.toggle('show');
+  overlay.classList.toggle('show');
+}
 
-  const sidebar=document.getElementById('sidebar');
+hamburger.addEventListener('click', toggleSidebar);
+overlay.addEventListener('click', toggleSidebar);
+sidebar.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleSidebar));
 
-  const overlay=document.getElementById('overlay');
+// Lenis smooth scroll
+const lenis = Lenis({
+  duration: 1,
+  direction: 'vertical',
+  smooth: true
+});
 
-  function toggleSidebar(){
-
-    hamburger.classList.toggle('active');
-
-    sidebar.classList.toggle('show');
-
-    overlay.classList.toggle('show');
-
-  }
-
-  hamburger.addEventListener('click',toggleSidebar);
-
-  overlay.addEventListener('click',toggleSidebar);
-
-  sidebar.querySelectorAll('a').forEach(link=>link.addEventListener('click',toggleSidebar));
-
-  // Lenis smooth scroll
-
-  const lenis=new Lenis({duration:1,:t=>t,direction:'vertical',smooth:true});
-
-  function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
-
+function raf(time) {
+  lenis.raf(time);
   requestAnimationFrame(raf);
-
+}
+requestAnimationFrame(raf);
 </script>
 
 </body>
-
 </html>
