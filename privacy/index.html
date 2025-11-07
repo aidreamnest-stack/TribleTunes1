@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - TribleTunes</title>
+
+<!-- Favicon -->
+<link rel="icon" href="https://ik.imagekit.io/lbmgfujrk/favicon.png" type="image/png">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Poppins',sans-serif;color:#fff;background:#0d0d0d;overflow-x:hidden;line-height:1.5;text-align:left;}
+
+  header{
+    padding:12px 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+    position:relative;
+    z-index:1000;
+  }
+  .logo{font-family:'Dancing Script',cursive;font-size:2.8rem;color:#fff;text-align:center;}
+
+  #hamburger{
+    position:absolute;
+    right:20px;
+    top:50%;
+    transform:translateY(-50%);
+    width:25px;
+    height:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    cursor:pointer;
+    z-index:1100;
+  }
+  #hamburger span{display:block;height:3px;background:#fff;border-radius:2px;transition:all 0.4s ease-in-out;}
+  #hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+  #hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0);}
+  #hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+  #overlay{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.5);opacity:0;visibility:hidden;
+    transition:opacity 0.4s ease;z-index:1040;
+  }
+  #overlay.show{opacity:1;visibility:visible;}
+
+  #sidebar{
+    position:fixed;top:0;left:-300px;width:300px;height:100%;
+    background:#111;display:flex;flex-direction:column;
+    padding-top:80px;transition:transform 0.5s cubic-bezier(0.77,0,0.175,1);
+    z-index:1050;transform:translateX(0);
+  }
+  #sidebar.show{transform:translateX(300px);}
+  #sidebar a{
+    color:#fff;text-decoration:none;padding:15px 25px;
+    font-weight:600;border-bottom:1px solid #333;transition:0.3s;
+  }
+  #sidebar a:hover{background:#fff;color:#000;}
+
+  section{padding:30px 20px;max-width:1000px;margin:auto;}
+  .section-title{font-family:'Dancing Script',cursive;font-size:2.5rem;margin-bottom:10px;}
+  .section-subtitle{font-size:1.3rem;font-weight:600;margin-bottom:10px;}
+  .section-text{font-size:0.95rem;margin-bottom:10px;color:#ddd;}
+  hr.fancy-line{border:0;height:2px;background:#fff;margin:20px 0;border-radius:5px;}
+
+  footer{background:#000;padding:15px;text-align:center;font-size:0.9rem;color:#ccc;}
+  footer a{color:#fff;text-decoration:none;margin:0 5px;}
+  footer a:hover{text-decoration:underline;}
+
+  @media(max-width:600px){
+    .section-title{font-size:2rem;}
+    .logo{font-size:2.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="logo">TribleTunes</h1>
+  <div id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<div id="overlay"></div>
+
+<div id="sidebar">
+  <a href="/">Home</a>
+  <a href="/about/">About Us</a>
+  <a href="/contact/">Contact</a>
+  <a href="/submission/">Submission</a>
+  <a href="/privacy/">Privacy Policy</a>
+</div>
+
+<section id="privacy-policy">
+  <h2 class="section-title">Privacy Policy</h2>
+  <h3 class="section-subtitle">Your Privacy Matters to Us</h3>
+  <p class="section-text">
+    At TribleTunes, accessible from <a href="https://tribletunes.com" style="color:#fff;text-decoration:underline;">tribletunes.com</a>,
+    one of our main priorities is the privacy of our visitors and contributors. This Privacy Policy document contains
+    types of information that are collected and recorded by TribleTunes and how we use it.
+  </p>
+
+  <hr class="fancy-line">
+
+  <h3 class="section-subtitle">Information We Collect</h3>
+  <p class="section-text">
+    We may collect personal information such as your name, email address, and any other details you voluntarily provide
+    when you contact us, submit music, or subscribe to updates. We also collect basic analytics data such as IP address,
+    browser type, and device information to improve user experience.
+  </p>
+
+  <hr class="fancy-line">
+
+  <h3 class="section-subtitle">How We Use Your Information</h3>
+  <p class="section-text">
+    We use collected information to:
+    <ul class="section-text" style="margin-left:20px;list-style:disc;">
+      <li>Respond to your messages or inquiries</li>
+      <li>Feature your submissions and music content (if applicable)</li>
+      <li>Improve site performance and user experience</li>
+      <li>Send updates related to TribleTunes (only if you opt-in)</li>
+    </ul>
+  </p>
+
+  <hr class="fancy-line">
+
+  <h3 class="section-subtitle">Cookies</h3>
+  <p class="section-text">
+    Like many other websites, TribleTunes uses 'cookies' to store information such as visitors’ preferences and
+    pages visited. This information helps us customize web content for a better user experience.
+  </p>
+
+  <hr class="fancy-line">
+
+  <h3 class="section-subtitle">Third-Party Links</h3>
+  <p class="section-text">
+    Our website may contain links to external platforms such as YouTube, Spotify, or artist pages.
+    These sites are not operated by TribleTunes, and we are not responsible for their content or privacy policies.
+  </p>
+
+  <hr class="fancy-line">
+
+  <h3 class="section-subtitle">Consent</h3>
+  <p class="section-text">
+    By using our website, you hereby consent to our Privacy Policy and agree to its terms.
+  </p>
+
+  <hr class="fancy-line">
+
+  <h3 class="section-subtitle">Contact Us</h3>
+  <p class="section-text">
+    For questions or concerns about this Privacy Policy, please contact us at:
+    <br><a href="mailto:contact@tribletunes.com" style="color:#fff;">contact@tribletunes.com</a>
+  </p>
+</section>
+
+<footer>
+  <p>&copy; 2025 TribleTunes. All rights reserved.</p>
+  <p>
+    <a href="https://tribletunes.com/">Home</a> |
+    <a href="https://tribletunes.com/about/">About Us</a> |
+    <a href="https://tribletunes.com/contact/">Contact</a> |
+    <a href="https://tribletunes.com/submission/">Submission</a> |
+    <a href="https://tribletunes.com/privacy/">Privacy Policy</a> |
+    <a href="https://www.youtube.com/@TribleTunes" target="_blank">YouTube</a> |
+    <a href="mailto:contact@tribletunes.com">Email</a>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.10/bundled/lenis.min.js"></script>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  function toggleSidebar(){
+    hamburger.classList.toggle('active');
+    sidebar.classList.toggle('show');
+    overlay.classList.toggle('show');
+  }
+
+  hamburger.addEventListener('click', toggleSidebar);
+  overlay.addEventListener('click', toggleSidebar);
+
+  sidebar.querySelectorAll('a').forEach(link=>link.addEventListener('click', toggleSidebar));
+
+  // Lenis smooth scroll
+  const lenis = new Lenis();
+  function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
+  requestAnimationFrame(raf);
+</script>
+
+</body>
+</html>
