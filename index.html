@@ -1,337 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>TribleTunes - Artist, Lyrics Videos & Amazing Music Content</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="https://ik.imagekit.io/lbmgfujrk/favicon.png" type="image/png"/>
-
-  <!-- SEO -->
-  <meta name="description" content="TribleTunes - Discover amazing music lyric videos, daily releases, and curated playlists. Subscribe to our YouTube channel for high-quality music content.">
-  <meta name="keywords" content="TribleTunes, music, lyric videos, youtube music, music channel, songs, playlists, music videos">
+  <!-- Primary SEO -->
+  <meta name="description" content="TribleTunes creates high-quality lyric videos, curated playlists, and daily music uploads. Lose yourself in emotional and aesthetic music visuals.">
+  <meta name="keywords" content="TribleTunes, lyric videos, music channel, aesthetic lyrics, chill music, emotional songs, youtube music">
   <meta name="author" content="TribleTunes">
-  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://tribletunes.com">
 
-  <!-- Open Graph / Twitter -->
+  <!-- Open Graph (Facebook / WhatsApp / Instagram) -->
+  <meta property="og:title" content="TribleTunes - Aesthetic Lyrics & Daily Music Uploads">
+  <meta property="og:description" content="Discover lyrical visuals that touch your heart. Join the TribleTunes music community.">
   <meta property="og:image" content="https://ik.imagekit.io/lbmgfujrk/preview.png">
-  <meta property="og:title" content="TribleTunes - Amazing Music & Lyric Videos">
-  <meta property="og:description" content="Artist, Lyrics Videos, and amazing music content. Subscribe for daily releases!">
-  <meta property="og:type" content="website">
   <meta property="og:url" content="https://tribletunes.com">
+  <meta property="og:type" content="website">
 
+  <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TribleTunes - Daily Lyric Videos & Music">
+  <meta name="twitter:description" content="A home for aesthetic lyric visuals, curated music & emotional vibes.">
   <meta name="twitter:image" content="https://ik.imagekit.io/lbmgfujrk/preview.png">
-  <meta name="twitter:title" content="TribleTunes - Amazing Music & Lyric Videos">
-  <meta name="twitter:description" content="Artist, Lyrics Videos, and amazing music content.">
 
-  <!-- Fonts & Icons -->
+  <!-- Favicon -->
+  <link rel="icon" href="https://ik.imagekit.io/lbmgfujrk/favicon.png" type="image/png">
+
+  <!-- Styles & Fonts -->
+  <link rel="stylesheet" href="assets/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
   <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
   <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" nomodule></script>
-
-  <style>
-    :root{
-      --bg-primary:#0d0d0d;
-      --bg-secondary:#000;
-      --bg-card:#111;
-      --text-primary:#fff;
-      --text-secondary:#ccc;
-      --border-color:#333;
-      --accent-color:#6366f1;
-      --accent-hover:#4f46e5;
-      --section-alt-bg:#ffffff;
-      --section-alt-text:#000000;
-      --transition:all .3s ease;
-      --container-padding:clamp(15px,5vw,40px);
-      --section-padding:clamp(60px,10vh,100px);
-    }
-    [data-theme="light"]{
-      --bg-primary:#f5f5f5;
-      --bg-secondary:#ffffff;
-      --bg-card:#ffffff;
-      --text-primary:#0d0d0d;
-      --text-secondary:#444;
-      --border-color:#ddd;
-      --section-alt-bg:#e8e8e8;
-      --section-alt-text:#0d0d0d;
-    }
-
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth;font-size:clamp(14px,1.5vw,16px)}
-    body{
-      font-family:'Poppins',sans-serif;
-      color:var(--text-primary);
-      background:var(--bg-primary);
-      overflow-x:hidden;line-height:1.6;text-align:center;transition:var(--transition)
-    }
-
-    /* Header */
-    header{
-      padding:clamp(12px,2vh,20px) var(--container-padding);
-      display:flex;justify-content:space-between;align-items:center;
-      background:var(--bg-secondary);position:sticky;top:0;z-index:1000;
-      box-shadow:0 2px 10px rgba(0,0,0,.1);transition:var(--transition);gap:10px
-    }
-    .header-logo{flex:1;text-align:center;min-width:0}
-    .logo{
-      font-family:'Dancing Script',cursive;font-size:clamp(1.5rem,4vw,2.2rem);
-      background:linear-gradient(135deg,var(--accent-color),#ec4899);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-      animation:shimmer 3s infinite;white-space:nowrap
-    }
-    @keyframes shimmer{0%,100%{filter:hue-rotate(0)}50%{filter:hue-rotate(20deg)}}
-
-    .theme-toggle{
-      cursor:pointer;font-size:clamp(1.2rem,3vw,1.5rem);color:var(--text-primary);
-      transition:var(--transition);background:var(--bg-card);border-radius:50%;
-      width:clamp(35px,8vw,45px);height:clamp(35px,8vw,45px);min-width:35px;min-height:35px;
-      display:flex;align-items:center;justify-content:center;border:2px solid var(--border-color);flex-shrink:0
-    }
-    .theme-toggle:hover{transform:rotate(20deg) scale(1.1);background:var(--accent-color);color:#fff}
-
-    #hamburger{width:clamp(22px,5vw,28px);height:clamp(18px,4vw,22px);display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;z-index:1001;flex-shrink:0}
-    #hamburger span{height:clamp(2px,.5vw,3px);background:var(--text-primary);border-radius:2px;transition:all .4s ease}
-    #hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-    #hamburger.active span:nth-child(2){opacity:0}
-    #hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-
-    /* Sidebar & Overlay */
-    #overlay{
-      position:fixed;inset:0;background:rgba(0,0,0,.7);
-      opacity:0;visibility:hidden;transition:opacity .4s ease;z-index:1040;backdrop-filter:blur(5px)
-    }
-    #overlay.show{opacity:1;visibility:visible}
-
-    #sidebar{
-      position:fixed;top:0;left:-100%;width:min(300px,80vw);height:100%;
-      background:var(--bg-card);display:flex;flex-direction:column;
-      padding-top:clamp(60px,12vh,80px);transition:left .5s cubic-bezier(.77,0,.175,1);
-      z-index:1050;box-shadow:5px 0 15px rgba(0,0,0,.3);overflow-y:auto
-    }
-    #sidebar.show{left:0}
-    #sidebar a{
-      color:var(--text-primary);text-decoration:none;
-      padding:clamp(12px,2vh,15px) clamp(15px,4vw,25px);
-      font-weight:600;font-size:clamp(.9rem,2vw,1rem);
-      border-bottom:1px solid var(--border-color);transition:.3s;display:flex;align-items:center;gap:10px
-    }
-    #sidebar a:hover{background:var(--accent-color);color:#fff;padding-left:clamp(20px,5vw,35px)}
-
-    /* Sections */
-    section{
-      padding:var(--section-padding) var(--container-padding);
-      max-width:1200px;margin:auto;animation:fadeIn .6s ease;width:100%
-    }
-    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
-    .section-title{
-      font-family:'Dancing Script',cursive;
-      font-size:clamp(1.8rem,5vw,2.5rem);
-      margin-bottom:clamp(8px,1.5vh,12px);
-      background:linear-gradient(135deg,var(--accent-color),#ec4899);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
-    }
-    .section-subtitle{font-size:clamp(1.3rem,3.5vw,1.8rem);font-weight:700;margin-bottom:clamp(15px,3vh,25px);color:var(--text-primary)}
-    .section-text{
-      font-size:clamp(.95rem,2vw,1.1rem);margin-bottom:clamp(20px,4vh,35px);
-      color:var(--text-secondary);line-height:1.8;max-width:800px;margin-left:auto;margin-right:auto
-    }
-
-    /* Buttons */
-    .cta-btn,.btn{
-      display:inline-block;padding:clamp(12px,2vh,16px) clamp(22px,4vw,32px);
-      border:2px solid var(--accent-color);border-radius:30px;background:var(--accent-color);
-      color:#fff;font-weight:600;text-transform:uppercase;cursor:pointer;transition:var(--transition);
-      text-decoration:none;font-size:clamp(.85rem,1.8vw,.95rem);letter-spacing:.5px;
-      box-shadow:0 4px 15px rgba(99,102,241,.3);min-height:44px;display:inline-flex;align-items:center;justify-content:center
-    }
-    .cta-btn:hover,.btn:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 6px 20px rgba(99,102,241,.4)}
-
-    /* About (light card) */
-    #about{
-      background:var(--section-alt-bg);color:var(--section-alt-text);
-      border-radius:clamp(15px,3vw,20px);margin:clamp(15px,3vw,20px);
-      box-shadow:0 10px 30px rgba(0,0,0,.1)
-    }
-    #about h2,#about h3,#about p{color:var(--section-alt-text)}
-
-    /* Releases (carousel + flip) */
-    #releases{text-align:center;padding:var(--section-padding) var(--container-padding);background:var(--bg-secondary)}
-    .carousel{width:min(90%,500px);overflow:hidden;margin:auto}
-    .carousel-track{display:flex;transition:transform .5s ease}
-    .carousel-item{flex:0 0 100%;display:flex;flex-direction:column;align-items:center;padding:0 clamp(10px,2vw,20px)}
-
-    .card-inner{
-      width:100%;max-width:min(350px,90vw);aspect-ratio:3/4;position:relative;
-      transform-style:preserve-3d;transition:transform .6s;cursor:pointer
-    }
-    .card-inner.is-flipped{transform:rotateY(180deg)}
-    .card-front,.card-back{
-      position:absolute;inset:0;backface-visibility:hidden;border-radius:clamp(10px,2vw,15px);
-      overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.3)
-    }
-    .card-front img{width:100%;height:100%;object-fit:cover}
-    .card-back{
-      background:linear-gradient(135deg,var(--accent-color),#ec4899);color:#fff;
-      transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;align-items:center;
-      gap:clamp(12px,2vh,18px);text-align:center;padding:clamp(15px,3vw,25px)
-    }
-    .card-back h3{margin:0;font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:700}
-    .card-back .btn{background:#fff;color:var(--accent-color);border:none}
-    .card-back .btn:hover{background:#f0f0f0;transform:scale(1.05)}
-    .card-caption{font-family:'Dancing Script',cursive;font-size:clamp(.95rem,2vw,1.15rem);margin-top:clamp(12px,2vh,18px);color:var(--text-secondary)}
-
-    /* YouTube (carousel + flip) */
-    #youtube{
-      background:var(--section-alt-bg);color:var(--section-alt-text);
-      padding:var(--section-padding) var(--container-padding);
-      border-radius:clamp(15px,3vw,20px);margin:clamp(15px,3vw,20px);
-      box-shadow:0 10px 30px rgba(0,0,0,.1)
-    }
-    #youtube h2,#youtube h3,#youtube p{color:var(--section-alt-text)}
-    .youtube-carousel{overflow:hidden;max-width:min(1000px,95vw);margin:auto}
-    .youtube-track{display:flex;transition:transform .6s ease-in-out}
-    .youtube-item{flex:0 0 100%;display:flex;justify-content:center;position:relative;padding:0 clamp(10px,2vw,20px)}
-    .card{width:100%;max-width:min(500px,90vw);aspect-ratio:16/9;perspective:1000px;position:relative}
-    .card .card-front,.card .card-back{
-      position:absolute;inset:0;border-radius:clamp(10px,2vw,15px);backface-visibility:hidden;transition:transform .6s;
-      box-shadow:0 8px 25px rgba(0,0,0,.2)
-    }
-    .card .card-front img{width:100%;height:100%;object-fit:cover;border-radius:clamp(10px,2vw,15px)}
-    .card .card-back{
-      background:linear-gradient(135deg,var(--accent-color),#ec4899);color:#fff;
-      display:flex;justify-content:center;align-items:center;transform:rotateY(180deg)
-    }
-    .card:hover .card-front,.card.tap-flip .card-front{transform:rotateY(180deg)}
-    .card:hover .card-back,.card.tap-flip .card-back{transform:rotateY(0)}
-    .listen-btn{
-      background:#fff;color:var(--accent-color);
-      padding:clamp(12px,2vh,16px) clamp(22px,4vw,32px);
-      border-radius:30px;font-weight:bold;text-decoration:none;transition:var(--transition);
-      box-shadow:0 4px 15px rgba(0,0,0,.2);font-size:clamp(.9rem,2vw,1rem);min-height:44px;display:inline-flex;align-items:center;justify-content:center
-    }
-    .listen-btn:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(0,0,0,.3)}
-    .swipe-text{margin-top:clamp(20px,4vh,30px);font-family:'Dancing Script',cursive;font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--text-secondary)}
-
-    /* FAQ */
-    #faq{
-      background:var(--bg-secondary);
-      padding:var(--section-padding) var(--container-padding);
-      border-radius:clamp(15px,3vw,20px);
-      margin:clamp(15px,3vw,20px)
-    }
-    .faq-item{margin-bottom:clamp(12px,2vh,18px);text-align:left}
-    .faq-question{
-      width:100%;padding:clamp(14px,2vh,18px) clamp(15px,3vw,25px);
-      background:var(--bg-card);border:2px solid var(--border-color);
-      color:var(--text-primary);font-size:clamp(.9rem,2vw,1rem);font-weight:600;text-align:left;
-      cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-radius:clamp(8px,1.5vw,12px);
-      transition:var(--transition);gap:10px;min-height:50px
-    }
-    .faq-question:hover{background:var(--accent-color);color:#fff;border-color:var(--accent-color)}
-    .arrow-icon{transition:transform .3s ease;flex-shrink:0}
-    .faq-question.active .arrow-icon{transform:rotate(180deg)}
-    .faq-answer{
-      max-height:0;overflow:hidden;padding:0 clamp(15px,3vw,25px);
-      background:var(--bg-card);
-      border-radius:0 0 clamp(8px,1.5vw,12px) clamp(8px,1.5vw,12px);
-      transition:max-height .4s ease,padding .3s ease;
-      color:var(--text-secondary);border-top:none;font-size:clamp(.85rem,1.8vw,.95rem)
-    }
-    .faq-question.active + .faq-answer{ /* visual padding when open, height gets set via JS */ }
-
-    /* Newsletter */
-    #newsletter{
-      background:var(--section-alt-bg);color:var(--section-alt-text);
-      padding:var(--section-padding) var(--container-padding);
-      border-radius:clamp(15px,3vw,20px);margin:clamp(15px,3vw,20px);
-      box-shadow:0 10px 30px rgba(0,0,0,.1)
-    }
-    #newsletter h2,#newsletter h3,#newsletter p{color:var(--section-alt-text)}
-    #newsletter form{max-width:min(600px,95%);margin:clamp(20px,4vh,35px) auto;text-align:left}
-    #newsletter input,#newsletter textarea{
-      padding:clamp(12px,2vh,16px) clamp(15px,3vw,20px);border-radius:clamp(8px,1.5vw,12px);
-      border:2px solid var(--border-color);background:var(--bg-secondary);color:var(--text-primary);
-      font-size:clamp(.9rem,2vw,1rem);outline:none;width:100%;margin-bottom:clamp(12px,2vh,18px);transition:var(--transition);
-      font-family:'Poppins',sans-serif
-    }
-    #newsletter input:focus,#newsletter textarea:focus{border-color:var(--accent-color);box-shadow:0 0 0 3px rgba(99,102,241,.1)}
-    #newsletter textarea{min-height:clamp(100px,20vh,140px);resize:vertical}
-    #newsletter button{width:100%}
-
-    /* Footer */
-    footer{
-      background:var(--bg-secondary);
-      padding:clamp(30px,5vh,50px) var(--container-padding) clamp(15px,3vh,25px);
-      text-align:center;font-size:clamp(.85rem,1.8vw,.95rem);color:var(--text-secondary);
-      border-top:1px solid var(--border-color)
-    }
-    .footer-links{
-      margin:clamp(15px,3vh,25px) 0;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(10px,2vw,15px)
-    }
-    .footer-links a{
-      color:var(--text-primary);text-decoration:none;padding:clamp(6px,1.2vh,10px) clamp(12px,2vw,18px);
-      border-radius:5px;transition:var(--transition);border:1px solid var(--border-color);font-size:clamp(.8rem,1.6vw,.9rem)
-    }
-    .footer-links a:hover{background:var(--accent-color);color:#fff;border-color:var(--accent-color);transform:translateY(-2px)}
-    .footer-social{margin:clamp(15px,3vh,25px) 0;display:flex;justify-content:center;gap:clamp(12px,2.5vw,18px);flex-wrap:wrap}
-    .footer-social a{color:var(--text-primary);font-size:clamp(1.3rem,3vw,1.6rem);transition:var(--transition);display:flex;align-items:center;justify-content:center;width:clamp(40px,8vw,50px);height:clamp(40px,8vw,50px)}
-    .footer-social a:hover{color:var(--accent-color);transform:scale(1.2)}
-
-    /* Scroll To Top */
-    #scrollTop{
-      position:fixed;bottom:clamp(20px,4vh,35px);right:clamp(20px,4vw,35px);
-      width:clamp(45px,9vw,55px);height:clamp(45px,9vw,55px);background:var(--accent-color);color:#fff;border:none;border-radius:50%;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:clamp(1.3rem,3vw,1.6rem);box-shadow:0 4px 15px rgba(99,102,241,.4);transition:var(--transition);z-index:1000
-    }
-    #scrollTop:hover{transform:translateY(-5px);box-shadow:0 6px 20px rgba(99,102,241,.6)}
-    #scrollTop.show{display:flex}
-
-    /* Responsive */
-    @media(min-width:768px){
-      .carousel{width:min(80%,600px)}
-      .youtube-carousel{max-width:min(900px,90vw)}
-      .card{max-width:min(600px,85vw)}
-    }
-    @media(min-width:1024px){
-      :root{--container-padding:60px;--section-padding:100px}
-      .carousel{width:min(70%,700px)}
-      section{max-width:1400px;margin-left:auto;margin-right:auto}
-      /* Multi-cards on desktop view without changing look of single-card flow */
-      #releases .carousel{width:100%;max-width:1200px}
-      #releases .carousel-item{flex:0 0 33.33%}
-      #youtube .youtube-carousel{max-width:1200px}
-      #youtube .youtube-item{flex:0 0 50%}
-      .card-inner,.card,.youtube-item img{max-width:350px;margin-left:auto;margin-right:auto}
-      header{justify-content:space-between;max-width:1400px;margin-left:auto;margin-right:auto}
-    }
-    @media(max-width:500px){
-      .card-inner{aspect-ratio:3/4.2}
-      .footer-links{flex-direction:column;align-items:center}
-    }
-    @media(hover:none) and (pointer:coarse){
-      .cta-btn:hover,.btn:hover,.listen-btn:hover,.footer-links a:hover,.footer-social a:hover,#scrollTop:hover{transform:none}
-      .cta-btn:active,.btn:active{transform:scale(.95)}
-    }
-  </style>
 </head>
+
+
 <body>
-  <!-- Header -->
+
+  <!-- HEADER -->
   <header>
-    <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
-      <ion-icon name="moon-outline" id="themeIcon"></ion-icon>
-    </div>
-    <div class="header-logo"><h1 class="logo">TribleTunes</h1></div>
-    <div id="hamburger" aria-label="Open menu" role="button" tabindex="0">
-      <span></span><span></span><span></span>
+    <div class="header-container">
+      <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+        <ion-icon name="moon-outline" id="themeIcon"></ion-icon>
+      </div>
+
+      <div class="header-logo">
+        <h1 class="logo">TribleTunes</h1>
+      </div>
+
+      <div id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
 
-  <!-- Sidebar -->
+  <!-- SIDEBAR -->
   <div id="overlay"></div>
-  <nav id="sidebar" aria-label="Sidebar">
+  <nav id="sidebar">
     <a href="/"><ion-icon name="home-outline"></ion-icon> Home</a>
     <a href="/about/"><ion-icon name="information-circle-outline"></ion-icon> About Us</a>
     <a href="/contact/"><ion-icon name="mail-outline"></ion-icon> Contact</a>
@@ -340,18 +70,17 @@
     <a href="/terms/"><ion-icon name="document-text-outline"></ion-icon> Terms of Service</a>
   </nav>
 
-  <!-- About -->
+  <!-- ABOUT -->
   <section id="about">
     <h2 class="section-title">Lose yourself in</h2>
     <h3 class="section-subtitle">the Place of amazing music.</h3>
     <p class="section-text">
-      TribleTunes is a space where music and imagination soar together. We create and share high-quality lyric videos, bringing your favorite songs to life with vibrant visuals. From daily releases to curated playlists, our goal is to lift every listener into a world of amazing melodies and unforgettable rhythms.
-      <br>🎵 TribleTunes: Lose yourself in the music! 🎵
+      TribleTunes is a space where music and imagination soar together. We create and share high-quality lyric videos...
     </p>
-    <button class="cta-btn" onclick="window.open('https://www.youtube.com/@Tribletunes','_blank')">Be The Part Of Community</button>
+    <button class="cta-btn" onclick="window.open('https://www.youtube.com/@Tribletunes', '_blank')">Be The Part Of Community</button>
   </section>
 
-  <!-- Releases -->
+  <!-- RELEASES -->
   <section id="releases">
     <h2 class="section-title">Featured Releases</h2>
     <div class="carousel">
@@ -359,7 +88,7 @@
     </div>
   </section>
 
-  <!-- YouTube -->
+  <!-- YOUTUBE -->
   <section id="youtube">
     <h2 class="section-title">Latest Uploads</h2>
     <div class="youtube-carousel">
@@ -374,275 +103,41 @@
     <h3 class="section-subtitle">We've got answers.</h3>
 
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFAQ(this)">
-        What is TribleTunes? <span class="arrow-icon">▼</span>
-      </button>
+      <button class="faq-question">What is TribleTunes?<span class="arrow-icon">▼</span></button>
       <div class="faq-answer">
         TribleTunes is a YouTube channel dedicated to creating high-quality lyric videos for your favorite songs.
       </div>
     </div>
 
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFAQ(this)">
-        How often are new videos released? <span class="arrow-icon">▼</span>
-      </button>
-      <div class="faq-answer">
-        We release new lyric videos daily to keep your music experience fresh and exciting. We also schedule uploads at 10:50 PM IST for consistent reach.
-      </div>
+      <button class="faq-question">How often are new videos released?<span class="arrow-icon">▼</span></button>
+      <div class="faq-answer">We release new lyric videos daily.</div>
     </div>
 
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFAQ(this)">
-        Can I request a song? <span class="arrow-icon">▼</span>
-      </button>
-      <div class="faq-answer">
-        Yes! We love hearing from our fans. You can suggest songs through our Submission page or Contact form.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFAQ(this)">
-        Are all videos official? <span class="arrow-icon">▼</span>
-      </button>
-      <div class="faq-answer">
-        All lyric videos are created officially with proper permissions and licenses from the artists.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFAQ(this)">
-        How can I support TribleTunes? <span class="arrow-icon">▼</span>
-      </button>
-      <div class="faq-answer">
-        Support us by subscribing to our YouTube channel, sharing videos with friends, and engaging with our content through likes and comments.
-      </div>
+      <button class="faq-question">Can I request a song?<span class="arrow-icon">▼</span></button>
+      <div class="faq-answer">Yes! You can submit on our submission page.</div>
     </div>
   </section>
 
-  <!-- Newsletter -->
+  <!-- NEWSLETTER -->
   <section id="newsletter">
     <h2 class="section-title">Stay updated</h2>
     <h3 class="section-subtitle">with our newsletter & suggestions.</h3>
-    <p class="section-text">
-      Don't miss out on new releases, special features, and behind-the-scenes updates. You can also send us your message below!
-    </p>
     <form action="https://formspree.io/f/xzzjejde" method="POST">
-      <input type="email" name="email" placeholder="Your Email" required/>
+      <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" placeholder="Your Message (optional)"></textarea>
       <button type="submit" class="cta-btn">Subscribe & Send</button>
     </form>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-social">
-      <a href="https://www.youtube.com/@Tribletunes" target="_blank" title="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
-      <a href="https://twitter.com/tribletunes" target="_blank" title="Twitter"><ion-icon name="logo-twitter"></ion-icon></a>
-      <a href="https://instagram.com/tribletunes" target="_blank" title="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
-      <a href="https://facebook.com/tribletunes" target="_blank" title="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
-    </div>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/about/">About Us</a>
-      <a href="/contact/">Contact</a>
-      <a href="/submission/">Submission</a>
-      <a href="/privacy/">Privacy Policy</a>
-      <a href="/terms/">Terms of Service</a>
-      <a href="/dmca/">DMCA</a>
-      <a href="/cookies/">Cookie Policy</a>
-    </div>
-    <p style="margin-top:20px;">&copy; 2025 TribleTunes. All rights reserved.</p>
+    <p>&copy; 2025 TribleTunes. All rights reserved.</p>
   </footer>
 
-  <!-- Scroll To Top -->
-  <button id="scrollTop" title="Scroll to top" aria-label="Scroll to top">
-    <ion-icon name="arrow-up-outline"></ion-icon>
-  </button>
+  <button id="scrollTop"><ion-icon name="arrow-up-outline"></ion-icon></button>
 
-  <script>
-    /* Theme toggle */
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    if (currentTheme === 'light'){document.documentElement.setAttribute('data-theme','light');themeIcon.setAttribute('name','sunny-outline')}
-    themeToggle.addEventListener('click',()=>{
-      const theme = document.documentElement.getAttribute('data-theme');
-      if(theme==='light'){document.documentElement.setAttribute('data-theme','dark');themeIcon.setAttribute('name','moon-outline');localStorage.setItem('theme','dark')}
-      else{document.documentElement.setAttribute('data-theme','light');themeIcon.setAttribute('name','sunny-outline');localStorage.setItem('theme','light')}
-    });
-
-    /* Sidebar */
-    const hamburger=document.getElementById('hamburger');
-    const sidebar=document.getElementById('sidebar');
-    const overlay=document.getElementById('overlay');
-    const toggleMenu=()=>{hamburger.classList.toggle('active');sidebar.classList.toggle('show');overlay.classList.toggle('show')}
-    hamburger.addEventListener('click',toggleMenu);
-    hamburger.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleMenu()}});
-    overlay.addEventListener('click',()=>{hamburger.classList.remove('active');sidebar.classList.remove('show');overlay.classList.remove('show')});
-    sidebar.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{hamburger.classList.remove('active');sidebar.classList.remove('show');overlay.classList.remove('show')}));
-
-    /* Scroll to top */
-    const scrollTopBtn=document.getElementById('scrollTop');
-    window.addEventListener('scroll',()=>{if(window.pageYOffset>300){scrollTopBtn.classList.add('show')}else{scrollTopBtn.classList.remove('show')}})
-    scrollTopBtn.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'})});
-
-    /* Section reveal */
-    const observerOptions={threshold:0.1,rootMargin:'0px 0px -50px 0px'};
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)'}})
-    },observerOptions);
-    document.querySelectorAll('section').forEach(section=>{
-      section.style.opacity='0';section.style.transform='translateY(20px)';section.style.transition='opacity .6s ease, transform .6s ease';observer.observe(section)
-    });
-
-    /* FAQ — one open at a time + dynamic height */
-    function toggleFAQ(btn){
-      const ans = btn.nextElementSibling;
-      const allAnswers = document.querySelectorAll('.faq-answer');
-      const allQuestions = document.querySelectorAll('.faq-question');
-
-      // Close others
-      allAnswers.forEach(a=>{if(a!==ans){a.style.maxHeight=null}});
-      allQuestions.forEach(q=>{if(q!==btn){q.classList.remove('active')}});
-
-      // Toggle current
-      btn.classList.toggle('active');
-      if (ans.style.maxHeight){
-        ans.style.maxHeight = null;
-        ans.style.paddingTop = '0';
-        ans.style.paddingBottom = '0';
-      }else{
-        ans.style.paddingTop = '';
-        ans.style.paddingBottom = '';
-        ans.style.maxHeight = ans.scrollHeight + 'px';
-      }
-    }
-    // Recalculate open FAQ heights on resize
-    window.addEventListener('resize',()=>{
-      document.querySelectorAll('.faq-question.active + .faq-answer').forEach(ans=>{
-        ans.style.maxHeight = ans.scrollHeight + 'px';
-      });
-    });
-
-    /* RELEASES carousel + flip */
-    (async function(){
-      const track=document.getElementById('release-track');
-      try{
-        const res=await fetch('releases.json');
-        if(!res.ok) throw new Error('Failed to load releases');
-        const releases=await res.json();
-
-        releases.forEach((release,i)=>{
-          const item=document.createElement('div');
-          item.className='carousel-item';
-          item.innerHTML=`
-            <div class="card-inner" aria-label="${release.title}">
-              <div class="card-front">
-                <img loading="lazy" src="${release.image}" alt="${release.title}">
-              </div>
-              <div class="card-back">
-                <h3>${release.title}</h3>
-                <a href="${release.link}" class="btn" target="_blank" rel="noopener">Listen Now</a>
-              </div>
-            </div>
-            <p class="card-caption">${i<releases.length-1?'Swipe Next':'End of List'}</p>
-          `;
-          track.appendChild(item);
-        });
-
-        const items=Array.from(track.children);
-        const total=items.length;
-        let index=0,startX=0,dragging=false;
-
-        const update=()=>{track.style.transform=`translateX(-${index*100}%)`}
-
-        // Swipe (mobile)
-        track.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});
-        track.addEventListener('touchend',e=>{
-          const diff=startX - e.changedTouches[0].clientX;
-          if(Math.abs(diff)>50){index += diff>0 ? 1 : -1; index=(index+total)%total; update(); items.forEach(it=>it.querySelector('.card-inner')?.classList.remove('is-flipped'));}
-        });
-
-        // Drag (desktop)
-        track.addEventListener('mousedown',e=>{dragging=true;startX=e.clientX});
-        track.addEventListener('mouseup',e=>{
-          if(!dragging) return; dragging=false;
-          const diff=startX - e.clientX;
-          if(Math.abs(diff)>50){index += diff>0 ? 1 : -1; index=(index+total)%total; update(); items.forEach(it=>it.querySelector('.card-inner')?.classList.remove('is-flipped'));}
-        });
-
-        // Flip on click (ignore link clicks)
-        items.forEach(item=>{
-          const card=item.querySelector('.card-inner');
-          card.addEventListener('click',e=>{ if(e.target.tagName!=='A') card.classList.toggle('is-flipped'); });
-        });
-
-        // Auto-slide
-        setInterval(()=>{index=(index+1)%total;update();items.forEach(it=>it.querySelector('.card-inner')?.classList.remove('is-flipped'))},4000);
-
-        update();
-      }catch(err){
-        console.error(err);
-        track.innerHTML="<p style='color:var(--text-secondary);'>⚠️ Unable to load releases.</p>";
-      }
-    })();
-
-    /* YOUTUBE carousel + flip */
-    (async function(){
-      const track=document.getElementById('youtube-track');
-      try{
-        const res=await fetch('videos.json');
-        if(!res.ok) throw new Error('Failed to load videos');
-        const videos=await res.json();
-
-        videos.forEach(video=>{
-          const item=document.createElement('div');
-          item.className='youtube-item';
-          item.innerHTML=`
-            <div class="card" aria-label="${video.title}">
-              <div class="card-front">
-                <img loading="lazy" src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}">
-              </div>
-              <div class="card-back">
-                <a href="https://youtu.be/${video.id}" target="_blank" rel="noopener" class="listen-btn">Listen Now</a>
-              </div>
-            </div>
-          `;
-          track.appendChild(item);
-        });
-
-        const items=track.querySelectorAll('.youtube-item');
-        const total=items.length;
-        let index=0,startX=0,dragging=false;
-
-        const update=()=>{track.style.transform=`translateX(-${index*100}%)`}
-
-        track.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});
-        track.addEventListener('touchend',e=>{
-          const diff=startX - e.changedTouches[0].clientX;
-          if(Math.abs(diff)>50){index += diff>0 ? 1 : -1; index=(index+total)%total; update();}
-        });
-
-        track.addEventListener('mousedown',e=>{dragging=true;startX=e.clientX});
-        track.addEventListener('mouseup',e=>{
-          if(!dragging) return; dragging=false;
-          const diff=startX - e.clientX;
-          if(Math.abs(diff)>50){index += diff>0 ? 1 : -1; index=(index+total)%total; update();}
-        });
-
-        setInterval(()=>{index=(index+1)%total;update()},4000);
-
-        // Tap flip
-        items.forEach(item=>{
-          const card=item.querySelector('.card');
-          card.addEventListener('click',()=>card.classList.toggle('tap-flip'));
-        });
-
-      }catch(err){
-        console.error(err);
-        track.innerHTML="<p style='color:var(--text-secondary);'>⚠️ Unable to load videos.</p>";
-      }
-    })();
-  </script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
