@@ -5,86 +5,389 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy - TribleTunes</title>
 
-<!-- Favicon -->
 <link rel="icon" href="https://ik.imagekit.io/lbmgfujrk/favicon.png" type="image/png">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<!-- SEO Meta Tags -->
+<meta name="description" content="TribleTunes Privacy Policy - Learn how we collect, use, and protect your personal information.">
+<meta name="keywords" content="privacy policy, data protection, TribleTunes privacy, user information">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js' type="module"></script>
+<script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js' nomodule></script>
 
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{font-family:'Poppins',sans-serif;color:#fff;background:#0d0d0d;overflow-x:hidden;line-height:1.5;text-align:left;}
-
-  header{
-    padding:12px 20px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#000;
-    position:relative;
-    z-index:1000;
+  /* CSS VARIABLES FOR THEME */
+  :root {
+    --bg-primary: #0d0d0d;
+    --bg-secondary: #000;
+    --bg-card: #111;
+    --text-primary: #fff;
+    --text-secondary: #ccc;
+    --border-color: #333;
+    --accent-color: #6366f1;
+    --accent-hover: #4f46e5;
+    --transition: all 0.3s ease;
+    --container-padding: clamp(15px, 5vw, 40px);
+    --section-padding: clamp(30px, 6vh, 60px);
   }
-  .logo{font-family:'Dancing Script',cursive;font-size:2.8rem;color:#fff;text-align:center;}
 
-  #hamburger{
-    position:absolute;
-    right:20px;
-    top:50%;
-    transform:translateY(-50%);
-    width:25px;
-    height:20px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    cursor:pointer;
-    z-index:1100;
+  [data-theme="light"] {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --text-primary: #0d0d0d;
+    --text-secondary: #444;
+    --border-color: #ddd;
+    --accent-color: #6366f1;
+    --accent-hover: #4f46e5;
   }
-  #hamburger span{display:block;height:3px;background:#fff;border-radius:2px;transition:all 0.4s ease-in-out;}
-  #hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-  #hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0);}
-  #hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
 
-  #overlay{
-    position:fixed;top:0;left:0;width:100%;height:100%;
-    background:rgba(0,0,0,0.5);opacity:0;visibility:hidden;
-    transition:opacity 0.4s ease;z-index:1040;
+  /* RESET & BASE */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  #overlay.show{opacity:1;visibility:visible;}
 
-  #sidebar{
-    position:fixed;top:0;left:-300px;width:300px;height:100%;
-    background:#111;display:flex;flex-direction:column;
-    padding-top:80px;transition:transform 0.5s cubic-bezier(0.77,0,0.175,1);
-    z-index:1050;transform:translateX(0);
+  html {
+    scroll-behavior: smooth;
+    font-size: clamp(14px, 1.5vw, 16px);
   }
-  #sidebar.show{transform:translateX(300px);}
-  #sidebar a{
-    color:#fff;text-decoration:none;padding:15px 25px;
-    font-weight:600;border-bottom:1px solid #333;transition:0.3s;
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+    text-align: center;
+    transition: var(--transition);
   }
-  #sidebar a:hover{background:#fff;color:#000;}
 
-  section{padding:30px 20px;max-width:1000px;margin:auto;}
-  .section-title{font-family:'Dancing Script',cursive;font-size:2.5rem;margin-bottom:10px;}
-  .section-subtitle{font-size:1.3rem;font-weight:600;margin-bottom:10px;}
-  .section-text{font-size:0.95rem;margin-bottom:10px;color:#ddd;}
-  hr.fancy-line{border:0;height:2px;background:#fff;margin:20px 0;border-radius:5px;}
+  /* HEADER - Fully Responsive */
+  header {
+    padding: clamp(12px, 2vh, 20px) var(--container-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: var(--transition);
+    gap: 10px;
+  }
 
-  footer{background:#000;padding:15px;text-align:center;font-size:0.9rem;color:#ccc;}
-  footer a{color:#fff;text-decoration:none;margin:0 5px;}
-  footer a:hover{text-decoration:underline;}
+  .header-logo {
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+  }
 
-  @media(max-width:600px){
-    .section-title{font-size:2rem;}
-    .logo{font-size:2.2rem;}
+  .logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 4vw, 2.8rem);
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--accent-color), #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s infinite;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(20deg); }
+  }
+
+  /* THEME TOGGLE */
+  .theme-toggle {
+    position: static;
+    cursor: pointer;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: var(--text-primary);
+    transition: var(--transition);
+    background: var(--bg-card);
+    border-radius: 50%;
+    width: clamp(35px, 8vw, 45px);
+    height: clamp(35px, 8vw, 45px);
+    min-width: 35px;
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--border-color);
+    flex-shrink: 0;
+  }
+
+  .theme-toggle:hover {
+    transform: rotate(20deg) scale(1.1);
+    background: var(--accent-color);
+    color: white;
+  }
+
+  /* HAMBURGER */
+  #hamburger {
+    width: clamp(22px, 5vw, 28px);
+    height: clamp(18px, 4vw, 22px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001;
+    flex-shrink: 0;
+  }
+
+  #hamburger span {
+    height: clamp(2px, 0.5vw, 3px);
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.4s ease;
+  }
+
+  #hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  #hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* SIDEBAR & OVERLAY */
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+    z-index: 1040;
+    backdrop-filter: blur(5px);
+  }
+
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: min(300px, 80vw);
+    height: 100%;
+    background: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    padding-top: clamp(60px, 12vh, 80px);
+    transition: left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1050;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+  }
+
+  #sidebar a {
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: clamp(12px, 2vh, 15px) clamp(15px, 4vw, 25px);
+    font-weight: 600;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    border-bottom: 1px solid var(--border-color);
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #sidebar a:hover {
+    background: var(--accent-color);
+    color: white;
+    padding-left: clamp(20px, 5vw, 35px);
+  }
+
+  #sidebar.show {
+    left: 0;
+  }
+
+  #overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* SECTIONS - Fluid Responsive */
+  section {
+    padding: var(--section-padding) var(--container-padding);
+    max-width: 1000px;
+    margin: auto;
+    animation: fadeIn 0.6s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: clamp(8px, 1.5vh, 12px);
+    background: linear-gradient(135deg, var(--accent-color), #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-subtitle {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    margin-bottom: clamp(12px, 2vh, 18px);
+    color: var(--text-primary);
+  }
+
+  .section-text {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    margin-bottom: clamp(12px, 2.5vh, 18px);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  .section-text a {
+    color: var(--accent-color);
+    text-decoration: underline;
+  }
+
+  /* INFO CARD */
+  .info-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: clamp(10px, 2vw, 15px);
+    padding: clamp(20px, 3vw, 30px);
+    margin: clamp(20px, 3vh, 30px) 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    text-align: left;
+  }
+
+  .info-card h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: var(--accent-color);
+    margin-bottom: clamp(12px, 2vh, 15px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .info-card h3 ion-icon {
+    font-size: clamp(1.3rem, 3vw, 1.5rem);
+  }
+
+  .info-card p,
+  .info-card ul {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: clamp(10px, 2vh, 15px);
+  }
+
+  .info-card ul {
+    padding-left: clamp(20px, 4vw, 30px);
+  }
+
+  .info-card li {
+    margin-bottom: clamp(8px, 1.5vh, 10px);
+  }
+
+  /* FANCY HR LINES */
+  hr.fancy-line {
+    border: 0;
+    height: clamp(2px, 0.3vh, 3px);
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    margin: clamp(30px, 5vh, 50px) auto;
+    border-radius: 5px;
+    max-width: min(600px, 80%);
+    opacity: 0.6;
+  }
+
+  /* FOOTER - Responsive */
+  footer {
+    background: var(--bg-secondary);
+    padding: clamp(20px, 4vh, 30px) var(--container-padding);
+    text-align: center;
+    font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-color);
+  }
+
+  footer a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: var(--transition);
+    padding: 0 clamp(4px, 1vw, 8px);
+  }
+
+  footer a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+  }
+
+  footer p {
+    margin: clamp(8px, 1.5vh, 12px) 0;
+  }
+
+  /* SCROLL TO TOP BUTTON */
+  #scrollTop {
+    position: fixed;
+    bottom: clamp(20px, 4vh, 35px);
+    right: clamp(20px, 4vw, 35px);
+    width: clamp(45px, 9vw, 55px);
+    height: clamp(45px, 9vw, 55px);
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    transition: var(--transition);
+    z-index: 1000;
+  }
+
+  #scrollTop:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+  }
+
+  #scrollTop.show {
+    display: flex;
+  }
+
+  /* RESPONSIVE ADJUSTMENTS */
+  @media(min-width: 768px) {
+    section {
+      padding: clamp(40px, 8vh, 70px) var(--container-padding);
+    }
   }
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
-  <h1 class="logo">TribleTunes</h1>
+  <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+    <ion-icon name="moon-outline" id="themeIcon"></ion-icon>
+  </div>
+  <div class="header-logo">
+    <h1 class="logo" onclick="window.location.href='/'">TribleTunes</h1>
+  </div>
   <div id="hamburger">
     <span></span>
     <span></span>
@@ -92,99 +395,176 @@
   </div>
 </header>
 
+<!-- OVERLAY -->
 <div id="overlay"></div>
 
+<!-- SIDEBAR -->
 <div id="sidebar">
-  <a href="/">Home</a>
-  <a href="/about/">About Us</a>
-  <a href="/contact/">Contact</a>
-  <a href="/submission/">Submission</a>
-  <a href="/privacy/">Privacy Policy</a>
+  <a href="/"><ion-icon name="home-outline"></ion-icon> Home</a>
+  <a href="/about/"><ion-icon name="information-circle-outline"></ion-icon> About Us</a>
+  <a href="/contact/"><ion-icon name="mail-outline"></ion-icon> Contact</a>
+  <a href="/submission/"><ion-icon name="cloud-upload-outline"></ion-icon> Submission</a>
+  <a href="/privacy/"><ion-icon name="shield-checkmark-outline"></ion-icon> Privacy Policy</a>
+  <a href="/terms/"><ion-icon name="document-text-outline"></ion-icon> Terms of Service</a>
+  <a href="/dmca/"><ion-icon name="alert-circle-outline"></ion-icon> DMCA</a>
 </div>
 
+<!-- PRIVACY POLICY SECTION -->
 <section id="privacy-policy">
   <h2 class="section-title">Privacy Policy</h2>
   <h3 class="section-subtitle">Your Privacy Matters to Us</h3>
+  
   <p class="section-text">
-    At TribleTunes, accessible from <a href="https://tribletunes.com" style="color:#fff;text-decoration:underline;">tribletunes.com</a>,
-    one of our main priorities is the privacy of our visitors and contributors. This Privacy Policy document contains
-    types of information that are collected and recorded by TribleTunes and how we use it.
+    At TribleTunes, accessible from <a href="https://tribletunes.com">tribletunes.com</a>, one of our main priorities is the privacy of our visitors and contributors. This Privacy Policy document contains types of information that are collected and recorded by TribleTunes and how we use it.
   </p>
 
   <hr class="fancy-line">
 
-  <h3 class="section-subtitle">Information We Collect</h3>
-  <p class="section-text">
-    We may collect personal information such as your name, email address, and any other details you voluntarily provide
-    when you contact us, submit music, or subscribe to updates. We also collect basic analytics data such as IP address,
-    browser type, and device information to improve user experience.
-  </p>
+  <div class="info-card">
+    <h3><ion-icon name="information-circle-outline"></ion-icon> Information We Collect</h3>
+    <p>
+      We may collect personal information such as your name, email address, and any other details you voluntarily provide when you contact us, submit music, or subscribe to updates. We also collect basic analytics data such as:
+    </p>
+    <ul>
+      <li>IP address</li>
+      <li>Browser type and version</li>
+      <li>Device information</li>
+      <li>Pages visited and time spent</li>
+      <li>Referring website addresses</li>
+    </ul>
+    <p>This data helps us improve user experience and optimize our platform.</p>
+  </div>
 
-  <hr class="fancy-line">
-
-  <h3 class="section-subtitle">How We Use Your Information</h3>
-  <p class="section-text">
-    We use collected information to:
-    <ul class="section-text" style="margin-left:20px;list-style:disc;">
+  <div class="info-card">
+    <h3><ion-icon name="apps-outline"></ion-icon> How We Use Your Information</h3>
+    <p>We use collected information to:</p>
+    <ul>
       <li>Respond to your messages or inquiries</li>
       <li>Feature your submissions and music content (if applicable)</li>
       <li>Improve site performance and user experience</li>
       <li>Send updates related to TribleTunes (only if you opt-in)</li>
+      <li>Analyze website traffic and user behavior</li>
+      <li>Prevent fraud and ensure platform security</li>
     </ul>
-  </p>
+  </div>
 
-  <hr class="fancy-line">
+  <div class="info-card">
+    <h3><ion-icon name="git-network-outline"></ion-icon> Cookies</h3>
+    <p>
+      Like many other websites, TribleTunes uses 'cookies' to store information such as visitors' preferences and pages visited. This information helps us customize web content for a better user experience.
+    </p>
+    <p>
+      You can choose to disable cookies through your browser settings. However, this may affect your ability to use certain features of our website.
+    </p>
+  </div>
 
-  <h3 class="section-subtitle">Cookies</h3>
-  <p class="section-text">
-    Like many other websites, TribleTunes uses 'cookies' to store information such as visitors’ preferences and
-    pages visited. This information helps us customize web content for a better user experience.
-  </p>
+  <div class="info-card">
+    <h3><ion-icon name="link-outline"></ion-icon> Third-Party Links</h3>
+    <p>
+      Our website may contain links to external platforms such as YouTube, Spotify, SoundCloud, or artist pages. These sites are not operated by TribleTunes, and we are not responsible for their content or privacy policies.
+    </p>
+    <p>
+      We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+    </p>
+  </div>
 
-  <hr class="fancy-line">
+  <div class="info-card">
+    <h3><ion-icon name="shield-checkmark-outline"></ion-icon> Data Security</h3>
+    <p>
+      We take reasonable precautions to protect your personal information. However, no method of transmission over the Internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal data, we cannot guarantee its absolute security.
+    </p>
+  </div>
 
-  <h3 class="section-subtitle">Third-Party Links</h3>
-  <p class="section-text">
-    Our website may contain links to external platforms such as YouTube, Spotify, or artist pages.
-    These sites are not operated by TribleTunes, and we are not responsible for their content or privacy policies.
-  </p>
+  <div class="info-card">
+    <h3><ion-icon name="people-outline"></ion-icon> Children's Privacy</h3>
+    <p>
+      TribleTunes does not knowingly collect personally identifiable information from children under the age of 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately.
+    </p>
+  </div>
 
-  <hr class="fancy-line">
+  <div class="info-card">
+    <h3><ion-icon name="checkmark-circle-outline"></ion-icon> Consent</h3>
+    <p>
+      By using our website, you hereby consent to our Privacy Policy and agree to its terms. If you do not agree with this policy, please do not use our website.
+    </p>
+  </div>
 
-  <h3 class="section-subtitle">Consent</h3>
-  <p class="section-text">
-    By using our website, you hereby consent to our Privacy Policy and agree to its terms.
-  </p>
+  <div class="info-card">
+    <h3><ion-icon name="refresh-outline"></ion-icon> Changes to This Policy</h3>
+    <p>
+      We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date below.
+    </p>
+    <p>
+      You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+    </p>
+  </div>
 
-  <hr class="fancy-line">
+  <div class="info-card">
+    <h3><ion-icon name="mail-outline"></ion-icon> Contact Us</h3>
+    <p>
+      For questions or concerns about this Privacy Policy, please contact us at:
+    </p>
+    <p>
+      <strong>Email:</strong> <a href="mailto:contact@tribletunes.com">contact@tribletunes.com</a>
+    </p>
+  </div>
 
-  <h3 class="section-subtitle">Contact Us</h3>
-  <p class="section-text">
-    For questions or concerns about this Privacy Policy, please contact us at:
-    <br><a href="mailto:contact@tribletunes.com" style="color:#fff;">contact@tribletunes.com</a>
+  <p class="section-text" style="text-align: center; margin-top: 30px;">
+    <strong>Last Updated:</strong> January 2025
   </p>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <p>&copy; 2025 TribleTunes. All rights reserved.</p>
   <p>
-    <a href="https://tribletunes.com/">Home</a> |
-    <a href="https://tribletunes.com/about/">About Us</a> |
-    <a href="https://tribletunes.com/contact/">Contact</a> |
-    <a href="https://tribletunes.com/submission/">Submission</a> |
-    <a href="https://tribletunes.com/privacy/">Privacy Policy</a> |
-    <a href="https://www.youtube.com/@TribleTunes" target="_blank">YouTube</a> |
-    <a href="mailto:contact@tribletunes.com">Email</a>
+    <a href="/">Home</a> |
+    <a href="/about/">About Us</a> |
+    <a href="/contact/">Contact</a> |
+    <a href="/submission/">Submission</a> |
+    <a href="/privacy/">Privacy Policy</a> |
+    <a href="/terms/">Terms of Service</a> |
+    <a href="/dmca/">DMCA</a> |
+    <a href="/cookies/">Cookie Policy</a>
   </p>
+  <p style="margin-top: 15px; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">Made with ❤️ for Music Lovers</p>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.10/bundled/lenis.min.js"></script>
+<!-- SCROLL TO TOP BUTTON -->
+<button id="scrollTop" title="Scroll to top">
+  <ion-icon name="arrow-up-outline"></ion-icon>
+</button>
+
 <script>
+  // Theme Toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+
+  if (currentTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    themeIcon.setAttribute('name', 'sunny-outline');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIcon.setAttribute('name', 'moon-outline');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      themeIcon.setAttribute('name', 'sunny-outline');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+
+  // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('overlay');
 
-  function toggleSidebar(){
+  function toggleSidebar() {
     hamburger.classList.toggle('active');
     sidebar.classList.toggle('show');
     overlay.classList.toggle('show');
@@ -193,12 +573,45 @@
   hamburger.addEventListener('click', toggleSidebar);
   overlay.addEventListener('click', toggleSidebar);
 
-  sidebar.querySelectorAll('a').forEach(link=>link.addEventListener('click', toggleSidebar));
+  sidebar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', toggleSidebar);
+  });
 
-  // Lenis smooth scroll
-  function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
-  requestAnimationFrame(raf);
+  // Scroll to top button
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.classList.add('show');
+    } else {
+      scrollTopBtn.classList.remove('show');
+    }
+  });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Add animation on scroll
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('section').forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(section);
+  });
 </script>
-
 </body>
 </html>
