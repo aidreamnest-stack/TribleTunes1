@@ -408,12 +408,31 @@ section {
   margin-bottom: 14px;
 }
 
-/* FOOTER */
-footer {
-  padding: 30px;
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-}
+/* FOOTER - Responsive */
+  footer {
+    background: var(--bg-secondary);
+    padding: clamp(20px, 4vh, 30px) var(--container-padding);
+    text-align: center;
+    font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-color);
+  }
+
+  footer a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: var(--transition);
+    padding: 0 clamp(4px, 1vw, 8px);
+  }
+
+  footer a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+  }
+
+  footer p {
+    margin: clamp(8px, 1.5vh, 12px) 0;
+  }
 
 /* SCROLL TOP */
 #scrollTop {
