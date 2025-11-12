@@ -252,14 +252,14 @@ section {
   align-items: center;
 }
 .card-inner {
-  max-width: 300px;
+  max-width: 250px;
   width: 100%;
-  aspect-ratio: 3/4;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: 0.6s;
-  cursor: pointer;
+  aspect-ratio: 1/1;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
+
 .card-inner.is-flipped {
   transform: rotateY(180deg);
 }
