@@ -148,25 +148,32 @@ header {
   padding-top: 80px;
   display: flex;
   flex-direction: column;
-  transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  align-items: flex-start; /* ✅ aligns links to left */
+  text-align: left;        /* ✅ ensures text aligns left */
+  transition: left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
   z-index: 1050;
   box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
 }
+
 #sidebar.show {
   left: 0;
 }
+
 #sidebar a {
   color: var(--text-primary);
-  padding: 15px 25px;
+  padding: 15px 30px; /* ✅ slightly increased left padding */
   font-weight: 600;
   text-decoration: none;
   border-bottom: 1px solid var(--border-color);
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  width: 100%; /* ✅ makes link clickable across full width */
+  display: block; /* ✅ ensures proper alignment */
 }
+
 #sidebar a:hover {
   background: var(--accent-color);
   color: white;
-  padding-left: 35px;
+  padding-left: 40px; /* ✅ smooth slide-in hover */
 }
 
 /* SECTIONS */
