@@ -91,30 +91,35 @@ header {
 }
 
 /* HAMBURGER */
-#hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 22px;
-  cursor: pointer;
-}
-#hamburger span {
-  height: 3px;
-  background: var(--text-primary);
-  border-radius: 2px;
-  transition: 0.4s;
-}
-#hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-#hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-#hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
+  #hamburger {
+    width: clamp(22px, 5vw, 28px);
+    height: clamp(18px, 4vw, 22px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001;
+    flex-shrink: 0;
+  }
 
+  #hamburger span {
+    height: clamp(2px, 0.5vw, 3px);
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.4s ease;
+  }
+
+  #hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  #hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
 /* SIDEBAR */
 #overlay {
   position: fixed;
