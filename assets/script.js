@@ -112,12 +112,31 @@ document.querySelectorAll('#sidebar a').forEach(link => {
 /* ===============================
    YOUTUBE CAROUSEL
 =============================== */
+/* ===============================
+   YOUTUBE CAROUSEL (AUTO UPDATE)
+=============================== */
 (async function () {
   const track = document.getElementById("youtube-track");
+  const channelID = "UCgqVuw9Oh9jBlmYlh03Q2aw";
+  const rssUrl = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3D${channelID}`;
 
   try {
-    const response = await fetch("videos.json");
-    const videos = await response.json();
+    const response = await fetch(rssUrl);
+    const data = await response.json();
+
+    // rss2json returns items.link = "https://www.youtube.com/watch?v=VIDEO_ID"
+    // We verify status is ok
+    if (data.status !== 'ok') throw new Error('Failed to fetch RSS');
+
+    const videos = data.items.map(item => {
+      // Extract Video ID from link or guid
+      // guid is usually "yt:video:VIDEO_ID"
+      const videoId = item.guid.split(':')[2];
+      return {
+        id: videoId,
+        title: item.title
+      };
+    });
 
     videos.forEach(video => {
       const item = document.createElement("div");
@@ -133,6 +152,30 @@ document.querySelectorAll('#sidebar a').forEach(link => {
         </div>
       `;
       track.appendChild(item);
+    });
+
+    // Initialize 3D Tilt for new elements
+    const tiltCards = document.querySelectorAll('.card, .card-inner');
+    tiltCards.forEach(card => {
+      // Remove old listeners to avoid duplicates if any (simple approach: clone or just add new ones carefully)
+      // Here we just re-attach or ensure our tilt query selector in previous block covers it? 
+      // Actually the tilt logic at the bottom runs ONCE on load. We need to attach tilt to these NEW items.
+      // Let's attach tilt logic directly here for these new items.
+
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -15;
+        const rotateY = ((x - centerX) / centerX) * 15;
+        let baseRotateY = card.classList.contains('is-flipped') || card.classList.contains('tap-flip') ? 180 : 0;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${baseRotateY + rotateY}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
     });
 
     const items = [...track.children];
@@ -158,8 +201,9 @@ document.querySelectorAll('#sidebar a').forEach(link => {
       item.querySelector(".card").classList.toggle("tap-flip")
     ));
 
-  } catch {
-    track.innerHTML = "<p style='color:var(--text-secondary);'>⚠️ Unable to load videos.</p>";
+  } catch (err) {
+    console.error(err);
+    track.innerHTML = "<p style='color:var(--text-secondary);'>⚠️ Unable to load latest videos.</p>";
   }
 })();
 
