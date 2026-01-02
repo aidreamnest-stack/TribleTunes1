@@ -182,3 +182,68 @@ window.addEventListener("scroll", () =>
 scrollTopBtn.addEventListener("click", () =>
   window.scrollTo({ top: 0, behavior: "smooth" })
 );
+
+/* ===============================
+   STATS COUNTER
+=============================== */
+const statsSection = document.getElementById('stats');
+const statNumbers = document.querySelectorAll('.stat-number');
+let started = false;
+
+if (statsSection) {
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
+      statNumbers.forEach(num => {
+        const target = +num.getAttribute('data-target');
+        const duration = 2000; // ms
+        const increment = target / (duration / 16);
+
+        let current = 0;
+        const updateCount = () => {
+          current += increment;
+          if (current < target) {
+            // Show simple number while counting up
+            num.innerText = Math.ceil(current).toLocaleString(); // Removed + during count
+            requestAnimationFrame(updateCount);
+          } else {
+            // Final Formatting matches image
+            if (target === 5000000) num.innerText = "5M+";
+            else if (target === 400) num.innerText = "400+";
+            else if (target === 2024) num.innerText = "2024";
+            else num.innerText = target.toLocaleString();
+          }
+        };
+        updateCount();
+      });
+    }
+  });
+  observer.observe(statsSection);
+}
+
+/* ===============================
+   3D TILT EFFECT
+=============================== */
+document.querySelectorAll('.card, .card-inner').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Calculate rotation (-15 to +15 deg)
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -15; // Invert Y for tilt
+    const rotateY = ((x - centerX) / centerX) * 15;
+
+    // Check if flipped to maintain state
+    let baseRotateY = card.classList.contains('is-flipped') || card.classList.contains('tap-flip') ? 180 : 0;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${baseRotateY + rotateY}deg)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});

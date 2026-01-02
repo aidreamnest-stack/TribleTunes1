@@ -1,734 +1,761 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Submit Your Track - TribleTunes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Your Track - TribleTunes</title>
 
-<link rel="icon" href="https://ik.imagekit.io/lbmgfujrk/favicon.png" type="image/png">
+  <link rel="icon" href="https://ik.imagekit.io/lbmgfujrk/favicon.png" type="image/png">
 
-<!-- SEO Meta Tags -->
-<meta name="description" content="Submit your track to TribleTunes for lyric video creation. Free and paid promotion options available.">
-<meta name="keywords" content="music submission, lyric video, music promotion, submit track, TribleTunes">
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Submit your track to TribleTunes for lyric video creation. Free and paid promotion options available.">
+  <meta name="keywords" content="music submission, lyric video, music promotion, submit track, TribleTunes">
 
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet">
 
-<script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js' type="module"></script>
-<script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js' nomodule></script>
+  <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js' type="module"></script>
+  <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js' nomodule></script>
 
-<style>
-  /* CSS VARIABLES FOR THEME */
-  :root {
-    --bg-primary: #0d0d0d;
-    --bg-secondary: #000;
-    --bg-card: #111;
-    --text-primary: #fff;
-    --text-secondary: #ccc;
-    --border-color: #333;
-    --accent-color: #6366f1;
-    --accent-hover: #4f46e5;
-    --transition: all 0.3s ease;
-    --container-padding: clamp(15px, 5vw, 40px);
-    --section-padding: clamp(30px, 6vh, 60px);
-  }
+  <style>
+    /* CSS VARIABLES FOR THEME */
+    :root {
+      --bg-primary: #0d0d0d;
+      --bg-secondary: #000;
+      --bg-card: #111;
+      --text-primary: #fff;
+      --text-secondary: #ccc;
+      --border-color: #333;
+      --accent-color: #6366f1;
+      --accent-hover: #4f46e5;
+      --transition: all 0.3s ease;
+      --container-padding: clamp(15px, 5vw, 40px);
+      --section-padding: clamp(30px, 6vh, 60px);
+    }
 
-  [data-theme="light"] {
-    --bg-primary: #f5f5f5;
-    --bg-secondary: #ffffff;
-    --bg-card: #ffffff;
-    --text-primary: #0d0d0d;
-    --text-secondary: #444;
-    --border-color: #ddd;
-    --accent-color: #6366f1;
-    --accent-hover: #4f46e5;
-  }
+    [data-theme="light"] {
+      --bg-primary: #f5f5f5;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --text-primary: #0d0d0d;
+      --text-secondary: #444;
+      --border-color: #ddd;
+      --accent-color: #6366f1;
+      --accent-hover: #4f46e5;
+    }
 
-  /* RESET & BASE */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+    /* RESET & BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  html {
-    scroll-behavior: smooth;
-    font-size: clamp(14px, 1.5vw, 16px);
-  }
+    html {
+      scroll-behavior: smooth;
+      font-size: clamp(14px, 1.5vw, 16px);
+    }
 
-  body {
-    font-family: 'Poppins', sans-serif;
-    color: var(--text-primary);
-    background: var(--bg-primary);
-    overflow-x: hidden;
-    line-height: 1.6;
-    text-align: center;
-    transition: var(--transition);
-  }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+      text-align: center;
+      transition: var(--transition);
+    }
 
-  /* HEADER - Fully Responsive */
-  header {
-    padding: clamp(12px, 2vh, 20px) var(--container-padding);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--bg-secondary);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    transition: var(--transition);
-    gap: 10px;
-  }
+    /* HEADER - Fully Responsive */
+    header {
+      padding: clamp(12px, 2vh, 20px) var(--container-padding);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-secondary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      gap: 10px;
+    }
 
-  .header-logo {
-    flex: 1;
-    text-align: center;
-    min-width: 0;
-  }
+    .header-logo {
+      flex: 1;
+      text-align: center;
+      min-width: 0;
+    }
 
-  .logo {
-    font-family: 'Dancing Script', cursive;
-    font-size: clamp(1.5rem, 4vw, 2.8rem);
-    color: var(--text-primary);
-    background: linear-gradient(135deg, var(--accent-color), #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 3s infinite;
-    white-space: nowrap;
-    cursor: pointer;
-  }
+    .logo {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.5rem, 4vw, 2.8rem);
+      color: var(--text-primary);
+      background: linear-gradient(135deg, var(--accent-color), #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s infinite;
+      white-space: nowrap;
+      cursor: pointer;
+    }
 
-  @keyframes shimmer {
-    0%, 100% { filter: hue-rotate(0deg); }
-    50% { filter: hue-rotate(20deg); }
-  }
+    @keyframes shimmer {
 
-  /* THEME TOGGLE */
-  .theme-toggle {
-    position: static;
-    cursor: pointer;
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
-    color: var(--text-primary);
-    transition: var(--transition);
-    background: var(--bg-card);
-    border-radius: 50%;
-    width: clamp(35px, 8vw, 45px);
-    height: clamp(35px, 8vw, 45px);
-    min-width: 35px;
-    min-height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--border-color);
-    flex-shrink: 0;
-  }
+      0%,
+      100% {
+        filter: hue-rotate(0deg);
+      }
 
-  .theme-toggle:hover {
-    transform: rotate(20deg) scale(1.1);
-    background: var(--accent-color);
-    color: white;
-  }
+      50% {
+        filter: hue-rotate(20deg);
+      }
+    }
 
-  /* HAMBURGER */
-  #hamburger {
-    width: clamp(22px, 5vw, 28px);
-    height: clamp(18px, 4vw, 22px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    z-index: 1001;
-    flex-shrink: 0;
-  }
+    /* THEME TOGGLE */
+    .theme-toggle {
+      position: static;
+      cursor: pointer;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: var(--text-primary);
+      transition: var(--transition);
+      background: var(--bg-card);
+      border-radius: 50%;
+      width: clamp(35px, 8vw, 45px);
+      height: clamp(35px, 8vw, 45px);
+      min-width: 35px;
+      min-height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--border-color);
+      flex-shrink: 0;
+    }
 
-  #hamburger span {
-    height: clamp(2px, 0.5vw, 3px);
-    background: var(--text-primary);
-    border-radius: 2px;
-    transition: all 0.4s ease;
-  }
+    .theme-toggle:hover {
+      transform: rotate(20deg) scale(1.1);
+      background: var(--accent-color);
+      color: white;
+    }
 
-  #hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
+    /* HAMBURGER */
+    #hamburger {
+      width: clamp(22px, 5vw, 28px);
+      height: clamp(18px, 4vw, 22px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 1001;
+      flex-shrink: 0;
+    }
 
-  #hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
+    #hamburger span {
+      height: clamp(2px, 0.5vw, 3px);
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.4s ease;
+    }
 
-  #hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
+    #hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
 
-  /* SIDEBAR & OVERLAY */
-  #overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease;
-    z-index: 1040;
-    backdrop-filter: blur(5px);
-  }
+    #hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
 
-  #sidebar {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: min(300px, 80vw);
-    height: 100%;
-    background: var(--bg-card);
-    display: flex;
-    flex-direction: column;
-    padding-top: clamp(60px, 12vh, 80px);
-    transition: left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-    z-index: 1050;
-    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
-    overflow-y: auto;
-  }
+    #hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
 
-  #sidebar a {
-    color: var(--text-primary);
-    text-decoration: none;
-    padding: clamp(12px, 2vh, 15px) clamp(15px, 4vw, 25px);
-    font-weight: 600;
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    border-bottom: 1px solid var(--border-color);
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+    /* SIDEBAR & OVERLAY */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease;
+      z-index: 1040;
+      backdrop-filter: blur(5px);
+    }
 
-  #sidebar a:hover {
-    background: var(--accent-color);
-    color: white;
-    padding-left: clamp(20px, 5vw, 35px);
-  }
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: min(300px, 80vw);
+      height: 100%;
+      background: var(--bg-card);
+      display: flex;
+      flex-direction: column;
+      padding-top: clamp(60px, 12vh, 80px);
+      transition: left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+      z-index: 1050;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      overflow-y: auto;
+    }
 
-  #sidebar.show {
-    left: 0;
-  }
+    #sidebar a {
+      color: var(--text-primary);
+      text-decoration: none;
+      padding: clamp(12px, 2vh, 15px) clamp(15px, 4vw, 25px);
+      font-weight: 600;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      border-bottom: 1px solid var(--border-color);
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-  #overlay.show {
-    opacity: 1;
-    visibility: visible;
-  }
+    #sidebar a:hover {
+      background: var(--accent-color);
+      color: white;
+      padding-left: clamp(20px, 5vw, 35px);
+    }
 
-  /* SECTIONS - Fluid Responsive */
-  section {
-    padding: var(--section-padding) var(--container-padding);
-    max-width: 1000px;
-    margin: auto;
-    animation: fadeIn 0.6s ease;
-  }
+    #sidebar.show {
+      left: 0;
+    }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    #overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
 
-  .section-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    margin-bottom: clamp(8px, 1.5vh, 12px);
-    background: linear-gradient(135deg, var(--accent-color), #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .section-subtitle {
-    font-size: clamp(1.1rem, 3vw, 1.4rem);
-    font-weight: 700;
-    margin-bottom: clamp(12px, 2vh, 18px);
-    color: var(--text-primary);
-  }
-
-  .section-text {
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    margin-bottom: clamp(12px, 2.5vh, 18px);
-    color: var(--text-secondary);
-    line-height: 1.7;
-  }
-
-  /* FORM CARD */
-  .form-card {
-    background: var(--bg-card);
-    padding: clamp(20px, 4vw, 35px);
-    border-radius: clamp(10px, 2vw, 20px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    border: 1px solid var(--border-color);
-    margin-top: clamp(20px, 3vh, 30px);
-  }
-
-  form input,
-  form textarea {
-    width: 100%;
-    margin-bottom: clamp(12px, 2vh, 18px);
-    border-radius: clamp(8px, 1.5vw, 12px);
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    outline: none;
-    padding: clamp(12px, 2vh, 16px) clamp(14px, 2.5vw, 18px);
-    border: 2px solid var(--border-color);
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    transition: var(--transition);
-    font-family: 'Poppins', sans-serif;
-  }
-
-  form input:focus,
-  form textarea:focus {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-  }
-
-  form textarea {
-    min-height: clamp(140px, 25vh, 180px);
-    resize: vertical;
-  }
-
-  .input-wrapper {
-    position: relative;
-    width: 100%;
-  }
-
-  .input-wrapper input {
-    padding-left: clamp(40px, 8vw, 50px);
-  }
-
-  .input-icon {
-    position: absolute;
-    left: clamp(12px, 2vw, 16px);
-    top: 50%;
-    transform: translateY(-50%);
-    width: clamp(18px, 3vw, 22px);
-    height: clamp(18px, 3vw, 22px);
-    pointer-events: none;
-    opacity: 0.7;
-  }
-
-  form button {
-    width: 100%;
-    padding: clamp(12px, 2.5vh, 16px);
-    font-weight: 600;
-    border: none;
-    border-radius: clamp(25px, 5vw, 50px);
-    background: linear-gradient(135deg, var(--accent-color), #ec4899);
-    color: white;
-    cursor: pointer;
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    transition: var(--transition);
-    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  form button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
-  }
-
-  form button:active {
-    transform: translateY(0);
-  }
-
-  /* FEATURES LIST */
-  .features-list {
-    list-style: none;
-    margin: clamp(20px, 3vh, 30px) 0;
-  }
-
-  .features-list li {
-    padding: clamp(12px, 2vh, 16px) clamp(15px, 3vw, 20px);
-    margin-bottom: clamp(10px, 2vh, 14px);
-    background: var(--bg-card);
-    border-radius: clamp(8px, 1.5vw, 12px);
-    border-left: 4px solid var(--accent-color);
-    color: var(--text-primary);
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: clamp(10px, 2vw, 14px);
-    font-size: clamp(0.9rem, 2vw, 1rem);
-  }
-
-  .features-list li:hover {
-    transform: translateX(8px);
-    background: var(--bg-secondary);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
-  }
-
-  .features-list li ion-icon {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
-    color: var(--accent-color);
-    flex-shrink: 0;
-  }
-
-  /* CTA CARD */
-  .cta-card {
-    background: linear-gradient(135deg, var(--accent-color), #ec4899);
-    padding: clamp(20px, 4vw, 35px);
-    border-radius: clamp(12px, 2vw, 20px);
-    margin: clamp(25px, 4vh, 40px) 0;
-    text-align: center;
-    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
-    transition: var(--transition);
-  }
-
-  .cta-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.6);
-  }
-
-  .cta-card a {
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .cta-card ion-icon {
-    font-size: clamp(1.3rem, 3vw, 1.6rem);
-  }
-
-  /* UNDER DEVELOPMENT CARD */
-  .under-dev-card {
-    background: var(--bg-card);
-    border: 2px dashed var(--border-color);
-    padding: clamp(20px, 4vw, 30px);
-    border-radius: clamp(12px, 2vw, 20px);
-    margin: clamp(25px, 4vh, 40px) 0;
-    text-align: center;
-  }
-
-  .under-dev-card span {
-    color: var(--text-secondary);
-    font-weight: 600;
-    font-size: clamp(1rem, 2.5vw, 1.1rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .under-dev-card ion-icon {
-    font-size: clamp(1.3rem, 3vw, 1.5rem);
-    color: var(--accent-color);
-  }
-
-  /* FANCY HR LINES */
-  hr.fancy-line {
-    border: 0;
-    height: clamp(2px, 0.3vh, 3px);
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-    margin: clamp(30px, 5vh, 50px) auto;
-    border-radius: 5px;
-    max-width: min(600px, 80%);
-    opacity: 0.6;
-  }
-
-  /* FOOTER - Responsive */
-  footer {
-    background: var(--bg-secondary);
-    padding: clamp(20px, 4vh, 30px) var(--container-padding);
-    text-align: center;
-    font-size: clamp(0.8rem, 1.6vw, 0.9rem);
-    color: var(--text-secondary);
-    border-top: 1px solid var(--border-color);
-  }
-
-  footer a {
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: var(--transition);
-    padding: 0 clamp(4px, 1vw, 8px);
-  }
-
-  footer a:hover {
-    color: var(--accent-color);
-    text-decoration: underline;
-  }
-
-  footer p {
-    margin: clamp(8px, 1.5vh, 12px) 0;
-  }
-
-  /* SCROLL TO TOP BUTTON */
-  #scrollTop {
-    position: fixed;
-    bottom: clamp(20px, 4vh, 35px);
-    right: clamp(20px, 4vw, 35px);
-    width: clamp(45px, 9vw, 55px);
-    height: clamp(45px, 9vw, 55px);
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(1.3rem, 3vw, 1.6rem);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-    transition: var(--transition);
-    z-index: 1000;
-  }
-
-  #scrollTop:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
-  }
-
-  #scrollTop.show {
-    display: flex;
-  }
-
-  /* RESPONSIVE ADJUSTMENTS */
-  @media(min-width: 768px) {
+    /* SECTIONS - Fluid Responsive */
     section {
-      padding: clamp(40px, 8vh, 70px) var(--container-padding);
+      padding: var(--section-padding) var(--container-padding);
+      max-width: 1000px;
+      margin: auto;
+      animation: fadeIn 0.6s ease;
     }
-  }
 
-  @media(hover: none) and (pointer: coarse) {
-    .cta-card:hover,
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      margin-bottom: clamp(8px, 1.5vh, 12px);
+      background: linear-gradient(135deg, var(--accent-color), #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 700;
+      margin-bottom: clamp(12px, 2vh, 18px);
+      color: var(--text-primary);
+    }
+
+    .section-text {
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      margin-bottom: clamp(12px, 2.5vh, 18px);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* FORM CARD */
+    .form-card {
+      background: var(--bg-card);
+      padding: clamp(20px, 4vw, 35px);
+      border-radius: clamp(10px, 2vw, 20px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      margin-top: clamp(20px, 3vh, 30px);
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      margin-bottom: clamp(12px, 2vh, 18px);
+      border-radius: clamp(8px, 1.5vw, 12px);
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      outline: none;
+      padding: clamp(12px, 2vh, 16px) clamp(14px, 2.5vw, 18px);
+      border: 2px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      transition: var(--transition);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    }
+
+    form textarea {
+      min-height: clamp(140px, 25vh, 180px);
+      resize: vertical;
+    }
+
+    .input-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .input-wrapper input {
+      padding-left: clamp(40px, 8vw, 50px);
+    }
+
+    .input-icon {
+      position: absolute;
+      left: clamp(12px, 2vw, 16px);
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(18px, 3vw, 22px);
+      height: clamp(18px, 3vw, 22px);
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    form button {
+      width: 100%;
+      padding: clamp(12px, 2.5vh, 16px);
+      font-weight: 600;
+      border: none;
+      border-radius: clamp(25px, 5vw, 50px);
+      background: linear-gradient(135deg, var(--accent-color), #ec4899);
+      color: white;
+      cursor: pointer;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      transition: var(--transition);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+    }
+
+    form button:active {
+      transform: translateY(0);
+    }
+
+    /* FEATURES LIST */
+    .features-list {
+      list-style: none;
+      margin: clamp(20px, 3vh, 30px) 0;
+    }
+
+    .features-list li {
+      padding: clamp(12px, 2vh, 16px) clamp(15px, 3vw, 20px);
+      margin-bottom: clamp(10px, 2vh, 14px);
+      background: var(--bg-card);
+      border-radius: clamp(8px, 1.5vw, 12px);
+      border-left: 4px solid var(--accent-color);
+      color: var(--text-primary);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 2vw, 14px);
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+    .features-list li:hover {
+      transform: translateX(8px);
+      background: var(--bg-secondary);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+    }
+
+    .features-list li ion-icon {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: var(--accent-color);
+      flex-shrink: 0;
+    }
+
+    /* CTA CARD */
+    .cta-card {
+      background: linear-gradient(135deg, var(--accent-color), #ec4899);
+      padding: clamp(20px, 4vw, 35px);
+      border-radius: clamp(12px, 2vw, 20px);
+      margin: clamp(25px, 4vh, 40px) 0;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+      transition: var(--transition);
+    }
+
+    .cta-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.6);
+    }
+
+    .cta-card a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .cta-card ion-icon {
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
+    }
+
+    /* UNDER DEVELOPMENT CARD */
+    .under-dev-card {
+      background: var(--bg-card);
+      border: 2px dashed var(--border-color);
+      padding: clamp(20px, 4vw, 30px);
+      border-radius: clamp(12px, 2vw, 20px);
+      margin: clamp(25px, 4vh, 40px) 0;
+      text-align: center;
+    }
+
+    .under-dev-card span {
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .under-dev-card ion-icon {
+      font-size: clamp(1.3rem, 3vw, 1.5rem);
+      color: var(--accent-color);
+    }
+
+    /* FANCY HR LINES */
+    hr.fancy-line {
+      border: 0;
+      height: clamp(2px, 0.3vh, 3px);
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+      margin: clamp(30px, 5vh, 50px) auto;
+      border-radius: 5px;
+      max-width: min(600px, 80%);
+      opacity: 0.6;
+    }
+
+    /* FOOTER - Responsive */
+    footer {
+      background: var(--bg-secondary);
+      padding: clamp(20px, 4vh, 30px) var(--container-padding);
+      text-align: center;
+      font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-color);
+    }
+
+    footer a {
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: var(--transition);
+      padding: 0 clamp(4px, 1vw, 8px);
+    }
+
+    footer a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    footer p {
+      margin: clamp(8px, 1.5vh, 12px) 0;
+    }
+
+    /* SCROLL TO TOP BUTTON */
+    #scrollTop {
+      position: fixed;
+      bottom: clamp(20px, 4vh, 35px);
+      right: clamp(20px, 4vw, 35px);
+      width: clamp(45px, 9vw, 55px);
+      height: clamp(45px, 9vw, 55px);
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+      transition: var(--transition);
+      z-index: 1000;
+    }
+
     #scrollTop:hover {
-      transform: none;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
     }
 
-    form button:active,
-    .cta-card:active {
-      transform: scale(0.98);
+    #scrollTop.show {
+      display: flex;
     }
-  }
-</style>
+
+    /* RESPONSIVE ADJUSTMENTS */
+    @media(min-width: 768px) {
+      section {
+        padding: clamp(40px, 8vh, 70px) var(--container-padding);
+      }
+    }
+
+    @media(hover: none) and (pointer: coarse) {
+
+      .cta-card:hover,
+      #scrollTop:hover {
+        transform: none;
+      }
+
+      form button:active,
+      .cta-card:active {
+        transform: scale(0.98);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
-    <ion-icon name="moon-outline" id="themeIcon"></ion-icon>
+  <!-- HEADER -->
+  <header>
+    <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+      <ion-icon name="moon-outline" id="themeIcon"></ion-icon>
+    </div>
+    <div class="header-logo">
+      <h1 class="logo" onclick="window.location.href='/'">TribleTunes</h1>
+    </div>
+    <div id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- OVERLAY -->
+  <div id="overlay"></div>
+
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+    <a href="/"><ion-icon name="home-outline"></ion-icon> Home</a>
+    <a href="/about/"><ion-icon name="information-circle-outline"></ion-icon> About Us</a>
+    <a href="/contact/"><ion-icon name="mail-outline"></ion-icon> Contact</a>
+    <a href="/submission/"><ion-icon name="cloud-upload-outline"></ion-icon> Submission</a>
+    <a href="/privacy/"><ion-icon name="shield-checkmark-outline"></ion-icon> Privacy Policy</a>
+    <a href="/terms/"><ion-icon name="document-text-outline"></ion-icon> Terms of Service</a>
+    <a href="/dmca/"><ion-icon name="alert-circle-outline"></ion-icon> DMCA</a>
   </div>
-  <div class="header-logo">
-    <h1 class="logo" onclick="window.location.href='/'">TribleTunes</h1>
-  </div>
-  <div id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</header>
 
-<!-- OVERLAY -->
-<div id="overlay"></div>
+  <!-- FREE SUBMISSION SECTION -->
+  <section id="free-submission">
+    <h2 class="section-title">Submit Your Track</h2>
+    <h3 class="section-subtitle">Get Your Lyric Video Created for Free</h3>
+    <p class="section-text">
+      Share your music with the world! Submit your track via Spotify or SoundCloud link for professional lyric video
+      creation. Only tracks intended for lyric videos are accepted.
+    </p>
+    <p class="section-text">
+      Fill out the form below with your track details. We'll review your submission and create a stunning lyric video to
+      showcase your music on our YouTube channel.
+    </p>
 
-<!-- SIDEBAR -->
-<div id="sidebar">
-  <a href="/"><ion-icon name="home-outline"></ion-icon> Home</a>
-  <a href="/about/"><ion-icon name="information-circle-outline"></ion-icon> About Us</a>
-  <a href="/contact/"><ion-icon name="mail-outline"></ion-icon> Contact</a>
-  <a href="/submission/"><ion-icon name="cloud-upload-outline"></ion-icon> Submission</a>
-  <a href="/privacy/"><ion-icon name="shield-checkmark-outline"></ion-icon> Privacy Policy</a>
-  <a href="/terms/"><ion-icon name="document-text-outline"></ion-icon> Terms of Service</a>
-  <a href="/dmca/"><ion-icon name="alert-circle-outline"></ion-icon> DMCA</a>
-</div>
+    <div class="form-card">
+      <form action="https://formspree.io/f/xzzjejde" method="POST">
+        <input type="text" name="name" placeholder="Artist Name" required>
+        <input type="text" name="social" placeholder="Social Media URL (Instagram, Twitter, etc.)" required>
+        <input type="text" name="track" placeholder="Track Title" required>
+        <textarea name="lyrics" placeholder="Song Lyrics (Full lyrics required)" required></textarea>
 
-<!-- FREE SUBMISSION SECTION -->
-<section id="free-submission">
-  <h2 class="section-title">Submit Your Track</h2>
-  <h3 class="section-subtitle">Get Your Lyric Video Created for Free</h3>
-  <p class="section-text">
-    Share your music with the world! Submit your track via Spotify or SoundCloud link for professional lyric video creation. Only tracks intended for lyric videos are accepted.
-  </p>
-  <p class="section-text">
-    Fill out the form below with your track details. We'll review your submission and create a stunning lyric video to showcase your music on our YouTube channel.
-  </p>
+        <div class="input-wrapper">
+          <input type="url" name="tracklink" placeholder="Spotify / SoundCloud Track Link" required>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify"
+            class="input-icon">
+        </div>
 
-  <div class="form-card">
-    <form action="https://formspree.io/f/xzzjejde" method="POST">
-      <input type="text" name="name" placeholder="Artist Name" required>
-      <input type="text" name="social" placeholder="Social Media URL (Instagram, Twitter, etc.)" required>
-      <input type="text" name="track" placeholder="Track Title" required>
-      <textarea name="lyrics" placeholder="Song Lyrics (Full lyrics required)" required></textarea>
-      
-      <div class="input-wrapper">
-        <input type="url" name="tracklink" placeholder="Spotify / SoundCloud Track Link" required>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" 
-             alt="Spotify" 
-             class="input-icon">
-      </div>
+        <button type="submit">
+          <ion-icon name="send-outline"></ion-icon>
+          Submit Track
+        </button>
+      </form>
+    </div>
+  </section>
 
-      <button type="submit">
-        <ion-icon name="send-outline"></ion-icon>
-        Submit Track
-      </button>
-    </form>
-  </div>
-</section>
+  <hr class="fancy-line">
 
-<hr class="fancy-line">
+  <!-- PAID PROMOTION SECTION -->
+  <section id="paid-promotion">
+    <h2 class="section-title">Paid Promotion</h2>
+    <h3 class="section-subtitle">Boost Your Reach with Professional Marketing</h3>
+    <p class="section-text">
+      Want to reach thousands of music lovers? Our paid promotion service features your lyric video with YouTube ads,
+      playlist features, and targeted social media campaigns.
+    </p>
+    <p class="section-text">
+      Get priority video creation, guaranteed exposure, and detailed analytics to track your growing audience. Let's
+      make your music heard worldwide!
+    </p>
 
-<!-- PAID PROMOTION SECTION -->
-<section id="paid-promotion">
-  <h2 class="section-title">Paid Promotion</h2>
-  <h3 class="section-subtitle">Boost Your Reach with Professional Marketing</h3>
-  <p class="section-text">
-    Want to reach thousands of music lovers? Our paid promotion service features your lyric video with YouTube ads, playlist features, and targeted social media campaigns.
-  </p>
-  <p class="section-text">
-    Get priority video creation, guaranteed exposure, and detailed analytics to track your growing audience. Let's make your music heard worldwide!
-  </p>
+    <ul class="features-list">
+      <li><ion-icon name="flash-outline"></ion-icon> Priority lyric video creation</li>
+      <li><ion-icon name="megaphone-outline"></ion-icon> YouTube & social media advertising</li>
+      <li><ion-icon name="musical-notes-outline"></ion-icon> Featured in TribleTunes playlists</li>
+      <li><ion-icon name="trending-up-outline"></ion-icon> Guaranteed wider audience reach</li>
+      <li><ion-icon name="analytics-outline"></ion-icon> Detailed performance analytics report</li>
+    </ul>
 
-  <ul class="features-list">
-    <li><ion-icon name="flash-outline"></ion-icon> Priority lyric video creation</li>
-    <li><ion-icon name="megaphone-outline"></ion-icon> YouTube & social media advertising</li>
-    <li><ion-icon name="musical-notes-outline"></ion-icon> Featured in TribleTunes playlists</li>
-    <li><ion-icon name="trending-up-outline"></ion-icon> Guaranteed wider audience reach</li>
-    <li><ion-icon name="analytics-outline"></ion-icon> Detailed performance analytics report</li>
-  </ul>
+    <div class="cta-card">
+      <a href="https://app.one-submit.com/direct-submit/27237/2377/5549/TribleTunes-youtube-Music-Promotion"
+        target="_blank">
+        <ion-icon name="rocket-outline"></ion-icon>
+        Start Paid Promotion Now
+      </a>
+    </div>
+  </section>
 
-  <div class="cta-card">
-    <a href="https://app.one-submit.com/direct-submit/27237/2377/5549/TribleTunes-youtube-Music-Promotion" target="_blank">
-      <ion-icon name="rocket-outline"></ion-icon>
-      Start Paid Promotion Now
-    </a>
-  </div>
-</section>
+  <hr class="fancy-line">
 
-<hr class="fancy-line">
+  <!-- OFFICIAL RELEASE SECTION -->
+  <section id="official-release">
+    <h2 class="section-title">Official Track Release</h2>
+    <h3 class="section-subtitle">Coming Soon to All Major Platforms</h3>
+    <p class="section-text">
+      We're building something incredible! Soon you'll be able to officially release your tracks through TribleTunes to
+      all major streaming platforms including Spotify, Apple Music, Amazon Music, and more.
+    </p>
+    <p class="section-text">
+      This feature will include professional distribution, playlist pitching, and comprehensive release management. Stay
+      tuned for updates!
+    </p>
 
-<!-- OFFICIAL RELEASE SECTION -->
-<section id="official-release">
-  <h2 class="section-title">Official Track Release</h2>
-  <h3 class="section-subtitle">Coming Soon to All Major Platforms</h3>
-  <p class="section-text">
-    We're building something incredible! Soon you'll be able to officially release your tracks through TribleTunes to all major streaming platforms including Spotify, Apple Music, Amazon Music, and more.
-  </p>
-  <p class="section-text">
-    This feature will include professional distribution, playlist pitching, and comprehensive release management. Stay tuned for updates!
-  </p>
-  
-  <div class="under-dev-card">
-    <span>
-      <ion-icon name="construct-outline"></ion-icon>
-      Under Development - Coming Soon!
-    </span>
-  </div>
-</section>
+    <div class="under-dev-card">
+      <span>
+        <ion-icon name="construct-outline"></ion-icon>
+        Under Development - Coming Soon!
+      </span>
+    </div>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2025 TribleTunes. All rights reserved.</p>
-  <p>
-    <a href="/">Home</a> |
-    <a href="/about/">About Us</a> |
-    <a href="/contact/">Contact</a> |
-    <a href="/submission/">Submission</a> |
-    <a href="/privacy/">Privacy Policy</a> |
-    <a href="/terms/">Terms of Service</a> |
-    <a href="/dmca/">DMCA</a> |
-    <a href="/cookies/">Cookie Policy</a>
-  </p>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 TribleTunes. All rights reserved.</p>
+    <p>
+      <a href="/">Home</a> |
+      <a href="/about/">About Us</a> |
+      <a href="/contact/">Contact</a> |
+      <a href="/submission/">Submission</a> |
+      <a href="/privacy/">Privacy Policy</a> |
+      <a href="/terms/">Terms of Service</a> |
+      <a href="/dmca/">DMCA</a> |
+      <a href="/cookies/">Cookie Policy</a>
+    </p>
+  </footer>
 
-<!-- SCROLL TO TOP BUTTON -->
-<button id="scrollTop" title="Scroll to top">
-  <ion-icon name="arrow-up-outline"></ion-icon>
-</button>
+  <!-- SCROLL TO TOP BUTTON -->
+  <button id="scrollTop" title="Scroll to top">
+    <ion-icon name="arrow-up-outline"></ion-icon>
+  </button>
 
-<script>
-  // Theme Toggle
-  const themeToggle = document.getElementById('themeToggle');
-  const themeIcon = document.getElementById('themeIcon');
-  const currentTheme = localStorage.getItem('theme') || 'dark';
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const currentTheme = localStorage.getItem('theme') || 'dark';
 
-  if (currentTheme === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    themeIcon.setAttribute('name', 'sunny-outline');
-  }
-
-  themeToggle.addEventListener('click', () => {
-    const theme = document.documentElement.getAttribute('data-theme');
-    if (theme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      themeIcon.setAttribute('name', 'moon-outline');
-      localStorage.setItem('theme', 'dark');
-    } else {
+    if (currentTheme === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
       themeIcon.setAttribute('name', 'sunny-outline');
-      localStorage.setItem('theme', 'light');
     }
-  });
 
-  // Hamburger menu
-  const hamburger = document.getElementById('hamburger');
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('overlay');
-
-  function toggleSidebar() {
-    hamburger.classList.toggle('active');
-    sidebar.classList.toggle('show');
-    overlay.classList.toggle('show');
-  }
-
-  hamburger.addEventListener('click', toggleSidebar);
-  overlay.addEventListener('click', toggleSidebar);
-
-  sidebar.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', toggleSidebar);
-  });
-
-  // Scroll to top button
-  const scrollTopBtn = document.getElementById('scrollTop');
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-      scrollTopBtn.classList.add('show');
-    } else {
-      scrollTopBtn.classList.remove('show');
-    }
-  });
-
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // Add animation on scroll
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+    themeToggle.addEventListener('click', () => {
+      const theme = document.documentElement.getAttribute('data-theme');
+      if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.setAttribute('name', 'moon-outline');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeIcon.setAttribute('name', 'sunny-outline');
+        localStorage.setItem('theme', 'light');
       }
     });
-  }, observerOptions);
 
-  document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
-  });
-</script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    function toggleSidebar() {
+      hamburger.classList.toggle('active');
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+
+    hamburger.addEventListener('click', toggleSidebar);
+    overlay.addEventListener('click', toggleSidebar);
+
+    sidebar.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', toggleSidebar);
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Add animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
+    });
+  </script>
 </body>
+
 </html>
