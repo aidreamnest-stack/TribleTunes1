@@ -507,15 +507,15 @@
     <div class="stats-highlight">
       <div class="stats-grid">
         <div class="stat-item">
-          <span class="stat-number">5M+</span>
+          <span class="stat-number" data-target="5000000">0</span>
           <span class="stat-label">Total Views</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">400+</span>
+          <span class="stat-number" data-target="400">0</span>
           <span class="stat-label">Lyric Videos</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">2024</span>
+          <span class="stat-number" data-target="2024">0</span>
           <span class="stat-label">Founded</span>
         </div>
       </div>
@@ -643,6 +643,40 @@
       section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(section);
     });
+
+    // Stats Counter Animation
+    const statsSection = document.querySelector('.stats-highlight');
+    const statNumbers = document.querySelectorAll('.stat-number');
+    let statsStarted = false;
+
+    if (statsSection) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !statsStarted) {
+          statsStarted = true;
+          statNumbers.forEach(num => {
+            const target = +num.getAttribute('data-target');
+            const duration = 2000; // ms
+            const increment = target / (duration / 16);
+
+            let current = 0;
+            const updateCount = () => {
+              current += increment;
+              if (current < target) {
+                num.innerText = Math.ceil(current).toLocaleString();
+                requestAnimationFrame(updateCount);
+              } else {
+                if (target === 5000000) num.innerText = "5M+";
+                else if (target === 400) num.innerText = "400+";
+                else if (target === 2024) num.innerText = "2024";
+                else num.innerText = target.toLocaleString();
+              }
+            };
+            updateCount();
+          });
+        }
+      });
+      statsObserver.observe(statsSection);
+    }
   </script>
 </body>
 
